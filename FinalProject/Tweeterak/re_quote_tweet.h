@@ -5,6 +5,7 @@
 #include <QPalette>
 #include <QDebug>
 #include <QStringList>
+#include <vector>
 #include "user.h"
 #include "Tweet.hpp"
 #include "tweetwindow.h"

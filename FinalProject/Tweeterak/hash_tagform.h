@@ -10,6 +10,7 @@
 #include <QIcon>
 #include <QPixmap>
 #include <QPalette>
+#include <vector>
 #include "Tweet.hpp"
 #include "mention.h"
 #include "re_quote_tweet.h"

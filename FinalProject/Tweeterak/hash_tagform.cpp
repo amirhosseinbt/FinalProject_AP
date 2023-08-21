@@ -205,7 +205,17 @@ bool Hash_TagForm::Refresh()
                         if(htlist.at(i) == Text)
                         {
                             flag = true;
-                            QString myline =Get_Uname_byId(list.at(0).toInt())+"  "+list.at(1)+"  "+"   like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5);
+                            QString myline="";
+                            if(list.at(10).toInt() == 0)
+                            {
+
+                                myline =Get_Uname_byId(list.at(0).toInt())+"  "+list.at(1)+"  "+"   like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5);
+                            }
+                            else
+                            {
+                                myline =Get_Uname_byId(list.at(10).toInt())+"  "+list.at(1)+"  "+"   like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5)
+                                         +"     "+" Retweet from  "+Get_Uname_byId(list.at(0).toInt());
+                            }
                             QListWidgetItem* myitem = new QListWidgetItem(myline);
                             QVariant mydata =list.at(0)+"%$%"+list.at(1)+"%$%";
                             myitem->setData(Qt::UserRole,mydata);
@@ -359,7 +369,7 @@ void Hash_TagForm::on_btn_like_clicked()
         }
         else
         {
-            Tweet *t =new Tweet();;
+            std::vector<Tweet*> tweet_vector;
             QFile Tweets ("Tweet_file.txt");
             if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text))
             {
@@ -373,6 +383,7 @@ void Hash_TagForm::on_btn_like_clicked()
                     bool flag = false;
                     while(!file.atEnd())
                     {
+                        Tweet *t =new Tweet();;
                         list = file.readLine().split("%$%");
                         for(int i = 0;i < list.at(4).split(",").size();i++)
                         {
@@ -383,7 +394,7 @@ void Hash_TagForm::on_btn_like_clicked()
                             {
                                 flag = true;
                                 QMessageBox::information(this,"Warning","! You have already liked this tweet.");
-                                break;
+                                return;
                             }
                         }
 
@@ -396,43 +407,47 @@ void Hash_TagForm::on_btn_like_clicked()
                                 list >> t;
                                 t->Set_Who_Like(C_Userid);
                                 t->Add_Like();
+                                tweet_vector.push_back(t);
                                 Tweets.close();
-                                QFile Tfile ("Tweet_file.txt");
-                                if(!Tfile .open(QIODevice::ReadWrite|QIODevice::Text))
-                                {
-                                    QMessageBox::information(this,"Warning","! File can not open.");
-                                    return;
-                                }
-                                else
-                                {
-                                    QTextStream file(&Tfile );
-                                    QString str="";
-                                    while(!file.atEnd())
-                                    {
-                                        QString line = file.readLine();
-                                        QStringList list = line.split("%$%");
-                                        if(list.at(0).toInt() ==datalist.at(0).toInt() &&
-                                            list.at(1).toInt() == datalist.at(1).toInt())
-                                        {
-                                        }
-                                        else
-                                        {
-                                            str.append(line+'\n');
-                                        }
-                                    }
-                                    Tfile .resize(0);
-                                    file << str;
-                                    file << t;
-                                    Tfile .close();
-                                    QMessageBox::information(this,"Successful","* Tweet successfuly liked.");
-                                    Tweets.close();
-                                    Refresh();
-                                    return;
-
-                                }
                             }
 
                         }
+                    }
+                    QFile Tfile ("Tweet_file.txt");
+                    if(!Tfile .open(QIODevice::ReadWrite|QIODevice::Text))
+                    {
+                        QMessageBox::information(this,"Warning","! File can not open.");
+                        return;
+                    }
+                    else
+                    {
+                        QTextStream file(&Tfile );
+                        QString str="";
+                        while(!file.atEnd())
+                        {
+                            QString line = file.readLine();
+                            QStringList list = line.split("%$%");
+                            if(list.at(0).toInt() ==datalist.at(0).toInt() &&
+                                list.at(1).toInt() == datalist.at(1).toInt())
+                            {
+                            }
+                            else
+                            {
+                                str.append(line+'\n');
+                            }
+                        }
+                        Tfile .resize(0);
+                        file << str;
+                        for(auto &tw:tweet_vector)
+                        {
+                            file << tw;
+                        }
+                        Tfile .close();
+                        QMessageBox::information(this,"Successful","* Tweet successfuly liked.");
+                        Tweets.close();
+                        Refresh();
+                        return;
+
                     }
                     Tweets.close();
             }

@@ -147,7 +147,7 @@ void Mention::on_btn_tweet_clicked()
             {
                 QString line = file.readLine();
                 QStringList list = line.split("%$%");
-                if(!(list.at(0).toInt()==userid && list.at(1).toInt()==tweetid))
+                if(!(list.at(0).toInt()==userid && list.at(1).toInt()==tweetid&&list.at(10).toInt()==0))
                 {
                     str.append(line+'\n');
                 }

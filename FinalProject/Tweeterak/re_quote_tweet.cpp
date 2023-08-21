@@ -243,7 +243,7 @@ void Re_Quote_Tweet::on_btn_retweet_clicked()
     }
     else
     {
-        Tweet *t =new Tweet();
+        std::vector<Tweet*>tweet_vector;
         QFile Tweets ("Tweet_file.txt");
         bool flag = false;
         if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text))
@@ -257,6 +257,7 @@ void Re_Quote_Tweet::on_btn_retweet_clicked()
             QStringList list;
             while(!file.atEnd())
             {
+                Tweet *t =new Tweet();
                 list = file.readLine().split("%$%");
                 for(int i = 0;i < list.at(8).split(",").size();i++)
                 {
@@ -267,7 +268,7 @@ void Re_Quote_Tweet::on_btn_retweet_clicked()
                     {
                         flag = true;
                         QMessageBox::information(this,"Warning","! You have already retweet this tweet.");
-                        break;
+                        return;
                     }
                 }
 
@@ -278,41 +279,113 @@ void Re_Quote_Tweet::on_btn_retweet_clicked()
                     {
                         list >> t;
                         t->Set_Who_Retweet(Current_User->Get_Userid());
+                        tweet_vector.push_back(t);
                         Tweets.close();
-                        QFile Tfile ("Tweet_file.txt");
-                        if(!Tfile .open(QIODevice::ReadWrite|QIODevice::Text))
-                        {
-                            QMessageBox::information(this,"Warning","! File can not open.");
-                            return;
-                        }
-                        else
-                        {
-                            QTextStream file(&Tfile );
-                            QString str="";
-                            while(!file.atEnd())
-                            {
-                                QString line = file.readLine();
-                                QStringList list = line.split("%$%");
-                                if(list.at(0).toInt() ==T_Userid &&
-                                    list.at(1).toInt() == T_id)
-                                {
-                                }
-                                else
-                                {
-                                    str.append(line+'\n');
-                                }
-                            }
-                            Tfile .resize(0);
-                            file << str;
-                            file << t;
-                            Tfile.close();
-                            Tweets.close();
 
-                        }
                     }
                 }
             }
             Tweets.close();
+        }
+        Tweet* main_tweet;
+        QFile Tfile ("Tweet_file.txt");
+        if(!Tfile .open(QIODevice::ReadWrite|QIODevice::Text))
+        {
+            QMessageBox::information(this,"Warning","! File can not open.");
+            return;
+        }
+        else
+        {
+            QTextStream file(&Tfile );
+            QString str="";
+            while(!file.atEnd())
+            {
+                QString line = file.readLine();
+                QStringList list = line.split("%$%");
+                if(list.at(0).toInt() ==T_Userid &&
+                    list.at(1).toInt() == T_id)
+                {
+                }
+                else
+                {
+                    str.append(line+'\n');
+                }
+            }
+            Tfile .resize(0);
+            file << str;
+            for(auto & tw:tweet_vector)
+            {
+                file << tw;
+                if(tw->Get_RetweetUser_id()==0)
+                {
+                    main_tweet = tw;
+                }
+            }
+            Tfile.close();
+            Tweets.close();
+
+        }
+        Tweet* tweet = new Tweet();
+//        QFile Tweets("Tweet_file.txt");
+        if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text|QIODevice::Append))
+        {
+            QMessageBox::information(this,"Warning","! File can not open.");
+            return;
+        }
+        else
+        {
+            QTextStream file(&Tweets);
+            tweet->Add_Tweet(T_text);
+            QStringList hasht;
+            hasht = T_text.split("#");
+            for (int i = 0; i < hasht.size(); i++)
+            {
+                QString HT="";
+
+                if(i != 0)
+                {
+                    for (int j = 0; j < hasht.at(i).size(); j++)
+                    {
+                        if(hasht.at(i).at(j).isLetterOrNumber())
+                        {
+                            HT.append(hasht.at(i).at(j));
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    if(!HT.isEmpty())
+                    {
+                        tweet->Set_Hashtag(HT);
+                    }
+                }
+            }
+            tweet->Set_ID(T_id);
+            Current_User->Add_Last_Tweet_id();
+            tweet->Set_Tweet_Date(QDateTime::currentDateTime());
+            tweet->Set_User_id(T_Userid);
+            tweet->Set_RetweetUser_id(Current_User->Get_Userid());
+            tweet->Set_last_mentionid(main_tweet->Get_last_mentionid());
+            tweet->Set_N_Like(main_tweet->Get_N_Like());
+            for(auto& whlike:main_tweet->Get_Who_Like())
+            {
+                tweet->Set_Who_Like(whlike);
+            }
+            for(auto& whretweet:main_tweet->Get_Who_Retweet())
+            {
+                tweet->Set_Who_Retweet(whretweet);
+            }
+            for(auto& whquotetweet : main_tweet->Get_Who_Quote_t())
+            {
+                tweet->Set_who_Quote_tweet(whquotetweet);
+            }
+            file << tweet;
+
+            QMessageBox::information(this,"Successful","* Retweet done.");
+            Tweets.close();
+            this->close();
+
         }
         if(!flag)
         {
@@ -363,68 +436,7 @@ void Re_Quote_Tweet::on_btn_retweet_clicked()
 //                Tweetsfile.close();
 //                this->close();
 //        }
-            Tweet* tweet = new Tweet();
-            QFile Tweets("Tweet_file.txt");
-            if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text|QIODevice::Append))
-            {
-                QMessageBox::information(this,"Warning","! File can not open.");
-                return;
-            }
-            else
-            {
-                QTextStream file(&Tweets);
-                tweet->Add_Tweet(T_text);
-                QStringList hasht;
-                hasht = T_text.split("#");
-                for (int i = 0; i < hasht.size(); i++)
-                {
-                    QString HT="";
 
-                    if(i != 0)
-                    {
-                        for (int j = 0; j < hasht.at(i).size(); j++)
-                        {
-                            if(hasht.at(i).at(j).isLetterOrNumber())
-                            {
-                                HT.append(hasht.at(i).at(j));
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        }
-                        if(!HT.isEmpty())
-                        {
-                            tweet->Set_Hashtag(HT);
-                        }
-                    }
-                }
-                tweet->Set_ID(T_id);
-                Current_User->Add_Last_Tweet_id();
-                tweet->Set_Tweet_Date(QDateTime::currentDateTime());
-                tweet->Set_User_id(T_Userid);
-                tweet->Set_RetweetUser_id(Current_User->Get_Userid());
-                tweet->Set_last_mentionid(t->Get_last_mentionid());
-                tweet->Set_N_Like(t->Get_N_Like());
-                for(auto& whlike:t->Get_Who_Like())
-                {
-                    tweet->Set_Who_Like(whlike);
-                }
-                for(auto& whretweet:t->Get_Who_Retweet())
-                {
-                    tweet->Set_Who_Retweet(whretweet);
-                }
-                for(auto& whquotetweet : t->Get_Who_Quote_t())
-                {
-                    tweet->Set_who_Quote_tweet(whquotetweet);
-                }
-                file << tweet;
-
-                QMessageBox::information(this,"Successful","* Retweet done.");
-                Tweets.close();
-                this->close();
-
-            }
 
         }
 

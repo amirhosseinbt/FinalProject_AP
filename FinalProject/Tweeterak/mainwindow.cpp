@@ -78,6 +78,41 @@ void MainWindow::Get_User(User *user)
     ui->lbl_nfollowings->setText(QString::number(Current_User->Get_N_Followings()));
 }
 
+QString MainWindow::Get_Uname_byID(int id)
+{
+    QFile Users ("User_file.txt");
+    QString uname="";
+    if(!Users.open(QIODevice::ReadWrite|QIODevice::Text))
+    {
+        QMessageBox::information(this,"Warning","! File can not open.");
+    }
+    else
+    {
+        QTextStream file(&Users);
+        QStringList user_list;
+        while(!file.atEnd())
+        {
+            user_list = file.readLine().split("%$%");
+            if(user_list.at(0)=="A")
+            {
+                if(user_list.at(14).toInt() == id)
+                {
+
+                    uname = user_list.at(1);
+                    break;
+                }
+            }
+            else if(user_list.at(15).toInt() == id)
+            {
+                uname = user_list.at(1);
+                break;
+            }
+        }
+        Users.close();
+    }
+    return uname;
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -99,10 +134,27 @@ void MainWindow::Refresh_List()
         while(!file.atEnd())
         {
             list = file.readLine().split("%$%");
-            if(list.at(0).toInt() == Current_User->Get_Userid()||list.at(10).toInt() == Current_User->Get_Userid())
+            if((list.at(0).toInt() == Current_User->Get_Userid()&&(list.at(10).toInt() == Current_User->Get_Userid()||list.at(10).toInt() == 0))
+                ||list.at(10).toInt() == Current_User->Get_Userid())
             {
-                QString line =Current_User->Get_Username()+"  "+list.at(1)+"  "+"    like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5);
-                ui->list_tweets->addItem(line);
+                if(list.at(10).toInt() == 0)
+                {
+                    QString line =Current_User->Get_Username()+"  "+list.at(1)+"  "+"    like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5);
+                    QListWidgetItem * myitem = new QListWidgetItem(line);
+                    QVariant mydata =list.at(0)+"%$%"+list.at(10)+"%$%"+list.at(1);
+                    myitem->setData(Qt::UserRole,mydata);
+                    ui->list_tweets->addItem(myitem);
+                }
+                else
+                {
+
+                    QString line =Current_User->Get_Username()+"  "+list.at(1)+"  "+"    like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5)+
+                                   "        "+"  Retweet from   "+Get_Uname_byID(list.at(0).toInt());
+                    QListWidgetItem * myitem = new QListWidgetItem(line);
+                    QVariant mydata =list.at(0)+"%$%"+list.at(10)+"%$%"+list.at(1);
+                    myitem->setData(Qt::UserRole,mydata);
+                    ui->list_tweets->addItem(myitem);
+                }
             }
         }
 
@@ -155,7 +207,8 @@ void MainWindow::on_btn_setting_clicked()
 
 void MainWindow::on_btn_like_clicked()
 {
-    Tweet *t =new Tweet();
+
+    std::vector<Tweet*> tweet_vector;
     if(ui->list_tweets->currentItem() == nullptr)
     {
         QMessageBox::information(this,"Warning","! You must select one tweet.");
@@ -165,6 +218,7 @@ void MainWindow::on_btn_like_clicked()
     {
 
         QStringList list_item = ui->list_tweets->currentItem()->text().split("  ");
+        QStringList list_data = (ui->list_tweets->currentItem()->data(Qt::UserRole).toString()).split("%$%");
         QFile Tweets ("Tweet_file.txt");
         if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text))
         {
@@ -177,64 +231,70 @@ void MainWindow::on_btn_like_clicked()
             QStringList list;
             while(!file.atEnd())
             {
+                Tweet *t =new Tweet();
                 list = file.readLine().split("%$%");
                 bool flag = false;
                 for(int i = 0;i < list.at(4).split(",").size();i++)
                 {
-                    if((list.at(4).split(",")).at(i).toInt() == Current_User->Get_Userid() && list.at(1).toInt() == list_item.at(1).toInt()
-                        &&list.at(0).toInt() == Current_User->Get_Userid())
+                    if((list.at(4).split(",")).at(i).toInt() == Current_User->Get_Userid() &&
+                        list.at(1).toInt() == list_item.at(1).toInt()
+                        &&list.at(0).toInt() ==list_data.at(0).toInt())
                     {
                         flag = true;
                         QMessageBox::information(this,"Warning","! You have already liked this tweet.");
-                        break;
+                        return;
                     }
                 }
                 if(!flag)
                 {
 
-                    if(list_item.at(1).toInt() == list.at(1).toInt()&& Current_User->Get_Userid() == list.at(0).toInt())
+                    if(list_data.at(2).toInt() == list.at(1).toInt()&& list_data.at(0).toInt() == list.at(0).toInt())
                     {
+
                         list >> t;
                         t->Set_Who_Like(Current_User->Get_Userid());
                         t->Add_Like();
+                        tweet_vector.push_back(t);
                         Tweets.close();
-                        QFile Tfile ("Tweet_file.txt");
-                        if(!Tfile .open(QIODevice::ReadWrite|QIODevice::Text))
-                        {
-                            QMessageBox::information(this,"Warning","! File can not open.");
-                            return;
-                        }
-                        else
-                        {
-                            QTextStream file(&Tfile );
-                            QString str="";
-                            while(!file.atEnd())
-                            {
-                                QString line = file.readLine();
-                                QStringList list = line.split("%$%");
-                                if(list.at(0).toInt() == Current_User->Get_Userid() && list.at(1).toInt() == list_item.at(1).toInt())
-                                {
-                                }
-                                else
-                                {
-                                    str.append(line+'\n');
-                                }
-                            }
-                            Tfile .resize(0);
-                            file << str;
-                            file << t;
-                            Tfile .close();
-                            QMessageBox::information(this,"Successful","* Tweet successfuly liked.");
-                            Tweets.close();
-                            Refresh_List();
-                            return;
-                        }
+
                     }
                 }
-                else
+            }
+            QFile Tfile ("Tweet_file.txt");
+            if(!Tfile .open(QIODevice::ReadWrite|QIODevice::Text))
+            {
+                QMessageBox::information(this,"Warning","! File can not open.");
+                return;
+            }
+            else
+            {
+                QTextStream file(&Tfile );
+                QString str="";
+
+                while(!file.atEnd())
                 {
-                    break;
+                    QString line = file.readLine();
+                    QStringList list = line.split("%$%");
+                    if(list.at(0).toInt() == list_data.at(0).toInt()&& list.at(1).toInt() == list_data.at(2).toInt())
+                    {
+
+                    }
+                    else
+                    {
+                        str.append(line+'\n');
+                    }
                 }
+                Tfile .resize(0);
+                file << str;
+                for(auto &tw:tweet_vector)
+                {
+                    file << tw;
+                }
+                Tfile .close();
+                QMessageBox::information(this,"Successful","* Tweet successfuly liked.");
+                Tweets.close();
+                Refresh_List();
+                return;
             }
 
 
@@ -345,10 +405,11 @@ void MainWindow::on_btn_retweet_clicked()
     else
     {
         QStringList list_item = ui->list_tweets->currentItem()->text().split("  ");
+        QStringList list_data = (ui->list_tweets->currentItem()->data(Qt::UserRole).toString()).split("%$%");
         re_q_tweet = new Re_Quote_Tweet();
         re_q_tweet->Get_User(Current_User);
         re_q_tweet->Get_Tweet_Text(list_item.at(5));
-        re_q_tweet->Get_Tweet_Userid(Current_User->Get_Userid());
+        re_q_tweet->Get_Tweet_Userid(list_data.at(0).toInt());
         re_q_tweet->Get_Tweet_ID(list_item.at(1).toInt());
         re_q_tweet->show();
         connect(re_q_tweet,&Re_Quote_Tweet::finished,this,&MainWindow::Refresh_List);

@@ -9,6 +9,7 @@
 #include <QStringList>
 #include <QColor>
 #include <QPalette>
+#include <vector>
 #include "user.h"
 #include "tweetwindow.h"
 #include "settingw.h"
@@ -29,6 +30,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void Get_User(User * user);
+    QString Get_Uname_byID(int id);
 signals:
     void Logout();
 private slots:
