@@ -49,6 +49,38 @@ void Show_Account::Get_username(QString username)
     if(user->Get_Type()=="O")
     {
         ui->txt_adminuname->setText(dynamic_cast<Organization_User*>(user)->Get_Admin_Username());
+//        QFile Users2 ("User_file.txt");
+//        if(!Users2.open(QIODevice::ReadWrite|QIODevice::Text))
+//        {
+//            QMessageBox::information(this,"Warning","! File can not open.");
+//            return;
+//        }
+//        else
+//        {
+//            QTextStream file(&Users2);
+//            QStringList user_list;
+//            bool flag = false;
+//            while(!file.atEnd())
+//            {
+//                user_list = file.readLine().split("%$%");
+//                if(user_list.at(0) == "P")
+//                {
+
+//                    if(dynamic_cast<Organization_User*>(user)->Get_Admin_Username() == user_list.at(1))
+//                    {
+//                        flag =true;
+//                        ui->txt_adminuname->setText(dynamic_cast<Organization_User*>(user)->Get_Admin_Username());
+//                    }
+//                }
+//            }
+//            if(!flag)
+//            {
+
+//                ui->txt_adminuname->setText("Deleted account");
+
+//            }
+//            Users.close();
+//        }
     }
     if(user->Get_Type()=="P")
     {

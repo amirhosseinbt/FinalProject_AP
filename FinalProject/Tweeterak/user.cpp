@@ -223,7 +223,7 @@ QString Organization_User::Get_Admin_Username()
             while(!file.atEnd())
             {
                 list = file.readLine().split("%$%");
-                if(list.at(15).toInt() == Admin_id)
+                if(list.at(0) == "P" && list.at(15).toInt() == Admin_id)
                 {
                     QString name=list.at(1);
                     Users.close();
@@ -232,6 +232,7 @@ QString Organization_User::Get_Admin_Username()
             }
             Users.close();
         }
+        return "";
 }
 
 void Organization_User::Set_Type()

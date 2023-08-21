@@ -107,7 +107,7 @@ void O_Signup::on_btn_signup_clicked()
                             QMessageBox::information(this,"Warning","! Username exists");
                             break;
                         }
-                        if(ui->txt_adminusername->text() == user_list.at(1) && user_list.at(0)!="O")
+                        if(ui->txt_adminusername->text() == user_list.at(1) && user_list.at(0)!="O" && user_list.at(0)!="A")
                         {
                             flag_check_admin_uname = true;
                             Registrant_User->Set_Admin_id(user_list.at(15).toInt());
@@ -158,7 +158,7 @@ void O_Signup::on_btn_signup_clicked()
                     }
                     else
                     {
-                        QMessageBox::information(this,"Warning","! AdminUsername does not exist Or is an Organization account.");
+                        QMessageBox::information(this,"Warning","! AdminUsername does not exist Or it is not Personal account.");
                         Users.close();
                         return;
                     }

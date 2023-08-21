@@ -706,7 +706,7 @@ void SettingW::on_btn_delaccount_clicked()
                                     {
                                         QString line = file.readLine();
                                         QStringList list = line.split("%$%");
-                                        if(list.at(14).toInt() != U->Get_Userid())
+                                        if(list.at(1) != U->Get_Username())
                                         {
                                             str.append(line+'\n');
                                         }
@@ -744,7 +744,7 @@ void SettingW::on_btn_delaccount_clicked()
                                     {
                                         QString line = file.readLine();
                                         QStringList list = line.split("%$%");
-                                        if(list.at(14).toInt() != U->Get_Userid())
+                                        if(list.at(1) != U->Get_Username())
                                         {
                                             str.append(line+'\n');
                                         }
@@ -782,7 +782,7 @@ void SettingW::on_btn_delaccount_clicked()
                                     {
                                         QString line = file.readLine();
                                         QStringList list = line.split("%$%");
-                                        if(list.at(14).toInt() != U->Get_Userid())
+                                        if(list.at(1) != U->Get_Username())
                                         {
                                             str.append(line+'\n');
                                         }
@@ -804,7 +804,144 @@ void SettingW::on_btn_delaccount_clicked()
                 }
             }
         }
+        bool Checkflag4=true;
+        while(Checkflag4)
+        {
+            bool flag = false;
+            if(!Users.open(QIODevice::ReadWrite|QIODevice::Text))
+            {
+                QMessageBox::information(this,"Warning","! File can not open.");
+                return;
+            }
+            else
+            {
+                User * U;
+                QTextStream file(&Users);
+                QStringList list;
+                while(!file.atEnd())
+                {
+                    list = file.readLine().split("%$%");
+                    if(list.at(0)=="A")
+                    {
+                        for(int i = 0;i < list.at(16).split(",").size();i++)
+                        {
+                            if((list.at(16).split(",")).at(i).toInt() == Current_User->Get_Userid())
+                            {
+                                flag = true;
+                                U = new Anonymous_User();
+                                list >> U;
+                                U->Erase_Following(Current_User->Get_Userid());
+                                QFile Users2 ("User_file.txt");
+                                if(!Users2.open(QIODevice::ReadWrite|QIODevice::Text))
+                                {
+                                    QMessageBox::information(0,"Warning","! File can not open.");
+                                }
+                                else
+                                {
+                                    QString str="";
+                                    QTextStream file(&Users2);
+                                    while(!file.atEnd())
+                                    {
+                                        QString line = file.readLine();
+                                        QStringList list = line.split("%$%");
+                                        if(list.at(1) != U->Get_Username())
+                                        {
+                                            str.append(line+'\n');
+                                        }
+                                    }
+                                    Users2.resize(0);
+                                    file << str;
+                                    file << U;
+                                    Users2.close();
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    else if(list.at(0)=="P")
+                    {
 
+                        for(int i = 0;i < list.at(17).split(",").size();i++)
+                        {
+                            if((list.at(17).split(",")).at(i).toInt() == Current_User->Get_Userid())
+                            {
+                                flag = true;
+                                U = new Personal_User();
+                                list >> U;
+                                U->Erase_Following(Current_User->Get_Userid());
+                                QFile Users2 ("User_file.txt");
+                                if(!Users2.open(QIODevice::ReadWrite|QIODevice::Text))
+                                {
+                                    QMessageBox::information(0,"Warning","! File can not open.");
+                                }
+                                else
+                                {
+                                    QString str="";
+                                    QTextStream file(&Users2);
+                                    while(!file.atEnd())
+                                    {
+                                        QString line = file.readLine();
+                                        QStringList list = line.split("%$%");
+                                        if(list.at(1) != U->Get_Username())
+                                        {
+                                            str.append(line+'\n');
+                                        }
+                                    }
+                                    Users2.resize(0);
+                                    file << str;
+                                    file << U;
+                                    Users2.close();
+                                }
+                                break;
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        for(int i = 0;i < list.at(17).split(",").size();i++)
+                        {
+                            if((list.at(17).split(",")).at(i).toInt() == Current_User->Get_Userid())
+                            {
+                                flag = true;
+                                U= new Organization_User();
+                                list >> U;
+                                U->Erase_Following(Current_User->Get_Userid());
+                                QFile Users2 ("User_file.txt");
+                                if(!Users2.open(QIODevice::ReadWrite|QIODevice::Text))
+                                {
+                                    QMessageBox::information(0,"Warning","! File can not open.");
+                                }
+                                else
+                                {
+                                    QString str="";
+                                    QTextStream file(&Users2);
+                                    while(!file.atEnd())
+                                    {
+                                        QString line = file.readLine();
+                                        QStringList list = line.split("%$%");
+                                        if(list.at(1) != U->Get_Username())
+                                        {
+                                            str.append(line+'\n');
+                                        }
+                                    }
+                                    Users2.resize(0);
+                                    file << str;
+                                    file << U;
+                                    Users2.close();
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+                Users.close();
+                if(!flag)
+                {
+                    Checkflag4 = false;
+                }
+            }
+        }
         if(!Users.open(QIODevice::ReadWrite|QIODevice::Text))
         {
             QMessageBox::information(0,"Warning","! File can not open.");
@@ -817,7 +954,7 @@ void SettingW::on_btn_delaccount_clicked()
             {
                  QString line = file.readLine();
                  QStringList list = line.split("%$%");
-                 if(list.at(14).toInt() != Current_User->Get_Userid())
+                 if(list.at(1) != Current_User->Get_Username())
                  {
                     str.append(line+'\n');
                  }
