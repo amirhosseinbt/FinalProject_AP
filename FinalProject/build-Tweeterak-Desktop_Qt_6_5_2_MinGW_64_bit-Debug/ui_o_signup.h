@@ -280,13 +280,21 @@ public:
     {
         O_Signup->setWindowTitle(QCoreApplication::translate("O_Signup", "Sign Up", nullptr));
         lbl_username->setText(QCoreApplication::translate("O_Signup", "Username :         ", nullptr));
+        txt_username->setPlaceholderText(QCoreApplication::translate("O_Signup", "Username", nullptr));
         lbl_password->setText(QCoreApplication::translate("O_Signup", "Password :", nullptr));
+        txt_password->setPlaceholderText(QCoreApplication::translate("O_Signup", "Password", nullptr));
         lbl_name->setText(QCoreApplication::translate("O_Signup", "Name :                ", nullptr));
+        txt_name->setPlaceholderText(QCoreApplication::translate("O_Signup", "Name", nullptr));
         lbl_country->setText(QCoreApplication::translate("O_Signup", "Country :   ", nullptr));
+        txt_country->setPlaceholderText(QCoreApplication::translate("O_Signup", "Country", nullptr));
         lbl_phonenumber->setText(QCoreApplication::translate("O_Signup", "Phone Number :", nullptr));
+        txt_phonenumber->setPlaceholderText(QCoreApplication::translate("O_Signup", "Phone number", nullptr));
         lbl_link->setText(QCoreApplication::translate("O_Signup", "Link :          ", nullptr));
+        txt_link->setPlaceholderText(QCoreApplication::translate("O_Signup", "Link", nullptr));
         lbl_biography->setText(QCoreApplication::translate("O_Signup", "Biography :         ", nullptr));
+        txt_biography->setPlaceholderText(QCoreApplication::translate("O_Signup", "Biography", nullptr));
         lbl_adminusername->setText(QCoreApplication::translate("O_Signup", "Admin Username :", nullptr));
+        txt_adminusername->setPlaceholderText(QCoreApplication::translate("O_Signup", "Admin Username", nullptr));
         btn_signup->setText(QCoreApplication::translate("O_Signup", "Sign Up", nullptr));
     } // retranslateUi
 

@@ -345,7 +345,7 @@ QString Personal_User::Get_Organ_Uname()
             while(!file.atEnd())
             {
                 list = file.readLine().split("%$%");
-                if(list.at(15).toInt() == Organid)
+                if(list.at(0) == "O"&&list.at(15).toInt() == Organid )
                 {
                     QString name=list.at(1);
                     Users.close();
@@ -354,6 +354,7 @@ QString Personal_User::Get_Organ_Uname()
             }
             Users.close();
         }
+        return "";
 }
 
 

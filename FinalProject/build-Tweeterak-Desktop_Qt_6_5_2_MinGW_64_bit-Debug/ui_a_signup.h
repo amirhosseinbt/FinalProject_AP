@@ -124,7 +124,9 @@ public:
     {
         A_Signup->setWindowTitle(QCoreApplication::translate("A_Signup", "Sign Up", nullptr));
         lblusername->setText(QCoreApplication::translate("A_Signup", "Username :", nullptr));
+        txtusername->setPlaceholderText(QCoreApplication::translate("A_Signup", "Username", nullptr));
         lblpassword->setText(QCoreApplication::translate("A_Signup", "Password :  ", nullptr));
+        txtpassword->setPlaceholderText(QCoreApplication::translate("A_Signup", "Password", nullptr));
         btnsignup->setText(QCoreApplication::translate("A_Signup", "Sign Up", nullptr));
     } // retranslateUi
 

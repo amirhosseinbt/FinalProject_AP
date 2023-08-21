@@ -122,7 +122,8 @@ void MainWindow::on_btn_tweet_clicked()
 {
     T_Window = new TweetWindow();
     T_Window->Get_User(Current_User);
-    T_Window->show();
+    T_Window->exec();
+//    T_Window->show();
     connect(T_Window,&TweetWindow::finished,this,&MainWindow::Refresh_List);
 }
 
@@ -130,6 +131,7 @@ void MainWindow::on_btn_tweet_clicked()
 void MainWindow::on_btn_logout_clicked()
 {
     Current_User = nullptr;
+    ui->txt_search->clear();
     this->close();
     emit Logout();
 }

@@ -143,6 +143,7 @@ public:
         Mention->setWindowTitle(QCoreApplication::translate("Mention", "Mention", nullptr));
         lbl_mention->setText(QCoreApplication::translate("Mention", "Mentions", nullptr));
         lbl_yourmention->setText(QCoreApplication::translate("Mention", "Add your mention :", nullptr));
+        txt_mention->setPlaceholderText(QCoreApplication::translate("Mention", "Your comment", nullptr));
         btn_tweet->setText(QCoreApplication::translate("Mention", "Tweet", nullptr));
         btn_like->setText(QString());
         btn_ok->setText(QString());

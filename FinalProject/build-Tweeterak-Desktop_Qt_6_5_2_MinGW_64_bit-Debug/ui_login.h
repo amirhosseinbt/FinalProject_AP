@@ -191,7 +191,9 @@ public:
         Login->setWindowTitle(QCoreApplication::translate("Login", "Log In", nullptr));
         lbl_logo->setText(QString());
         lbl_username->setText(QCoreApplication::translate("Login", "Username :", nullptr));
+        txt_username->setPlaceholderText(QCoreApplication::translate("Login", "Username", nullptr));
         lbl_password->setText(QCoreApplication::translate("Login", "Password :  ", nullptr));
+        txt_password->setPlaceholderText(QCoreApplication::translate("Login", "Password", nullptr));
         btn_login->setText(QString());
         btn_signup->setText(QString());
     } // retranslateUi

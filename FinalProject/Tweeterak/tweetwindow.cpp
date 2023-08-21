@@ -5,6 +5,7 @@ TweetWindow::TweetWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::TweetWindow)
 {
+    this->setWindowModality(Qt::ApplicationModal);
     ui->setupUi(this);
     this->setStyleSheet("QLineEdit{border-radius:10px;border:1px solid #2D25A4;background-color:#E1DBED;}"
                         "QTextEdit{border-radius:10px;background: palette(base);border:1px solid #2D25A4;background-color:#E1DBED;}");

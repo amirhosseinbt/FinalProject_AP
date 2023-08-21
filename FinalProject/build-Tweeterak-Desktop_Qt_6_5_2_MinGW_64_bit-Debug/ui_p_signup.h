@@ -321,14 +321,22 @@ public:
     {
         P_SignUp->setWindowTitle(QCoreApplication::translate("P_SignUp", "Sign Up", nullptr));
         lbl_username->setText(QCoreApplication::translate("P_SignUp", "Username :            ", nullptr));
+        txt_username->setPlaceholderText(QCoreApplication::translate("P_SignUp", "Username", nullptr));
         lbl_password->setText(QCoreApplication::translate("P_SignUp", "Password :", nullptr));
+        txt_password->setPlaceholderText(QCoreApplication::translate("P_SignUp", "Password", nullptr));
         lbl_name->setText(QCoreApplication::translate("P_SignUp", "Name :                   ", nullptr));
+        txt_name->setPlaceholderText(QCoreApplication::translate("P_SignUp", "Name", nullptr));
         lbl_country->setText(QCoreApplication::translate("P_SignUp", "Country :   ", nullptr));
-        lbl_phonenumber->setText(QCoreApplication::translate("P_SignUp", "Phonenumber :    ", nullptr));
+        txt_country->setPlaceholderText(QCoreApplication::translate("P_SignUp", "Country", nullptr));
+        lbl_phonenumber->setText(QCoreApplication::translate("P_SignUp", "PhoneNumber :   ", nullptr));
+        txt_phonenumber->setPlaceholderText(QCoreApplication::translate("P_SignUp", "Phone number", nullptr));
         lbl_link->setText(QCoreApplication::translate("P_SignUp", "Link :          ", nullptr));
+        txt_link->setPlaceholderText(QCoreApplication::translate("P_SignUp", "Link", nullptr));
         lbl_organusername->setText(QCoreApplication::translate("P_SignUp", "Organ Username :", nullptr));
+        txt_organusername->setPlaceholderText(QCoreApplication::translate("P_SignUp", "Organ Username", nullptr));
         lbl_date->setText(QCoreApplication::translate("P_SignUp", "Birthday :   ", nullptr));
         lbl_biography->setText(QCoreApplication::translate("P_SignUp", "Biograhy :    ", nullptr));
+        txt_biography->setPlaceholderText(QCoreApplication::translate("P_SignUp", "Biography", nullptr));
         btn_signup->setText(QCoreApplication::translate("P_SignUp", "Sign Up", nullptr));
     } // retranslateUi
 

@@ -347,8 +347,8 @@ public:
         brthdate->setFrame(true);
         brthdate->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         brthdate->setButtonSymbols(QAbstractSpinBox::NoButtons);
-        brthdate->setMaximumDateTime(QDateTime(QDate(2023, 12, 31), QTime(13, 29, 59)));
-        brthdate->setMinimumDateTime(QDateTime(QDate(1900, 9, 13), QTime(14, 0, 0)));
+        brthdate->setMaximumDateTime(QDateTime(QDate(2023, 12, 31), QTime(9, 59, 59)));
+        brthdate->setMinimumDateTime(QDateTime(QDate(1900, 9, 13), QTime(9, 30, 0)));
 
         horizontalLayout_10->addWidget(brthdate);
 
@@ -435,15 +435,24 @@ public:
         lbl_header->setText(QCoreApplication::translate("SettingW", "Choose header color :", nullptr));
         btn_headerchange->setText(QString());
         lbl_username->setText(QCoreApplication::translate("SettingW", "Username :", nullptr));
+        txt_username->setPlaceholderText(QCoreApplication::translate("SettingW", "Username", nullptr));
         lbl_password->setText(QCoreApplication::translate("SettingW", "Password : ", nullptr));
+        txt_password->setPlaceholderText(QCoreApplication::translate("SettingW", "Password", nullptr));
         lbl_name->setText(QCoreApplication::translate("SettingW", "Name :       ", nullptr));
+        txt_name->setPlaceholderText(QCoreApplication::translate("SettingW", "Name", nullptr));
         lbl_country->setText(QCoreApplication::translate("SettingW", "Country :   ", nullptr));
+        txt_country->setPlaceholderText(QCoreApplication::translate("SettingW", "Country", nullptr));
         lbl_phonenumber->setText(QCoreApplication::translate("SettingW", "Phone :      ", nullptr));
+        txt_phonenumber->setPlaceholderText(QCoreApplication::translate("SettingW", "Phone", nullptr));
         lbl_link->setText(QCoreApplication::translate("SettingW", "Link :          ", nullptr));
+        txt_link->setPlaceholderText(QCoreApplication::translate("SettingW", "Link", nullptr));
         lbl_orgusername->setText(QCoreApplication::translate("SettingW", "Organ  :     ", nullptr));
+        txt_orgusername->setPlaceholderText(QString());
         lbl_adminusername->setText(QCoreApplication::translate("SettingW", "Admin :     ", nullptr));
+        txt_adminusername->setPlaceholderText(QString());
         lbl_brthdate->setText(QCoreApplication::translate("SettingW", "Birthday :  ", nullptr));
         lbl_biography->setText(QCoreApplication::translate("SettingW", "Bio :           ", nullptr));
+        txt_biography->setPlaceholderText(QCoreApplication::translate("SettingW", "Biography", nullptr));
         btn_change->setText(QCoreApplication::translate("SettingW", "Save Changes", nullptr));
         btn_delaccount->setText(QCoreApplication::translate("SettingW", "Delete Account", nullptr));
     } // retranslateUi
