@@ -16,6 +16,7 @@
 #include "Tweet.hpp"
 #include "mention.h"
 #include "hash_tagform.h"
+#include "re_quote_tweet.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -45,6 +46,8 @@ private slots:
 
     void on_btn_mention_clicked();
 
+    void on_btn_retweet_clicked();
+
 private:
     Ui::MainWindow *ui;
     User * Current_User=nullptr;
@@ -52,5 +55,6 @@ private:
     SettingW* set_win;
     Show_Account* account;
     Mention* Mwindow;
+    Re_Quote_Tweet * re_q_tweet;
 };
 #endif // MAINWINDOW_H

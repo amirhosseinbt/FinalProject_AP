@@ -14,6 +14,14 @@ O_Signup::O_Signup(QWidget *parent) :
     this->setPalette(QColor::fromString("#FFFFFF"));
     Registrant_User  = new Organization_User();
     connect(Registrant_User,SIGNAL(Validate(QString&,QValidator::State&)),this,SLOT(Validator(QString&,QValidator::State&)));
+    ui->lbl_adminusername->hide();
+    ui->lbl_biography->hide();
+    ui->lbl_country->hide();
+    ui->lbl_link->hide();
+    ui->lbl_name->hide();
+    ui->lbl_password->hide();
+    ui->lbl_phonenumber->hide();
+    ui->lbl_username->hide();
 }
 
 O_Signup::~O_Signup()

@@ -6,19 +6,27 @@ Hash_TagForm::Hash_TagForm(QWidget *parent) :
     ui(new Ui::Hash_TagForm)
 {
     ui->setupUi(this);
+    this->setWindowModality(Qt::ApplicationModal);
     this->setAutoFillBackground(true);
     this->setPalette(QColor::fromString("#FFFFFF"));
     ui->btn_like->setStyleSheet("QPushButton{border:none;}");
     ui->btn_mention->setStyleSheet("QPushButton{border:none;}");
     ui->btn_ok->setStyleSheet("QPushButton{border:none;}");
+    ui->btn_retweet->setStyleSheet("QPushButton{border:none;}");
     ui->listWidget->setStyleSheet("QListWidget{border-radius:10px;background: palette(base);border:1px solid #2D25A4;background-color:#E1DBED;}");
-    QPixmap Like(":/icons/img/like.png");
+    QPixmap Like(":/icons/img/redlike.png");
     QPixmap Mention(":/icons/img/mention.png");
     QPixmap Ok(":/icons/img/ok.png");
 
     QIcon Like_icnon(Like);
     QIcon Mention_icnon(Mention);
     QIcon Ok_icnon(Ok);
+
+    QPixmap Retweet(":/icons/img/retweet.png");
+    QIcon Retweet_icnon(Retweet);
+    ui->btn_retweet->setIcon(Retweet_icnon);
+    ui->btn_retweet->setIconSize(QSize(80,80));
+    ui->btn_retweet->setFixedSize(QSize(80,80));
 
     ui->btn_ok->setIcon(Ok_icnon);
     ui->btn_ok->setIconSize(QSize(80,80));
@@ -169,6 +177,11 @@ void Hash_TagForm::showEvent(QShowEvent *event)
     Refresh();
 }
 
+void Hash_TagForm::Get_C_User(User *user)
+{
+    Current_User=user;
+}
+
 bool Hash_TagForm::Refresh()
 {
             bool flag=false;
@@ -192,7 +205,7 @@ bool Hash_TagForm::Refresh()
                         if(htlist.at(i) == Text)
                         {
                             flag = true;
-                            QString myline =Get_Uname_byId(list.at(0).toInt())+"  "+list.at(1)+"  "+"   like "+list.at(3)+"   "+list.at(2)+"       "+list.at(5);
+                            QString myline =Get_Uname_byId(list.at(0).toInt())+"  "+list.at(1)+"  "+"   like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5);
                             QListWidgetItem* myitem = new QListWidgetItem(myline);
                             QVariant mydata =list.at(0)+"%$%"+list.at(1)+"%$%";
                             myitem->setData(Qt::UserRole,mydata);
@@ -459,9 +472,42 @@ void Hash_TagForm::on_btn_mention_clicked()
             mentionwindow->Get_Mention_userid(C_Userid);
             mentionwindow->Get_Userid(datalist.at(0).toInt());
             mentionwindow->Get_Tweetid(datalist.at(1).toInt());
+            mentionwindow->Get_C_User(Current_User);
             mentionwindow->show();
         }
 
+    }
+}
+
+
+void Hash_TagForm::on_btn_retweet_clicked()
+{
+    if(ui->listWidget->currentItem() == nullptr)
+    {
+        QMessageBox::information(this,"Warning","! You must select one tweet.");
+        return;
+    }
+    else
+    {
+        QStringList list_item = ui->listWidget->currentItem()->text().split("  ");
+        re_q_tweet = new Re_Quote_Tweet();
+        re_q_tweet->Get_User(Current_User);
+        re_q_tweet->Get_Tweet_Text(list_item.at(4));
+        QString mytext=ui->listWidget->currentItem()->data(Qt::UserRole).toString();
+        QStringList datalist = mytext.split("%$%");
+        if(datalist.size() > 3)
+        {
+            re_q_tweet->Get_Tweet_Userid(datalist.at(0).toInt());
+            re_q_tweet->Get_Tweet_ID(datalist.at(1).toInt());
+            re_q_tweet->Get_Mention_Userid(datalist.at(2).toInt());
+            re_q_tweet->Get_Mention_ID(datalist.at(3).toInt());
+        }
+        else
+        {
+            re_q_tweet->Get_Tweet_Userid(datalist.at(0).toInt());
+            re_q_tweet->Get_Tweet_ID(datalist.at(1).toInt());
+        }
+        re_q_tweet->show();
     }
 }
 

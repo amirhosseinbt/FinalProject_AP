@@ -23,8 +23,9 @@ class TweetWindow : public QDialog
 public:
     explicit TweetWindow(QWidget *parent = nullptr);
     void Get_User(User * user);
-    ~TweetWindow();
+    void Qoute(QString text);
 
+    ~TweetWindow();
 private slots:
     void on_btn_tweet_clicked();
 
@@ -32,6 +33,7 @@ private:
     Ui::TweetWindow *ui;
     User * Current_User = nullptr;
     Tweet* tweet;
+
 };
 
 #endif // TWEETWINDOW_H

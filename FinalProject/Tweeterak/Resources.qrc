@@ -14,5 +14,7 @@
         <file>img/ok.png</file>
         <file>img/twitter.png</file>
         <file>img/twitter2.png</file>
+        <file>img/redlike.png</file>
+        <file>img/retweet.png</file>
     </qresource>
 </RCC>

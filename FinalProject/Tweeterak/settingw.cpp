@@ -6,6 +6,7 @@ SettingW::SettingW(QWidget *parent) :
     ui(new Ui::SettingW)
 {
     ui->setupUi(this);
+    this->setWindowModality(Qt::ApplicationModal);
     this->setStyleSheet("QLineEdit{border-radius:10px;border:1px solid #2D25A4;background-color:#E1DBED;}"
                         "QTextEdit,QDateEdit{border-radius:10px;background: palette(base);border:1px solid #2D25A4;background-color:#E1DBED;}");
     ui->btn_change->setStyleSheet("QPushButton{border:2px solid #2D25A4;border-radius:20px;padding:10px;}");
@@ -138,7 +139,8 @@ void SettingW::on_btn_change_clicked()
     }
     else
     {
-        if(ui->txt_password->text() != Current_User->Get_Password())
+        SHA256 secret;
+        if(QString::fromStdString( secret(ui->txt_password->text().toStdString()))  != Current_User->Get_Password())
         {
 
             if(!Current_User->Check_Password_History(ui->txt_password->text()))
@@ -424,14 +426,18 @@ void SettingW::on_btn_changepic_clicked()
     QByteArray format = QImageReader::imageFormat(file);
     if(format.isEmpty())
     {
-        QMessageBox::information(this,"Warning","! You must choose a picture.");
-        return;
+        if(!file.isEmpty())
+        {
+
+                QMessageBox::information(this,"Warning","! You must choose a picture.");
+                return;
+        }
     }
     else
     {
         Picture_Path(file);
         QPixmap profile_picture(file);
-        ui->lbl_profpic->setFixedSize(200,200);
+        ui->lbl_profpic->setFixedSize(150,150);
         ui->lbl_profpic->setPixmap(profile_picture.scaled(ui->lbl_profpic->width(),ui->lbl_profpic->height(),Qt::KeepAspectRatio));
     }
 }

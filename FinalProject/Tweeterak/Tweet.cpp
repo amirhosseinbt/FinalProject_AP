@@ -23,6 +23,16 @@ int Tweet::Get_User_id()
     return Userid;
 }
 
+void Tweet::Set_RetweetUser_id(int userid)
+{
+    retweet_userid = userid;
+}
+
+int Tweet::Get_RetweetUser_id()
+{
+    return retweet_userid;
+}
+
 void Tweet::Add_Tweet(QString tweet_text)
 {
     Tweet_Text = tweet_text;
@@ -123,7 +133,23 @@ void Tweet::My_overload(QTextStream &out)
 
         }
     }
-    out<<"%$%"<<'\n';
+    out<<"%$%";
+    for(auto &T : Who_Retweet)
+    {
+        if(T != 0)
+        {
+            out << T <<",";
+        }
+    }
+    out <<"%$%";
+    for(auto &T : Who_Quote_Tweet)
+    {
+        if(T != 0)
+        {
+            out << T <<",";
+        }
+    }
+    out <<"%$%"<<retweet_userid<<"%$%"<<'\n';
 
 }
 
@@ -148,6 +174,19 @@ void Tweet::My_Read_Overload(QStringList &list)
     {
         this->Set_Hashtag(HashT.at(i));
     }
+    QStringList Who_retweet_list;
+    Who_retweet_list = list.at(8).split(",");
+    for(int i = 0; i < Who_retweet_list.size() ; i++)
+    {
+        this->Set_Who_Retweet(Who_retweet_list.at(i).toInt());
+    }
+    QStringList Who_Quotetweet_list;
+    Who_Quotetweet_list = list.at(9).split(",");
+    for(int i = 0; i < Who_Quotetweet_list.size() ; i++)
+    {
+        this->Set_who_Quote_tweet(Who_Quotetweet_list.at(i).toInt());
+    }
+    this->Set_RetweetUser_id(list.at(10).toInt());
 }
 
 void Tweet::Set_Tweet_Date(QDateTime date)
@@ -183,6 +222,26 @@ void Tweet::Set_Hashtag(QString text)
 std::vector<QString> Tweet::Get_Hashtag()
 {
     return Hashtag;
+}
+
+void Tweet::Set_Who_Retweet(int id)
+{
+    Who_Retweet.push_back(id);
+}
+
+std::vector<int> Tweet::Get_Who_Retweet()
+{
+    return Who_Retweet;
+}
+
+void Tweet::Set_who_Quote_tweet(int id)
+{
+    Who_Quote_Tweet.push_back(id);
+}
+
+std::vector<int> Tweet::Get_Who_Quote_t()
+{
+    return Who_Quote_Tweet;
 }
 
 
@@ -232,7 +291,23 @@ void Mentions::My_overload(QTextStream &out)
 
         }
     }
-    out<<"%$%"<<'\n';
+    out<<"%$%";
+    for(auto &T : Who_Retweet)
+    {
+        if(T != 0)
+        {
+            out << T <<",";
+        }
+    }
+    out <<"%$%";
+    for(auto &T : Who_Quote_Tweet)
+    {
+        if(T != 0)
+        {
+            out << T <<",";
+        }
+    }
+    out <<"%$%"<<'\n';
 }
 void Mentions::My_Read_Overload(QStringList &list)
 {
@@ -255,5 +330,17 @@ void Mentions::My_Read_Overload(QStringList &list)
     for(int i = 0; i < HashT.size() ; i++)
     {
         this->Set_Hashtag(HashT.at(i));
+    }
+    QStringList Who_retweet_list;
+    Who_retweet_list = list.at(9).split(",");
+    for(int i = 0; i < Who_retweet_list.size() ; i++)
+    {
+        this->Set_Who_Retweet(Who_retweet_list.at(i).toInt());
+    }
+    QStringList Who_Quotetweet_list;
+    Who_Quotetweet_list = list.at(10).split(",");
+    for(int i = 0; i < Who_Quotetweet_list.size() ; i++)
+    {
+        this->Set_who_Quote_tweet(Who_Quotetweet_list.at(i).toInt());
     }
 }

@@ -13,6 +13,7 @@
 #include <QByteArray>
 #include <QDir>
 #include "user.h"
+#include "sha256.h"
 namespace Ui {
 class SettingW;
 }

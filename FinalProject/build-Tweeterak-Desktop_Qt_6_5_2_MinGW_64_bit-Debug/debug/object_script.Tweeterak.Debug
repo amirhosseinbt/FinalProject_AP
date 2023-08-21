@@ -10,7 +10,9 @@ debug/mainwindow.o
 debug/mention.o
 debug/o_signup.o
 debug/p_signup.o
+debug/re_quote_tweet.o
 debug/settingw.o
+debug/sha256.o
 debug/show_account.o
 debug/tweetwindow.o
 debug/user.o
@@ -23,6 +25,7 @@ debug/moc_mainwindow.o
 debug/moc_mention.o
 debug/moc_o_signup.o
 debug/moc_p_signup.o
+debug/moc_re_quote_tweet.o
 debug/moc_settingw.o
 debug/moc_show_account.o
 debug/moc_tweetwindow.o

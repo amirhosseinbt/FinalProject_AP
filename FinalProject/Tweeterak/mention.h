@@ -13,6 +13,8 @@
 #include <QPixmap>
 #include <QIcon>
 #include "Tweet.hpp"
+#include "user.h"
+#include "re_quote_tweet.h"
 namespace Ui {
 class Mention;
 }
@@ -26,6 +28,7 @@ public:
     void Get_Userid(int id);
     void Get_Tweetid(int id);
     void Get_Mention_userid(int id);
+    void Get_C_User(User* user);
     void Refresh();
     ~Mention();
     void showEvent(QShowEvent * event);
@@ -36,10 +39,13 @@ private slots:
 
     void on_btn_ok_clicked();
 
+    void on_btn_retweet_clicked();
+
 private:
     Ui::Mention *ui;
     int userid=0,tweetid=0,mention_userid=0;
-
+    User* Current_User;
+    Re_Quote_Tweet * re_q_tweet;
 
 };
 

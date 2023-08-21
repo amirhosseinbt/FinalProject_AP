@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowState(Qt::WindowMaximized);
     this->setStyleSheet("QLineEdit{border-radius:10px;border:1px solid #2D25A4;background-color:#E1DBED;}");
     ui->list_tweets->setStyleSheet("QListWidget{border-radius:10px;background: palette(base);border:1px solid #2D25A4;background-color:#E1DBED;}");
     ui->btn_like->setStyleSheet("QPushButton{border:none;}");
@@ -14,14 +15,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->btn_search->setStyleSheet("QPushButton{border:none;}");
     ui->btn_setting->setStyleSheet("QPushButton{border:none;}");
     ui->btn_tweet->setStyleSheet("QPushButton{border:none;}");
+    ui->btn_retweet->setStyleSheet("QPushButton{border:none;}");
     this->setAutoFillBackground(true);
     this->setPalette(QColor::fromString(/*"#9ED9FF"*/"#FFFFFF"));
     QPixmap Setting(":/icons/img/setting.png");
     QPixmap Tweet(":/icons/img/add.png");
-    QPixmap Like(":/icons/img/like.png");
+    QPixmap Like(":/icons/img/redlike.png");
     QPixmap Mention(":/icons/img/mention.png");
     QPixmap Logout(":/icons/img/logout.png");
     QPixmap Search(":/icons/img/search.png");
+    QPixmap Retweet(":/icons/img/retweet.png");
 
     QIcon Setting_icnon(Setting);
     QIcon Tweet_icnon(Tweet);
@@ -29,6 +32,11 @@ MainWindow::MainWindow(QWidget *parent)
     QIcon Mention_icnon(Mention);
     QIcon Logout_icnon(Logout);
     QIcon Search_icnon(Search);
+    QIcon Retweet_icnon(Retweet);
+
+    ui->btn_retweet->setIcon(Retweet_icnon);
+    ui->btn_retweet->setIconSize(QSize(80,80));
+    ui->btn_retweet->setFixedSize(QSize(80,80));
 
     ui->btn_search->setIcon(Search_icnon);
     ui->btn_search->setIconSize(QSize(80,80));
@@ -91,9 +99,9 @@ void MainWindow::Refresh_List()
         while(!file.atEnd())
         {
             list = file.readLine().split("%$%");
-            if(list.at(0).toInt() == Current_User->Get_Userid())
+            if(list.at(0).toInt() == Current_User->Get_Userid()||list.at(10).toInt() == Current_User->Get_Userid())
             {
-                QString line =Current_User->Get_Username()+"  "+list.at(1)+"  "+"   like "+list.at(3)+"   "+list.at(2)+"       "+list.at(5);
+                QString line =Current_User->Get_Username()+"  "+list.at(1)+"  "+"    like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5);
                 ui->list_tweets->addItem(line);
             }
         }
@@ -122,8 +130,7 @@ void MainWindow::on_btn_tweet_clicked()
 {
     T_Window = new TweetWindow();
     T_Window->Get_User(Current_User);
-    T_Window->exec();
-//    T_Window->show();
+    T_Window->show();
     connect(T_Window,&TweetWindow::finished,this,&MainWindow::Refresh_List);
 }
 
@@ -249,8 +256,10 @@ void MainWindow::on_btn_search_clicked()
         myfirst->Set_C_User_Id(Current_User->Get_Userid());
         if(myfirst->Set_t(ui->txt_search->text()))
         {
+            myfirst->Get_C_User(Current_User);
             ui->txt_search->clear();
             myfirst->show();
+            connect(myfirst,&Hash_TagForm::finished,this,&MainWindow::Refresh_List);
 
         }
 
@@ -290,6 +299,7 @@ void MainWindow::on_btn_search_clicked()
                 account->Get_Current_User(Current_User);
                 ui->txt_search->clear();
                 account->show();
+                connect(account,&Show_Account::finished,this,&MainWindow::Refresh_List);
             }
         }
 
@@ -317,8 +327,31 @@ void MainWindow::on_btn_mention_clicked()
     {
         QStringList list_item = ui->list_tweets->currentItem()->text().split("  ");
         Mwindow->Get_Tweetid(list_item.at(1).toInt());
+        Mwindow->Get_C_User(Current_User);
         Mwindow->show();
+        connect(Mwindow,&Mention::finished,this,&MainWindow::Refresh_List);
     }
 
+}
+
+
+void MainWindow::on_btn_retweet_clicked()
+{
+    if(/*ui->list_tweets->currentItem() == nullptr*/ui->list_tweets->selectedItems().isEmpty())
+    {
+        QMessageBox::information(this,"Warning","! You must select one tweet.");
+        return;
+    }
+    else
+    {
+        QStringList list_item = ui->list_tweets->currentItem()->text().split("  ");
+        re_q_tweet = new Re_Quote_Tweet();
+        re_q_tweet->Get_User(Current_User);
+        re_q_tweet->Get_Tweet_Text(list_item.at(5));
+        re_q_tweet->Get_Tweet_Userid(Current_User->Get_Userid());
+        re_q_tweet->Get_Tweet_ID(list_item.at(1).toInt());
+        re_q_tweet->show();
+        connect(re_q_tweet,&Re_Quote_Tweet::finished,this,&MainWindow::Refresh_List);
+    }
 }
 

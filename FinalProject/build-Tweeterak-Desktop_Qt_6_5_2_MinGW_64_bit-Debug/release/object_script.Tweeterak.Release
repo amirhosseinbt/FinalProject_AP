@@ -10,7 +10,9 @@ release/mainwindow.o
 release/mention.o
 release/o_signup.o
 release/p_signup.o
+release/re_quote_tweet.o
 release/settingw.o
+release/sha256.o
 release/show_account.o
 release/tweetwindow.o
 release/user.o
@@ -23,6 +25,7 @@ release/moc_mainwindow.o
 release/moc_mention.o
 release/moc_o_signup.o
 release/moc_p_signup.o
+release/moc_re_quote_tweet.o
 release/moc_settingw.o
 release/moc_show_account.o
 release/moc_tweetwindow.o

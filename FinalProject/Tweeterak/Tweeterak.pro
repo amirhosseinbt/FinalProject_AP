@@ -21,7 +21,9 @@ SOURCES += \
     mention.cpp \
     o_signup.cpp \
     p_signup.cpp \
+    re_quote_tweet.cpp \
     settingw.cpp \
+    sha256.cpp \
     show_account.cpp \
     tweetwindow.cpp \
     user.cpp
@@ -38,7 +40,9 @@ HEADERS += \
     mention.h \
     o_signup.h \
     p_signup.h \
+    re_quote_tweet.h \
     settingw.h \
+    sha256.h \
     show_account.h \
     tweetwindow.h \
     user.h
@@ -52,6 +56,7 @@ FORMS += \
     mention.ui \
     o_signup.ui \
     p_signup.ui \
+    re_quote_tweet.ui \
     settingw.ui \
     show_account.ui \
     tweetwindow.ui

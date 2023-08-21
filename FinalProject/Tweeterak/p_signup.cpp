@@ -14,7 +14,14 @@ P_SignUp::P_SignUp(QWidget *parent) :
     this->setPalette(QColor::fromString("#FFFFFF"));
     Registrant_User = new Personal_User();
     connect(Registrant_User,SIGNAL(Validate(QString&,QValidator::State&)),this,SLOT(Validator(QString&,QValidator::State&)));
-
+    ui->lbl_biography->hide();
+    ui->lbl_country->hide();
+    ui->lbl_link->hide();
+    ui->lbl_name->hide();
+    ui->lbl_password->hide();
+    ui->lbl_phonenumber->hide();
+    ui->lbl_username->hide();
+    ui->lbl_organusername->hide();
 }
 
 P_SignUp::~P_SignUp()

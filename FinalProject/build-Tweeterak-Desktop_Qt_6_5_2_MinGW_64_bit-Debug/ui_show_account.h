@@ -69,6 +69,8 @@ public:
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_8;
     QPushButton *btn_mention;
+    QSpacerItem *horizontalSpacer_9;
+    QPushButton *btn_retweet;
     QSpacerItem *horizontalSpacer_3;
     QPushButton *btn_like;
     QSpacerItem *horizontalSpacer_5;
@@ -81,7 +83,7 @@ public:
     {
         if (Show_Account->objectName().isEmpty())
             Show_Account->setObjectName("Show_Account");
-        Show_Account->resize(587, 591);
+        Show_Account->resize(613, 650);
         verticalLayout_4 = new QVBoxLayout(Show_Account);
         verticalLayout_4->setObjectName("verticalLayout_4");
         widget = new QWidget(Show_Account);
@@ -323,7 +325,7 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(list_tweets->sizePolicy().hasHeightForWidth());
         list_tweets->setSizePolicy(sizePolicy2);
-        list_tweets->setMaximumSize(QSize(16777215, 150));
+        list_tweets->setMaximumSize(QSize(16777215, 200));
         list_tweets->setFont(font);
 
         verticalLayout->addWidget(list_tweets);
@@ -341,6 +343,15 @@ public:
         btn_mention->setObjectName("btn_mention");
 
         horizontalLayout->addWidget(btn_mention);
+
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_9);
+
+        btn_retweet = new QPushButton(Show_Account);
+        btn_retweet->setObjectName("btn_retweet");
+
+        horizontalLayout->addWidget(btn_retweet);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -409,6 +420,7 @@ public:
         lbl_biography->setText(QCoreApplication::translate("Show_Account", "Bio :", nullptr));
         lbl_tweets->setText(QCoreApplication::translate("Show_Account", "Tweets", nullptr));
         btn_mention->setText(QString());
+        btn_retweet->setText(QString());
         btn_like->setText(QString());
         btn_follow->setText(QCoreApplication::translate("Show_Account", "Follow", nullptr));
         btn_unfollow->setText(QCoreApplication::translate("Show_Account", "Unfollow", nullptr));

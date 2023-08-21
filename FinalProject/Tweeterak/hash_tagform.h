@@ -12,6 +12,7 @@
 #include <QPalette>
 #include "Tweet.hpp"
 #include "mention.h"
+#include "re_quote_tweet.h"
 namespace Ui {
 class Hash_TagForm;
 }
@@ -27,6 +28,7 @@ public:
     QString Get_Uname_byId(int id);
     void Set_C_User_Id(int id);
     void showEvent(QShowEvent * event);
+    void Get_C_User(User* user);
     bool Refresh();
     ~Hash_TagForm();
 
@@ -37,11 +39,14 @@ private slots:
 
     void on_btn_mention_clicked();
 
+    void on_btn_retweet_clicked();
+
 private:
     Ui::Hash_TagForm *ui;
     int C_Userid = 0;
     QString Text;
-
+    Re_Quote_Tweet * re_q_tweet;
+    User* Current_User;
 };
 
 #endif // HASH_TAGFORM_H

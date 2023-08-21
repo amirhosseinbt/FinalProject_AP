@@ -13,6 +13,7 @@
 #include <QDebug>
 #include <QPixmap>
 #include <QIcon>
+#include <sha256.h>
 namespace Ui {
 class Login;
 }

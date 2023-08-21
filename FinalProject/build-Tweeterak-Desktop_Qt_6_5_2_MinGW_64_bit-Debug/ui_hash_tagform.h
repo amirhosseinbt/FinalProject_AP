@@ -32,6 +32,8 @@ public:
     QSpacerItem *horizontalSpacer;
     QPushButton *btn_mention;
     QSpacerItem *horizontalSpacer_2;
+    QPushButton *btn_retweet;
+    QSpacerItem *horizontalSpacer_5;
     QPushButton *btn_like;
     QSpacerItem *horizontalSpacer_3;
     QPushButton *btn_ok;
@@ -81,6 +83,15 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
+        btn_retweet = new QPushButton(Hash_TagForm);
+        btn_retweet->setObjectName("btn_retweet");
+
+        horizontalLayout->addWidget(btn_retweet);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_5);
+
         btn_like = new QPushButton(Hash_TagForm);
         btn_like->setObjectName("btn_like");
 
@@ -113,6 +124,7 @@ public:
         Hash_TagForm->setWindowTitle(QCoreApplication::translate("Hash_TagForm", "HashTag", nullptr));
         label->setText(QCoreApplication::translate("Hash_TagForm", "Tweets", nullptr));
         btn_mention->setText(QString());
+        btn_retweet->setText(QString());
         btn_like->setText(QString());
         btn_ok->setText(QString());
     } // retranslateUi

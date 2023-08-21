@@ -13,6 +13,8 @@ A_Signup::A_Signup(QWidget *parent) :
     this->setPalette(QColor::fromString("#FFFFFF"));
     Registrant_User = new Anonymous_User();
     connect(Registrant_User,SIGNAL(Validate(QString&,QValidator::State&)),this,SLOT(Validator(QString&,QValidator::State&)));
+    ui->lblpassword->hide();
+    ui->lblusername->hide();
 }
 
 A_Signup::~A_Signup()

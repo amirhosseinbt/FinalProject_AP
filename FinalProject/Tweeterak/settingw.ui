@@ -114,7 +114,7 @@
         </size>
        </property>
        <property name="placeholderText">
-        <string>Username</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -171,7 +171,7 @@
         <enum>QLineEdit::Password</enum>
        </property>
        <property name="placeholderText">
-        <string>Password</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -225,7 +225,7 @@
         </size>
        </property>
        <property name="placeholderText">
-        <string>Name</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -279,7 +279,7 @@
         </size>
        </property>
        <property name="placeholderText">
-        <string>Country</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -333,7 +333,7 @@
         </size>
        </property>
        <property name="placeholderText">
-        <string>Phone</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -387,7 +387,7 @@
         </size>
        </property>
        <property name="placeholderText">
-        <string>Link</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -565,8 +565,8 @@
        </property>
        <property name="maximumDateTime">
         <datetime>
-         <hour>9</hour>
-         <minute>59</minute>
+         <hour>6</hour>
+         <minute>29</minute>
          <second>59</second>
          <year>2023</year>
          <month>12</month>
@@ -575,8 +575,8 @@
        </property>
        <property name="minimumDateTime">
         <datetime>
-         <hour>9</hour>
-         <minute>30</minute>
+         <hour>5</hour>
+         <minute>0</minute>
          <second>0</second>
          <year>1900</year>
          <month>9</month>
@@ -638,7 +638,7 @@
         </size>
        </property>
        <property name="placeholderText">
-        <string>Biography</string>
+        <string/>
        </property>
       </widget>
      </item>

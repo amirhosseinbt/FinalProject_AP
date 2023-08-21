@@ -12,7 +12,7 @@
 #include "user.h"
 #include "Tweet.hpp"
 #include "mention.h"
-
+#include "re_quote_tweet.h"
 
 namespace Ui {
 class Show_Account;
@@ -38,11 +38,15 @@ private slots:
 
     void on_btn_unfollow_clicked();
 
+    void on_btn_retweet_clicked();
+
 private:
     Ui::Show_Account *ui;
     User* user;
     User* Current_User;
     Mention* Mwindow;
+    Re_Quote_Tweet * re_q_tweet;
+
 };
 
 #endif // SHOW_ACCOUNT_H

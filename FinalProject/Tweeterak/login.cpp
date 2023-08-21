@@ -26,6 +26,9 @@ Login::Login(QWidget *parent) :
     ui->lbl_logo->setPixmap(Logo.scaled(ui->lbl_logo->width(),ui->lbl_logo->height(),Qt::KeepAspectRatio));
     m = new MainWindow();
     connect(m,SIGNAL(Logout()),this,SLOT(show()));
+    ui->lbl_password->hide();
+    ui->lbl_username->hide();
+
 }
 
 Login::~Login()
@@ -76,7 +79,8 @@ void Login::on_btn_login_clicked()
             while(!file.atEnd())
             {
                 user_list = file.readLine().split("%$%");
-                if(ui->txt_username->text() == user_list.at(1) && ui->txt_password->text() == user_list.at(2))
+                SHA256 secret;
+                if(ui->txt_username->text() == user_list.at(1) &&QString::fromStdString( secret(ui->txt_password->text().toStdString()))  == user_list.at(2))
                 {
                     if(user_list.at(0) == "O")
                     {

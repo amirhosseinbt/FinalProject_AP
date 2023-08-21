@@ -6,12 +6,14 @@ Mention::Mention(QWidget *parent) :
     ui(new Ui::Mention)
 {
     ui->setupUi(this);
-    QPixmap Like(":/icons/img/like.png");
+    this->setWindowModality(Qt::ApplicationModal);
+    QPixmap Like(":/icons/img/redlike.png");
     QPixmap Ok(":/icons/img/ok.png");
     this->setStyleSheet("QLineEdit{border-radius:10px;border:1px solid #2D25A4;background-color:#E1DBED;}"
                         "QTextEdit{border-radius:10px;background: palette(base);border:1px solid #2D25A4;background-color:#E1DBED;}");
     ui->btn_like->setStyleSheet("QPushButton{border:none;}");
     ui->btn_ok->setStyleSheet("QPushButton{border:none;}");
+    ui->btn_retweet->setStyleSheet("QPushButton{border:none;}");
     ui->btn_tweet->setStyleSheet("QPushButton{border:2px solid #2D25A4;border-radius:20px;padding:10px;}");
     ui->mentionlist->setStyleSheet("QListWidget{border-radius:10px;background: palette(base);border:1px solid #2D25A4;background-color:#E1DBED;}");
 
@@ -19,6 +21,13 @@ Mention::Mention(QWidget *parent) :
     this->setPalette(QColor::fromString("#FFFFFF"));
     QIcon Like_icnon(Like);
     QIcon Ok_icnon(Ok);
+
+
+    QPixmap Retweet(":/icons/img/retweet.png");
+    QIcon Retweet_icnon(Retweet);
+    ui->btn_retweet->setIcon(Retweet_icnon);
+    ui->btn_retweet->setIconSize(QSize(80,80));
+    ui->btn_retweet->setFixedSize(QSize(80,80));
 
     ui->btn_like->setIcon(Like_icnon);
     ui->btn_like->setIconSize(QSize(80,80));
@@ -46,6 +55,11 @@ void Mention::Get_Mention_userid(int id)
     mention_userid=id;
 }
 
+void Mention::Get_C_User(User *user)
+{
+    Current_User = user;
+}
+
 void Mention::Refresh()
 {
     ui->mentionlist->clear();
@@ -64,7 +78,7 @@ void Mention::Refresh()
             list = file.readLine().split("%$%");
             if(list.at(0).toInt() == userid && list.at(1).toInt()==tweetid)
             {
-                QString line =list.at(7)+"  "+"   like "+list.at(3)+"   "+list.at(2)+"       "+list.at(5);
+                QString line =list.at(7)+"  "+"   like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5);
                 ui->mentionlist->addItem(line);
             }
         }
@@ -294,5 +308,28 @@ void Mention::on_btn_like_clicked()
 void Mention::on_btn_ok_clicked()
 {
     this->close();
+}
+
+
+void Mention::on_btn_retweet_clicked()
+{
+    if(ui->mentionlist->selectedItems().isEmpty())
+    {
+            QMessageBox::information(this,"Warning","! You must select one tweet.");
+            return;
+    }
+    else
+    {
+            QStringList list_item = ui->mentionlist->currentItem()->text().split("  ");
+            re_q_tweet = new Re_Quote_Tweet();
+            re_q_tweet->Get_User(Current_User);
+            re_q_tweet->Get_Tweet_Userid(userid);
+            re_q_tweet->Get_Tweet_ID(tweetid);
+            re_q_tweet->Get_Mention_ID(list_item.at(0).toInt());
+            re_q_tweet->Get_Mention_Userid(mention_userid);
+            re_q_tweet->Get_Tweet_Text(list_item.at(3));
+            re_q_tweet->show();
+
+    }
 }
 

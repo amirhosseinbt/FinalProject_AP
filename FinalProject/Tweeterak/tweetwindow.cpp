@@ -20,6 +20,11 @@ void TweetWindow::Get_User(User *user)
     Current_User = user;
 }
 
+void TweetWindow::Qoute(QString text)
+{
+    ui->txt_tweet->setText(text);
+}
+
 TweetWindow::~TweetWindow()
 {
     delete ui;
@@ -85,10 +90,12 @@ void TweetWindow::on_btn_tweet_clicked()
             tweet->Set_User_id(Current_User->Get_Userid());
             file << tweet;
 
+            QMessageBox::information(this,"Successful","* Tweet done.");
+            Tweets.close();
+            emit accept();
+            this->close();
         }
         Tweets.close();
-        QMessageBox::information(this,"Successful","* Tweet done.");
-        this->close();
     }
 }
 

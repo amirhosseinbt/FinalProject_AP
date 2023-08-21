@@ -270,7 +270,7 @@ void Organization_User::My_Read_Overload(QStringList &list)
 {
         this->Set_Type();
         this->Set_Username(list.at(1));
-        this->Set_Password(list.at(2));
+        this->Set_Secret_Pass(list.at(2));
         this->Set_Name(list.at(3));
         this->Set_Phonenumber(list.at(4));
         this->Set_Biography(list.at(5));
@@ -387,7 +387,7 @@ void Personal_User::My_Read_Overload(QStringList &list)
 {
         this->Set_Type();
         this->Set_Username(list.at(1));
-        this->Set_Password(list.at(2));
+        this->Set_Secret_Pass(list.at(2));
         this->Set_Name(list.at(3));
         this->Set_Phonenumber(list.at(4));
         this->Set_Biography(list.at(5));
@@ -464,7 +464,7 @@ void Anonymous_User::My_Read_Overload(QStringList &list)
 {
         this->Set_Type();
         this->Set_Username(list.at(1));
-        this->Set_Password(list.at(2));
+        this->Set_Secret_Pass(list.at(2));
         this->Set_Name(list.at(3));
         this->Set_Phonenumber(list.at(4));
         this->Set_Biography(list.at(5));
@@ -573,17 +573,18 @@ bool User::Set_Password(QString password)
                 ContainUnnormalchar = true;
             }
         }
+        SHA256 pass;
         if(ContainUpper && ContainLower && ContainNumber && ContainUnnormalchar && password.size() >4)
         {
-            Password = password;
+            Password =QString::fromStdString(pass(password.toStdString()));
         }
         else if((ContainUpper || ContainLower) && ContainNumber && ContainUnnormalchar && password.size() >5)
         {
-            Password = password;
+            Password = QString::fromStdString(pass(password.toStdString()));
         }
         else if((ContainUpper || ContainLower) && (ContainNumber || ContainUnnormalchar) && password.size() >6)
         {
-            Password = password;
+            Password = QString::fromStdString(pass(password.toStdString()));
         }
         else
         {
@@ -597,6 +598,11 @@ bool User::Set_Password(QString password)
         emit Validate(message,st);
         return 1;
 
+}
+
+void User::Set_Secret_Pass(QString pass)
+{
+        Password = pass;
 }
 //SetPassword
 QString User::Get_Password()
@@ -771,12 +777,13 @@ bool User::Check_Password_History(QString pass)
     }
     else
     {
+        SHA256 secretpass;
         QTextStream file(&History);
         QStringList list;
         while(!file.atEnd())
         {
                 list = file.readLine().split("%$%");
-                if(list.at(0).toInt() == this->Get_Userid() && list.at(1) == pass)
+                if(list.at(0).toInt() == this->Get_Userid() && list.at(1) ==QString::fromStdString(secretpass(pass.toStdString())))
                 {
                     History.close();
                     return 0;

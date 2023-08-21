@@ -19,6 +19,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include "vector"
+#include "sha256.h"
 class User:public QObject
 {
     Q_OBJECT
@@ -50,6 +51,7 @@ public:
     QString Get_Phonenumber();
 
     bool Set_Password(QString password);
+    void Set_Secret_Pass(QString pass);
     QString Get_Password();
 
     void Change_N_Followers();

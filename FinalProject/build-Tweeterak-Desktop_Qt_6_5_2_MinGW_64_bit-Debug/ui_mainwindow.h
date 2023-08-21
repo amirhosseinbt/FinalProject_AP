@@ -51,6 +51,8 @@ public:
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *btn_mention;
+    QSpacerItem *horizontalSpacer_10;
+    QPushButton *btn_retweet;
     QSpacerItem *horizontalSpacer_5;
     QPushButton *btn_like;
     QSpacerItem *horizontalSpacer;
@@ -210,6 +212,15 @@ public:
 
         horizontalLayout->addWidget(btn_mention);
 
+        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_10);
+
+        btn_retweet = new QPushButton(centralwidget);
+        btn_retweet->setObjectName("btn_retweet");
+
+        horizontalLayout->addWidget(btn_retweet);
+
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_5);
@@ -244,7 +255,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Twitterak", nullptr));
         lbl_picture->setText(QString());
         label->setText(QCoreApplication::translate("MainWindow", "Followers", nullptr));
         lbl_nfollowers->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
@@ -256,6 +267,7 @@ public:
         btn_setting->setText(QString());
         lbl_tweets->setText(QCoreApplication::translate("MainWindow", "Tweets", nullptr));
         btn_mention->setText(QString());
+        btn_retweet->setText(QString());
         btn_like->setText(QString());
         btn_tweet->setText(QString());
     } // retranslateUi
