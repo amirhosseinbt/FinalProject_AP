@@ -37,7 +37,6 @@ public:
     QPushButton *btn_tweet;
     QSpacerItem *horizontalSpacer_3;
     QPushButton *btn_retweet;
-    QSpacerItem *horizontalSpacer_5;
     QPushButton *btn_like;
     QSpacerItem *horizontalSpacer_4;
     QPushButton *btn_ok;
@@ -117,10 +116,6 @@ public:
         btn_retweet->setObjectName("btn_retweet");
 
         horizontalLayout->addWidget(btn_retweet);
-
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_5);
 
         btn_like = new QPushButton(Mention);
         btn_like->setObjectName("btn_like");

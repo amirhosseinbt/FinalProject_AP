@@ -6,10 +6,13 @@ TweetWindow::TweetWindow(QWidget *parent) :
     ui(new Ui::TweetWindow)
 {
     this->setWindowModality(Qt::ApplicationModal);
+
     ui->setupUi(this);
+
     this->setStyleSheet("QLineEdit{border-radius:10px;border:1px solid #2D25A4;background-color:#E1DBED;}"
                         "QTextEdit{border-radius:10px;background: palette(base);border:1px solid #2D25A4;background-color:#E1DBED;}");
     ui->btn_tweet->setStyleSheet("QPushButton{border:2px solid #2D25A4;border-radius:20px;padding:10px;}");
+
     this->setAutoFillBackground(true);
     this->setPalette(QColor::fromString("#FFFFFF"));
 
@@ -45,6 +48,7 @@ void TweetWindow::on_btn_tweet_clicked()
         if(ui->txt_tweet->toPlainText().isEmpty())
         {
             QMessageBox::information(this,"Warning","! You must fill the box.");
+            return;
         }
         else
         {
@@ -85,14 +89,20 @@ void TweetWindow::on_btn_tweet_clicked()
                 }
             }
             tweet->Set_ID(Current_User->Get_Last_Tweet_id());
+
             Current_User->Add_Last_Tweet_id();
+
             tweet->Set_Tweet_Date(QDateTime::currentDateTime());
+
             tweet->Set_User_id(Current_User->Get_Userid());
+
             file << tweet;
 
             QMessageBox::information(this,"Successful","* Tweet done.");
             Tweets.close();
-            emit accept();
+
+            emit accept();//send signal for quote tweet window
+
             this->close();
         }
         Tweets.close();

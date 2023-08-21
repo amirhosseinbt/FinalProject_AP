@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->btn_setting->setStyleSheet("QPushButton{border:none;}");
     ui->btn_tweet->setStyleSheet("QPushButton{border:none;}");
     ui->btn_retweet->setStyleSheet("QPushButton{border:none;}");
+
+
     this->setAutoFillBackground(true);
     this->setPalette(QColor::fromString(/*"#9ED9FF"*/"#FFFFFF"));
     QPixmap Setting(":/icons/img/setting.png");
@@ -63,14 +65,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->btn_logout->setIconSize(QSize(80,80));
     ui->btn_logout->setFixedSize(QSize(80,80));
 
-//    ui->list_tweets->item
-//    ui->list_tweets->
 }
 
-void MainWindow::Get_User(User *user)
+void MainWindow::Get_User(User *user)//getting user from login or signup window
 {
     Current_User = user;
     Refresh_List();
+
     QPixmap profile_picture(Current_User->Get_Picture_Path());
     ui->lbl_picture->setFixedSize(100,100);
     ui->lbl_picture->setPixmap(profile_picture.scaled(ui->lbl_picture->width(),ui->lbl_picture->height(),Qt::KeepAspectRatio));
@@ -118,7 +119,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::Refresh_List()
+void MainWindow::Refresh_List()//set id of user that tweet and tweet id and id of user that maybe retweet one tweet as
+                               //a listwidgetitem data
 {
     ui->list_tweets->clear();
     QFile Tweets ("Tweet_file.txt");
@@ -234,7 +236,7 @@ void MainWindow::on_btn_like_clicked()
                 Tweet *t =new Tweet();
                 list = file.readLine().split("%$%");
                 bool flag = false;
-                for(int i = 0;i < list.at(4).split(",").size();i++)
+                for(int i = 0;i < list.at(4).split(",").size();i++)//check for like history
                 {
                     if((list.at(4).split(",")).at(i).toInt() == Current_User->Get_Userid() &&
                         list.at(1).toInt() == list_item.at(1).toInt()
@@ -242,7 +244,7 @@ void MainWindow::on_btn_like_clicked()
                     {
                         flag = true;
                         QMessageBox::information(this,"Warning","! You have already liked this tweet.");
-                        return;
+                        return;//return for endig method
                     }
                 }
                 if(!flag)
@@ -271,7 +273,7 @@ void MainWindow::on_btn_like_clicked()
                 QTextStream file(&Tfile );
                 QString str="";
 
-                while(!file.atEnd())
+                while(!file.atEnd())//write tweets because of changing
                 {
                     QString line = file.readLine();
                     QStringList list = line.split("%$%");
@@ -294,7 +296,6 @@ void MainWindow::on_btn_like_clicked()
                 QMessageBox::information(this,"Successful","* Tweet successfuly liked.");
                 Tweets.close();
                 Refresh_List();
-                return;
             }
 
 
@@ -310,7 +311,7 @@ void MainWindow::on_btn_like_clicked()
 void MainWindow::on_btn_search_clicked()
 {
 
-    if(ui->txt_search->text().contains("#"))
+    if(ui->txt_search->text().contains("#"))//check for hashtag
     {
         Hash_TagForm *myfirst=new Hash_TagForm();
         myfirst->Set_C_User_Id(Current_User->Get_Userid());
@@ -345,7 +346,7 @@ void MainWindow::on_btn_search_clicked()
                     flag = true;
                 }
             }
-            if(!flag)
+            if(!flag)//if username does not exist
             {
                 QMessageBox::information(this,"Warning","! Username does not exist.");
                 Users.close();
@@ -375,20 +376,23 @@ void MainWindow::on_btn_search_clicked()
 
 void MainWindow::on_btn_mention_clicked()
 {
-    Mwindow = new Mention();
-    Mwindow->Get_Mention_userid(Current_User->Get_Userid());
-    Mwindow->Get_Userid(Current_User->Get_Userid());
-    if(ui->list_tweets->currentItem() == nullptr)
+    if(ui->list_tweets->selectedItems().isEmpty())
     {
         QMessageBox::information(this,"Warning","! You must select one tweet.");
         return;
     }
     else
     {
+        Mwindow = new Mention();
         QStringList list_item = ui->list_tweets->currentItem()->text().split("  ");
+        QStringList data_list = (ui->list_tweets->currentItem()->data(Qt::UserRole).toString()).split("%$%");
+
+        Mwindow->Get_Mention_userid(Current_User->Get_Userid());
+        Mwindow->Get_Userid(data_list.at(0).toInt());
         Mwindow->Get_Tweetid(list_item.at(1).toInt());
         Mwindow->Get_C_User(Current_User);
         Mwindow->show();
+        //we need refreshing list after mention
         connect(Mwindow,&Mention::finished,this,&MainWindow::Refresh_List);
     }
 
@@ -397,7 +401,7 @@ void MainWindow::on_btn_mention_clicked()
 
 void MainWindow::on_btn_retweet_clicked()
 {
-    if(/*ui->list_tweets->currentItem() == nullptr*/ui->list_tweets->selectedItems().isEmpty())
+    if(ui->list_tweets->selectedItems().isEmpty())
     {
         QMessageBox::information(this,"Warning","! You must select one tweet.");
         return;
@@ -412,7 +416,7 @@ void MainWindow::on_btn_retweet_clicked()
         re_q_tweet->Get_Tweet_Userid(list_data.at(0).toInt());
         re_q_tweet->Get_Tweet_ID(list_item.at(1).toInt());
         re_q_tweet->show();
-        connect(re_q_tweet,&Re_Quote_Tweet::finished,this,&MainWindow::Refresh_List);
+        connect(re_q_tweet,&Re_Quote_Tweet::finished,this,&MainWindow::Refresh_List);//we need refreshing list after retweet
     }
 }
 

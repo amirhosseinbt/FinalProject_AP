@@ -423,6 +423,7 @@ debug/moc_a_signup.cpp: ../Tweeterak/a_signup.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/qcalendar.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/tweetwindow.h \
 		../Tweeterak/settingw.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QColorDialog \
@@ -467,7 +468,7 @@ debug/moc_a_signup.cpp: ../Tweeterak/a_signup.h \
 		../Tweeterak/hash_tagform.h \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\a_signup.h -o debug\moc_a_signup.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\a_signup.h -o debug\moc_a_signup.cpp
 
 debug/moc_choose_a_type.cpp: ../Tweeterak/choose_a_type.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
@@ -652,6 +653,7 @@ debug/moc_choose_a_type.cpp: ../Tweeterak/choose_a_type.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDebug \
+		../Tweeterak/sha256.h \
 		../Tweeterak/mainwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QMainWindow \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qmainwindow.h \
@@ -720,7 +722,7 @@ debug/moc_choose_a_type.cpp: ../Tweeterak/choose_a_type.h \
 		../Tweeterak/a_signup.h \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\choose_a_type.h -o debug\moc_choose_a_type.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\choose_a_type.h -o debug\moc_choose_a_type.cpp
 
 debug/moc_hash_tagform.cpp: ../Tweeterak/hash_tagform.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
@@ -907,11 +909,12 @@ debug/moc_hash_tagform.cpp: ../Tweeterak/hash_tagform.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/qregularexpression.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/re_quote_tweet.h \
 		../Tweeterak/tweetwindow.h \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\hash_tagform.h -o debug\moc_hash_tagform.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\hash_tagform.h -o debug\moc_hash_tagform.cpp
 
 debug/moc_login.cpp: ../Tweeterak/login.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
@@ -1097,6 +1100,7 @@ debug/moc_login.cpp: ../Tweeterak/login.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDebug \
+		../Tweeterak/sha256.h \
 		../Tweeterak/mainwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QMainWindow \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qmainwindow.h \
@@ -1165,7 +1169,7 @@ debug/moc_login.cpp: ../Tweeterak/login.h \
 		../Tweeterak/a_signup.h \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\login.h -o debug\moc_login.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\login.h -o debug\moc_login.cpp
 
 debug/moc_mainwindow.cpp: ../Tweeterak/mainwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QMainWindow \
@@ -1369,6 +1373,7 @@ debug/moc_mainwindow.cpp: ../Tweeterak/mainwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtGui/QValidator \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/tweetwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
 		../Tweeterak/settingw.h \
@@ -1414,7 +1419,7 @@ debug/moc_mainwindow.cpp: ../Tweeterak/mainwindow.h \
 		../Tweeterak/hash_tagform.h \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\mainwindow.h -o debug\moc_mainwindow.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug/moc_mention.cpp: ../Tweeterak/mention.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
@@ -1600,11 +1605,12 @@ debug/moc_mention.cpp: ../Tweeterak/mention.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/qregularexpression.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/re_quote_tweet.h \
 		../Tweeterak/tweetwindow.h \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\mention.h -o debug\moc_mention.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\mention.h -o debug\moc_mention.cpp
 
 debug/moc_o_signup.cpp: ../Tweeterak/o_signup.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
@@ -1788,6 +1794,7 @@ debug/moc_o_signup.cpp: ../Tweeterak/o_signup.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDebug \
+		../Tweeterak/sha256.h \
 		../Tweeterak/mainwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QMainWindow \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qmainwindow.h \
@@ -1854,7 +1861,7 @@ debug/moc_o_signup.cpp: ../Tweeterak/o_signup.h \
 		../Tweeterak/hash_tagform.h \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\o_signup.h -o debug\moc_o_signup.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\o_signup.h -o debug\moc_o_signup.cpp
 
 debug/moc_p_signup.cpp: ../Tweeterak/p_signup.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
@@ -2060,6 +2067,7 @@ debug/moc_p_signup.cpp: ../Tweeterak/p_signup.h \
 		C:/qtt/6.5.2/mingw_64/include/QtGui/QValidator \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/tweetwindow.h \
 		../Tweeterak/settingw.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QColorDialog \
@@ -2104,7 +2112,7 @@ debug/moc_p_signup.cpp: ../Tweeterak/p_signup.h \
 		../Tweeterak/hash_tagform.h \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\p_signup.h -o debug\moc_p_signup.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\p_signup.h -o debug\moc_p_signup.cpp
 
 debug/moc_re_quote_tweet.cpp: ../Tweeterak/re_quote_tweet.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
@@ -2287,11 +2295,12 @@ debug/moc_re_quote_tweet.cpp: ../Tweeterak/re_quote_tweet.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/qregularexpression.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/tweetwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtGui/QColor \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\re_quote_tweet.h -o debug\moc_re_quote_tweet.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\re_quote_tweet.h -o debug\moc_re_quote_tweet.cpp
 
 debug/moc_settingw.cpp: ../Tweeterak/settingw.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
@@ -2513,9 +2522,10 @@ debug/moc_settingw.cpp: ../Tweeterak/settingw.h \
 		C:/qtt/6.5.2/mingw_64/include/QtGui/qvalidator.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\settingw.h -o debug\moc_settingw.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\settingw.h -o debug\moc_settingw.cpp
 
 debug/moc_show_account.cpp: ../Tweeterak/show_account.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
@@ -2700,13 +2710,14 @@ debug/moc_show_account.cpp: ../Tweeterak/show_account.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDebug \
+		../Tweeterak/sha256.h \
 		../Tweeterak/mention.h \
 		C:/qtt/6.5.2/mingw_64/include/QtGui/QPalette \
 		../Tweeterak/re_quote_tweet.h \
 		../Tweeterak/tweetwindow.h \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\show_account.h -o debug\moc_show_account.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\show_account.h -o debug\moc_show_account.cpp
 
 debug/moc_tweetwindow.cpp: ../Tweeterak/tweetwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
@@ -2890,9 +2901,10 @@ debug/moc_tweetwindow.cpp: ../Tweeterak/tweetwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/qregularexpression.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\tweetwindow.h -o debug\moc_tweetwindow.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\tweetwindow.h -o debug\moc_tweetwindow.cpp
 
 debug/moc_user.cpp: ../Tweeterak/user.h \
 		../Tweeterak/Date.hpp \
@@ -3072,9 +3084,10 @@ debug/moc_user.cpp: ../Tweeterak/user.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDebug \
+		../Tweeterak/sha256.h \
 		debug/moc_predefs.h \
 		C:/qtt/6.5.2/mingw_64/bin/moc.exe
-	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include D:/FinalProject/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -ID:/FinalProject/Tweeterak -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\user.h -o debug\moc_user.cpp
+	C:\qtt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include "H:/8 without delete some ptr/Final/build-Tweeterak-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/qtt/6.5.2/mingw_64/mkspecs/win32-g++ -I"H:/8 without delete some ptr/Final/Tweeterak" -IC:/qtt/6.5.2/mingw_64/include -IC:/qtt/6.5.2/mingw_64/include/QtWidgets -IC:/qtt/6.5.2/mingw_64/include/QtGui -IC:/qtt/6.5.2/mingw_64/include/QtCore -I. -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/qtt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/qtt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Tweeterak\user.h -o debug\moc_user.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -3525,6 +3538,7 @@ debug/a_signup.o: ../Tweeterak/a_signup.cpp ../Tweeterak/a_signup.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/qcalendar.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/tweetwindow.h \
 		../Tweeterak/settingw.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QColorDialog \
@@ -3567,33 +3581,7 @@ debug/a_signup.o: ../Tweeterak/a_signup.cpp ../Tweeterak/a_signup.h \
 		../Tweeterak/mention.h \
 		../Tweeterak/re_quote_tweet.h \
 		../Tweeterak/hash_tagform.h \
-		ui_a_signup.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLabel \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpicture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLineEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout
+		ui_a_signup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\a_signup.o ..\Tweeterak\a_signup.cpp
 
 debug/choose_a_type.o: ../Tweeterak/choose_a_type.cpp ../Tweeterak/choose_a_type.h \
@@ -3779,6 +3767,7 @@ debug/choose_a_type.o: ../Tweeterak/choose_a_type.cpp ../Tweeterak/choose_a_type
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDebug \
+		../Tweeterak/sha256.h \
 		../Tweeterak/mainwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QMainWindow \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qmainwindow.h \
@@ -3845,29 +3834,7 @@ debug/choose_a_type.o: ../Tweeterak/choose_a_type.cpp ../Tweeterak/choose_a_type
 		../Tweeterak/hash_tagform.h \
 		../Tweeterak/p_signup.h \
 		../Tweeterak/a_signup.h \
-		ui_choose_a_type.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLabel \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpicture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QRadioButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qradiobutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout
+		ui_choose_a_type.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\choose_a_type.o ..\Tweeterak\choose_a_type.cpp
 
 debug/hash_tagform.o: ../Tweeterak/hash_tagform.cpp ../Tweeterak/hash_tagform.h \
@@ -4055,62 +4022,10 @@ debug/hash_tagform.o: ../Tweeterak/hash_tagform.cpp ../Tweeterak/hash_tagform.h 
 		C:/qtt/6.5.2/mingw_64/include/QtCore/qregularexpression.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/re_quote_tweet.h \
 		../Tweeterak/tweetwindow.h \
-		ui_hash_tagform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qcoreapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qeventloop.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfuture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfutureinterface.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qmutex.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qtsan_impl.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qresultstore.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfuture_impl.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qthreadpool.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qthread.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qdeadlinetimer.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qelapsedtimer.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qrunnable.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qexception.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qpromise.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLabel \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qframe.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpicture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QListWidget \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlistwidget.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlistview.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractitemview.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qabstractitemmodel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qstyleoption.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qslider.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractslider.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qstyle.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qtabbar.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qtabwidget.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qrubberband.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout
+		ui_hash_tagform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\hash_tagform.o ..\Tweeterak\hash_tagform.cpp
 
 debug/login.o: ../Tweeterak/login.cpp ../Tweeterak/login.h \
@@ -4297,6 +4212,7 @@ debug/login.o: ../Tweeterak/login.cpp ../Tweeterak/login.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDebug \
+		../Tweeterak/sha256.h \
 		../Tweeterak/mainwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QMainWindow \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qmainwindow.h \
@@ -4363,33 +4279,7 @@ debug/login.o: ../Tweeterak/login.cpp ../Tweeterak/login.h \
 		../Tweeterak/hash_tagform.h \
 		../Tweeterak/p_signup.h \
 		../Tweeterak/a_signup.h \
-		ui_login.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLabel \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpicture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLineEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout
+		ui_login.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\login.o ..\Tweeterak\login.cpp
 
 debug/main.o: ../Tweeterak/main.cpp ../Tweeterak/mainwindow.h \
@@ -4594,6 +4484,7 @@ debug/main.o: ../Tweeterak/main.cpp ../Tweeterak/mainwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtGui/QValidator \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/tweetwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
 		../Tweeterak/settingw.h \
@@ -4851,6 +4742,7 @@ debug/mainwindow.o: ../Tweeterak/mainwindow.cpp ../Tweeterak/mainwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtGui/QValidator \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/tweetwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDialog \
 		../Tweeterak/settingw.h \
@@ -4895,33 +4787,6 @@ debug/mainwindow.o: ../Tweeterak/mainwindow.cpp ../Tweeterak/mainwindow.h \
 		../Tweeterak/re_quote_tweet.h \
 		../Tweeterak/hash_tagform.h \
 		ui_mainwindow.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLabel \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpicture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLineEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QWidget \
 		../Tweeterak/choose_a_type.h \
 		../Tweeterak/o_signup.h \
 		../Tweeterak/p_signup.h \
@@ -5112,68 +4977,10 @@ debug/mention.o: ../Tweeterak/mention.cpp ../Tweeterak/mention.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/qregularexpression.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/re_quote_tweet.h \
 		../Tweeterak/tweetwindow.h \
-		ui_mention.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qcoreapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qeventloop.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfuture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfutureinterface.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qmutex.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qtsan_impl.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qresultstore.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfuture_impl.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qthreadpool.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qthread.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qdeadlinetimer.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qelapsedtimer.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qrunnable.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qexception.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qpromise.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLabel \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qframe.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpicture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QListWidget \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlistwidget.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlistview.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractitemview.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qabstractitemmodel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qstyleoption.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qslider.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractslider.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qstyle.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qtabbar.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qtabwidget.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qrubberband.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QTextEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qtextedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout
+		ui_mention.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mention.o ..\Tweeterak\mention.cpp
 
 debug/o_signup.o: ../Tweeterak/o_signup.cpp ../Tweeterak/o_signup.h \
@@ -5358,6 +5165,7 @@ debug/o_signup.o: ../Tweeterak/o_signup.cpp ../Tweeterak/o_signup.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDebug \
+		../Tweeterak/sha256.h \
 		../Tweeterak/mainwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QMainWindow \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qmainwindow.h \
@@ -5422,35 +5230,7 @@ debug/o_signup.o: ../Tweeterak/o_signup.cpp ../Tweeterak/o_signup.h \
 		../Tweeterak/mention.h \
 		../Tweeterak/re_quote_tweet.h \
 		../Tweeterak/hash_tagform.h \
-		ui_o_signup.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLabel \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpicture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLineEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QTextEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qtextedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout
+		ui_o_signup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\o_signup.o ..\Tweeterak\o_signup.cpp
 
 debug/p_signup.o: ../Tweeterak/p_signup.cpp ../Tweeterak/p_signup.h \
@@ -5657,6 +5437,7 @@ debug/p_signup.o: ../Tweeterak/p_signup.cpp ../Tweeterak/p_signup.h \
 		C:/qtt/6.5.2/mingw_64/include/QtGui/QValidator \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/tweetwindow.h \
 		../Tweeterak/settingw.h \
 		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QColorDialog \
@@ -5699,37 +5480,7 @@ debug/p_signup.o: ../Tweeterak/p_signup.cpp ../Tweeterak/p_signup.h \
 		../Tweeterak/mention.h \
 		../Tweeterak/re_quote_tweet.h \
 		../Tweeterak/hash_tagform.h \
-		ui_p_signup.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDateEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qdatetimeedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLabel \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpicture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLineEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QTextEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qtextedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout
+		ui_p_signup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\p_signup.o ..\Tweeterak\p_signup.cpp
 
 debug/re_quote_tweet.o: ../Tweeterak/re_quote_tweet.cpp ../Tweeterak/re_quote_tweet.h \
@@ -5913,41 +5664,10 @@ debug/re_quote_tweet.o: ../Tweeterak/re_quote_tweet.cpp ../Tweeterak/re_quote_tw
 		C:/qtt/6.5.2/mingw_64/include/QtCore/qregularexpression.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
+		../Tweeterak/sha256.h \
 		../Tweeterak/tweetwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtGui/QColor \
-		ui_re_quote_tweet.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qcoreapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qeventloop.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfuture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfutureinterface.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qmutex.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qtsan_impl.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qresultstore.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfuture_impl.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qthreadpool.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qthread.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qdeadlinetimer.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qelapsedtimer.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qrunnable.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qexception.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qpromise.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout
+		ui_re_quote_tweet.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\re_quote_tweet.o ..\Tweeterak\re_quote_tweet.cpp
 
 debug/settingw.o: ../Tweeterak/settingw.cpp ../Tweeterak/settingw.h \
@@ -6170,41 +5890,8 @@ debug/settingw.o: ../Tweeterak/settingw.cpp ../Tweeterak/settingw.h \
 		C:/qtt/6.5.2/mingw_64/include/QtGui/qvalidator.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
-		ui_settingw.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QDateEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qdatetimeedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLabel \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qframe.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpicture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLineEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QTextEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qtextedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QWidget
+		../Tweeterak/sha256.h \
+		ui_settingw.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\settingw.o ..\Tweeterak\settingw.cpp
 
 debug/sha256.o: ../Tweeterak/sha256.cpp ../Tweeterak/sha256.h
@@ -6393,71 +6080,12 @@ debug/show_account.o: ../Tweeterak/show_account.cpp ../Tweeterak/show_account.h 
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDebug \
+		../Tweeterak/sha256.h \
 		../Tweeterak/mention.h \
 		C:/qtt/6.5.2/mingw_64/include/QtGui/QPalette \
 		../Tweeterak/re_quote_tweet.h \
 		../Tweeterak/tweetwindow.h \
-		ui_show_account.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qcoreapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qeventloop.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfuture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfutureinterface.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qmutex.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qtsan_impl.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qresultstore.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfuture_impl.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qthreadpool.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qthread.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qdeadlinetimer.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qelapsedtimer.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qrunnable.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qexception.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qpromise.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QLabel \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qframe.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpicture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QListWidget \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlistwidget.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlistview.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractitemview.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qabstractitemmodel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qstyleoption.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qslider.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractslider.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qstyle.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qtabbar.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qtabwidget.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qrubberband.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QTextEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qtextedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QWidget
+		ui_show_account.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\show_account.o ..\Tweeterak\show_account.cpp
 
 debug/tweetwindow.o: ../Tweeterak/tweetwindow.cpp ../Tweeterak/tweetwindow.h \
@@ -6642,48 +6270,8 @@ debug/tweetwindow.o: ../Tweeterak/tweetwindow.cpp ../Tweeterak/tweetwindow.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/qregularexpression.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
-		ui_tweetwindow.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qcoreapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qeventloop.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfuture.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfutureinterface.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qmutex.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qtsan_impl.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qresultstore.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qfuture_impl.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qthreadpool.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qthread.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qdeadlinetimer.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qelapsedtimer.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qrunnable.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qexception.h \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/qpromise.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QSpacerItem \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QTextEdit \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qtextedit.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/qframe.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
-		C:/qtt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		C:/qtt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout
+		../Tweeterak/sha256.h \
+		ui_tweetwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\tweetwindow.o ..\Tweeterak\tweetwindow.cpp
 
 debug/user.o: ../Tweeterak/user.cpp ../Tweeterak/user.h \
@@ -6863,7 +6451,8 @@ debug/user.o: ../Tweeterak/user.cpp ../Tweeterak/user.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/qregularexpression.h \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDate \
 		C:/qtt/6.5.2/mingw_64/include/QtCore/QDataStream \
-		C:/qtt/6.5.2/mingw_64/include/QtCore/QDebug
+		C:/qtt/6.5.2/mingw_64/include/QtCore/QDebug \
+		../Tweeterak/sha256.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\user.o ..\Tweeterak\user.cpp
 
 debug/qrc_Resources.o: debug/qrc_Resources.cpp 

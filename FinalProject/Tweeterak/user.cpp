@@ -13,12 +13,15 @@ User::~User()
 QString User::Get_Name()
 {
     return Name;
-}//SetName
+}
+
 QString User::Get_Username()
 {
     return Username;
-}//GetUsername
-bool User::Set_Username(const QString &username)
+}
+
+
+bool User::Set_Username(const QString &username) // validation of username occurs here
 {
     QString message;
     QValidator::State st;
@@ -28,7 +31,8 @@ bool User::Set_Username(const QString &username)
         st = QValidator::Invalid;
         emit Validate(message,st);
         return 0;
-    } // if
+    }
+
     for (int i = 0; i < username.size(); i++)
     {
 
@@ -61,7 +65,8 @@ bool User::Set_Username(const QString &username)
         Username = username;
         emit Validate(message,st);
         return 1;
-}//SetUsername
+}
+
 Organization_User::Organization_User()
 {
 
@@ -71,8 +76,7 @@ Organization_User::~Organization_User()
 {
 
 }
-
-bool Organization_User::Set_Biography(const QString biography)
+bool Organization_User::Set_Biography(const QString biography) // validation of bio occurs here
 {
         QString message;
         QValidator::State st;
@@ -89,7 +93,7 @@ bool Organization_User::Set_Biography(const QString biography)
         emit Validate(message,st);
         return 1;
 }
-//O_Set_Biography
+
 Personal_User::Personal_User()
 {
 
@@ -100,7 +104,7 @@ Personal_User::~Personal_User()
 
 }
 
-bool Personal_User::Set_Biography(const QString biography)
+bool Personal_User::Set_Biography(const QString biography) // validation of bio occurs here
 {
         QString message;
         QValidator::State st;
@@ -116,7 +120,8 @@ bool Personal_User::Set_Biography(const QString biography)
         Biography = biography;
         emit Validate(message,st);
         return 1;
-}//P_SetBiography
+}
+
 Anonymous_User::Anonymous_User()
 {        
 
@@ -127,7 +132,7 @@ Anonymous_User::~Anonymous_User()
 
 }
 
-bool Anonymous_User::Set_Biography(const QString biography)
+bool Anonymous_User::Set_Biography(const QString biography) // validation of bio occurs here
 {
         QString message;
         QValidator::State st;
@@ -143,24 +148,24 @@ bool Anonymous_User::Set_Biography(const QString biography)
         Biography = biography;
         emit Validate(message,st);
         return 1;
-}//A_SetBiography
+}
+
 
 QString User::Get_Biography()
 {
         return Biography;
-}//GetBiography
+}
 
 
 void User::Set_Country(const QString country)
 {
         Country = country;
-}//SetCountry
+}
 
 QString User::Get_Country()
 {
         return Country;
 }
-//GetCountry
 
 void User::Set_Link(QString link)
 {
@@ -171,28 +176,23 @@ void User::Set_Link(QString link)
     }
     Link = link;
 }
-//SetLink
 QString User::Get_Link()
 {
         return Link;
 }
-//GetLink
 
 void Organization_User::Set_Birthday(QDate birthday)
 {
         return;
 }
-//O_SetBirthday
 void Personal_User::Set_Birthday(QDate birthday)
 {
         BirthdayDate = birthday;
 }
-//P_SetBirthday
 void Anonymous_User::Set_Birthday(QDate birthday)
 {
         return;
 }
-//A_SetBirthday
 void Organization_User::Set_Name(const QString &name)
 {
         Name =name;
@@ -284,12 +284,14 @@ void Organization_User::My_Read_Overload(QStringList &list)
         this->Set_Admin_id(list.at(13).toInt());
         this->Set_Last_Tweet_id(list.at(14).toInt());
         this->Set_Userid(list.at(15).toInt());
+
         QStringList follower,following;
         follower =list.at(16).split(",");
         for(int i = 0; i < follower.size() ;i++)
         {
             this->Set_Followers(follower.at(i).toInt());
         }
+
         following =list.at(17).split(",");
         for(int i = 0; i < following.size() ;i++)
         {
@@ -401,12 +403,14 @@ void Personal_User::My_Read_Overload(QStringList &list)
         this->Set_Organ_id(list.at(13).toInt());
         this->Set_Last_Tweet_id(list.at(14).toInt());
         this->Set_Userid(list.at(15).toInt());
+
         QStringList follower,following;
         follower =list.at(16).split(",");
         for(int i = 0; i < follower.size() ;i++)
         {
             this->Set_Followers(follower.at(i).toInt());
         }
+
         following =list.at(17).split(",");
         for(int i = 0; i < following.size() ;i++)
         {
@@ -477,12 +481,14 @@ void Anonymous_User::My_Read_Overload(QStringList &list)
         this->Set_N_Followings(list.at(12).toInt());
         this->Set_Last_Tweet_id(list.at(13).toInt());
         this->Set_Userid(list.at(14).toInt());
+
         QStringList follower,following;
         follower =list.at(15).split(",");
         for(int i = 0; i < follower.size() ;i++)
         {
             this->Set_Followers(follower.at(i).toInt());
         }
+
         following =list.at(16).split(",");
         for(int i = 0; i < following.size() ;i++)
         {
@@ -505,8 +511,8 @@ QDate User::Get_Birthday()
 {
         return BirthdayDate;
 
-}//GetBirthday
-bool User::Set_Phonenumber(QString phonenumber)
+}
+bool User::Set_Phonenumber(QString phonenumber) // validation of phonenumber occurs here
 {
 
         QString message;
@@ -533,13 +539,17 @@ bool User::Set_Phonenumber(QString phonenumber)
         PhoneNumber = phonenumber;
         emit Validate(message,st);
         return 1;
-}//SetPhonenumber
+}
 QString User::Get_Phonenumber()
 {
         return PhoneNumber;
 }
-//GetPhonenumber
-bool User::Set_Password(QString password)
+bool User::Set_Password(QString password) // validation of password occurs here
+
+// if password just contain letter or just number or just unnormal char it is weak
+// if contains upper or lower letter and number but length of it be less than 7 it is weak
+// if contains upper or lower letter and number and unnormal char but its length be less than 6 it is weak
+// if contains upper and lower letter and number and unnormal char but its length be less than 5 it is weak
 {
         bool ContainUpper = false;
         bool ContainLower = false;
@@ -573,7 +583,7 @@ bool User::Set_Password(QString password)
                 ContainUnnormalchar = true;
             }
         }
-        SHA256 pass;
+        SHA256 pass; // use for making secret password
         if(ContainUpper && ContainLower && ContainNumber && ContainUnnormalchar && password.size() >4)
         {
             Password =QString::fromStdString(pass(password.toStdString()));
@@ -722,7 +732,7 @@ void User::Set_Last_Tweet_id(int id)
         Last_Tweet_id = id;
 }
 
-void User::Add_Last_Tweet_id()
+void User::Add_Last_Tweet_id() // we need to store last tweet id to giving id to new tweets
 {
     Last_Tweet_id++;
     QFile Users ("User_file.txt");
@@ -882,171 +892,6 @@ void User::Erase_Following(int id)
         Users.close();
     }
 }
-
-//GetNFollowings
-
-//bool User::set_header(std::string header)
-//{
-//        for(auto& ch : header)//lowercase input
-//        {
-//        ch = tolower(ch);
-//        }
-//        if (header == "white")
-//        {
-//        header_num = 15;
-//        }
-//        else if (header == "red")
-//        {
-//        header_num = 12;
-//        }
-//        else if (header == "orange")
-//        {
-//        header_num = 4;
-//        }
-//        else if (header == "yellow")
-//        {
-//        header_num = 14;
-//        }
-//        else if (header == "green")
-//        {
-//        header_num = 10;
-//        }
-//        else if (header == "blue")
-//        {
-//        header_num = 9;
-//        }
-//        else if (header == "purple")
-//        {
-//        header_num = 13;
-//        }
-//        else if (header == "black")
-//        {
-//        header_num = 8;
-//        }
-//        else
-//        {
-//        try
-//        {
-//            throw std::invalid_argument("! Color is invalid.");
-//        }
-//        catch(const std::exception& e)
-//        {
-//            std::cerr << e.what() << '\n';
-//            return 0;
-
-//        }
-
-//        }
-
-//        Header = header;
-//        return 1;
-//}
-//int User::get_header_id()
-//{
-//        return header_num;
-//}
-//std::string User::get_header()
-//{
-//        return Header;
-//}
-//void User::tweet(std::string content)
-//{
-//        temp = new Tweet;
-//        temp->set_content(content);
-//        tweet_id++;
-//        temp->set_id(tweet_id);
-//        std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
-//        std::time_t t_c = std::chrono::system_clock::to_time_t(now);
-//        temp->set_time(t_c);
-//        tweets.push_back(temp);
-
-//}
-//std::vector<Tweet*> User::get_tweets()
-//{
-//        return tweets;
-//}
-//void User::earase_tweet(int id)
-//{
-//        for (int i = 0; i < tweets.size(); i++)
-//        {
-//        if (tweets[i]->get_id()== id)
-//        {
-//            tweets.erase(tweets.begin()+i);
-//        }
-
-//        }
-
-//}
-//void User::edit_tweet(int id,std::string con)
-//{
-//        for(auto &t:tweets)
-//        {
-//        if (t->get_id()==id)
-//        {
-//            t->set_content(con);
-//        }
-
-//        }
-//}
-//void User::like(int id,std::string* wh)
-//{
-//        for(auto &t:tweets)
-//        {
-//        if (t->get_id()==id)
-//        {
-//            t->like_fun();
-//            t->set_who_like(wh);
-//        }
-
-//        }
-//}
-//void User::dlike(int id,std::string* wh)
-//{
-//        for(auto &t:tweets)
-//        {
-//        if (t->get_id()==id)
-//        {
-//            t->dislike();
-//            t->earase_who_like(wh);
-//        }
-
-//        }
-//}
-//std::vector<std::string*> User::who(int id)//who like tweet
-//{
-//        for(auto &t:tweets)
-//        {
-//        if (t->get_id()==id)
-//        {
-//            return t->get_who_like();
-//        }
-
-//        }
-//}
-//void User::retweet(int id,User *& user)
-//{
-//        for(auto &t:user->get_tweets())
-//        {
-//        if (t->get_id()==id)
-//        {
-//            tweets.push_back(t);
-//            t->set_who_retweet(&Username);
-//        }
-
-//        }
-//}
-//std::vector<std::string*> User::who_re(int id)//who retweet
-//{
-//        for(auto &t:tweets)
-//        {
-//        if (t->get_id()==id)
-//        {
-//            return t->get_who_retweet();
-//        }
-
-//        }
-//}
-
 
 
 

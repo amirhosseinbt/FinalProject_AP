@@ -6,15 +6,20 @@ Hash_TagForm::Hash_TagForm(QWidget *parent) :
     ui(new Ui::Hash_TagForm)
 {
     ui->setupUi(this);
-    this->setWindowModality(Qt::ApplicationModal);
+    this->setWindowModality(Qt::ApplicationModal);//this avoids from window beings open
+
+
     this->setAutoFillBackground(true);
-    this->setPalette(QColor::fromString("#FFFFFF"));
+    this->setPalette(QColor::fromString("#FFFFFF"));//css
+
     ui->btn_like->setStyleSheet("QPushButton{border:none;}");
     ui->btn_mention->setStyleSheet("QPushButton{border:none;}");
     ui->btn_ok->setStyleSheet("QPushButton{border:none;}");
     ui->btn_retweet->setStyleSheet("QPushButton{border:none;}");
     ui->listWidget->setStyleSheet("QListWidget{border-radius:10px;background: palette(base);border:1px solid #2D25A4;background-color:#E1DBED;}");
-    QPixmap Like(":/icons/img/redlike.png");
+
+
+    QPixmap Like(":/icons/img/redlike.png");//change btn to custom icon
     QPixmap Mention(":/icons/img/mention.png");
     QPixmap Ok(":/icons/img/ok.png");
 
@@ -54,83 +59,7 @@ bool Hash_TagForm::Set_t(QString text)
         return 0;
     }
 }
-
-//bool Hash_TagForm::Get_Text(QString uitext)
-//{
-//        bool flag=false;
-////        hashtagtext = uitext;
-//        QFile Tweets("Tweet_file.txt");
-//        if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text))
-//        {
-//            QMessageBox::information(this,"Warning","! File can not open.");
-//            return 0;
-//        }
-//        else
-//        {
-//            QTextStream file(&Tweets);
-//            QStringList list;
-//            while(!file.atEnd())
-//            {
-//                list = file.readLine().split("%$%");
-//                QStringList htlist =list.at(7).split(",");
-//                for (int i = 0; i < htlist.size(); i++)
-//                {
-//                    if(htlist.at(i) == uitext)
-//                    {
-//                        flag = true;
-//                        QString myline =Get_Uname_byId(list.at(0).toInt())+"  "+list.at(1)+"  "+"   like "+list.at(3)+"   "+list.at(2)+"       "+list.at(5);
-//                        QListWidgetItem* myitem = new QListWidgetItem(myline);
-//                        QVariant mydata =list.at(0)+"%$%"+list.at(1)+"%$%";
-//                        myitem->setData(Qt::UserRole,mydata);
-//                        ui->listWidget->addItem(myitem);
-
-//                    }
-
-//                }
-//            }
-//            Tweets.close();
-//        }
-//        QFile MentionF("Mention_file.txt");
-//        if(!MentionF.open(QIODevice::ReadWrite|QIODevice::Text))
-//        {
-//            QMessageBox::information(this,"Warning","! File can not open.");
-//            return 0;
-//        }
-//        else
-//        {
-//            QTextStream file(&MentionF);
-//            QStringList list;
-//            while(!file.atEnd())
-//            {
-//                list = file.readLine().split("%$%");
-//                QStringList htlist =list.at(8).split(",");
-//                for (int i = 0; i < htlist.size(); i++)
-//                {
-//                    if(htlist.at(i) == uitext)
-//                    {
-//                        flag = true;
-//                        QString myline =Get_Uname_byId(list.at(6).toInt())+"  "+list.at(7)+"  "+"   like "+list.at(3)+"   "+list.at(2)+"       "+list.at(5);
-//                        QListWidgetItem* myitem = new QListWidgetItem(myline);
-//                        QVariant mydata =list.at(0)+"%$%"+list.at(1)+"%$%"+list.at(6)+"%$%"+list.at(7)+"%$%";
-//                        myitem->setData(Qt::UserRole,mydata);
-//                        ui->listWidget->addItem(myitem);
-
-//                    }
-
-//                }
-//            }
-
-//            MentionF.close();
-//        }
-//        if(!flag)
-//        {
-//            QMessageBox::information(this,"Warning","! Hashtag does not exist.");
-//            return 0;
-//        }
-//        return 1;
-//}
-
-QString Hash_TagForm::Get_Uname_byId(int id)
+QString Hash_TagForm::Get_Uname_byId(int id)//to find id of one account
 {
     QFile Users ("User_file.txt");
     QString uname="";
@@ -170,7 +99,7 @@ void Hash_TagForm::Set_C_User_Id(int id)
     C_Userid = id;
 }
 
-void Hash_TagForm::showEvent(QShowEvent *event)
+void Hash_TagForm::showEvent(QShowEvent *event)//in every show refresh the tweet list
 {
 
     QDialog::showEvent(event);
@@ -182,89 +111,89 @@ void Hash_TagForm::Get_C_User(User *user)
     Current_User=user;
 }
 
-bool Hash_TagForm::Refresh()
+bool Hash_TagForm::Refresh()//in this method we use listwidgetitem data to send some information about one tweet
 {
-            bool flag=false;
-            ui->listWidget->clear();
-            QFile Tweets("Tweet_file.txt");
-            if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text))
+    bool flag=false;
+    ui->listWidget->clear();
+    QFile Tweets("Tweet_file.txt");
+    if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text))
+    {
+        QMessageBox::information(this,"Warning","! File can not open.");
+        return 0;
+    }
+    else
+    {
+        QTextStream file(&Tweets);
+        QStringList list;
+        while(!file.atEnd())
+        {
+            list = file.readLine().split("%$%");
+            QStringList htlist =list.at(7).split(",");
+            for (int i = 0; i < htlist.size(); i++)
             {
-                QMessageBox::information(this,"Warning","! File can not open.");
-                return 0;
-            }
-            else
-            {
-                QTextStream file(&Tweets);
-                QStringList list;
-                while(!file.atEnd())
+                if(htlist.at(i) == Text)
                 {
-                    list = file.readLine().split("%$%");
-                    QStringList htlist =list.at(7).split(",");
-                    for (int i = 0; i < htlist.size(); i++)
+                    flag = true;
+                    QString myline="";
+                    if(list.at(10).toInt() == 0)
                     {
-                        if(htlist.at(i) == Text)
-                        {
-                            flag = true;
-                            QString myline="";
-                            if(list.at(10).toInt() == 0)
-                            {
 
-                                myline =Get_Uname_byId(list.at(0).toInt())+"  "+list.at(1)+"  "+"   like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5);
-                            }
-                            else
-                            {
-                                myline =Get_Uname_byId(list.at(10).toInt())+"  "+list.at(1)+"  "+"   like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5)
-                                         +"     "+" Retweet from  "+Get_Uname_byId(list.at(0).toInt());
-                            }
-                            QListWidgetItem* myitem = new QListWidgetItem(myline);
-                            QVariant mydata =list.at(0)+"%$%"+list.at(1)+"%$%";
-                            myitem->setData(Qt::UserRole,mydata);
-                            ui->listWidget->addItem(myitem);
-
-                        }
-
+                        myline =Get_Uname_byId(list.at(0).toInt())+"  "+list.at(1)+"  "+"   like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5);
                     }
-                }
-                Tweets.close();
-            }
-            QFile MentionF("Mention_file.txt");
-            if(!MentionF.open(QIODevice::ReadWrite|QIODevice::Text))
-            {
-                QMessageBox::information(this,"Warning","! File can not open.");
-                return 0;
-            }
-            else
-            {
-                QTextStream file(&MentionF);
-                QStringList list;
-                while(!file.atEnd())
-                {
-                    list = file.readLine().split("%$%");
-                    QStringList htlist =list.at(8).split(",");
-                    for (int i = 0; i < htlist.size(); i++)
+                    else
                     {
-                        if(htlist.at(i) == Text)
-                        {
-                            flag = true;
-                            QString myline =Get_Uname_byId(list.at(6).toInt())+"  "+list.at(7)+"  "+"   like "+list.at(3)+"   "+list.at(2)+"       "+list.at(5);
-                            QListWidgetItem* myitem = new QListWidgetItem(myline);
-                            QVariant mydata =list.at(0)+"%$%"+list.at(1)+"%$%"+list.at(6)+"%$%"+list.at(7)+"%$%";
-                            myitem->setData(Qt::UserRole,mydata);
-                            ui->listWidget->addItem(myitem);
-
-                        }
-
+                        myline =Get_Uname_byId(list.at(10).toInt())+"  "+list.at(1)+"  "+"   like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5)
+                                 +"     "+" Retweet from  "+Get_Uname_byId(list.at(0).toInt());
                     }
+                    QListWidgetItem* myitem = new QListWidgetItem(myline);
+                    QVariant mydata =list.at(0)+"%$%"+list.at(1)+"%$%";
+                    myitem->setData(Qt::UserRole,mydata);
+                    ui->listWidget->addItem(myitem);
+
                 }
 
-                MentionF.close();
             }
-            if(!flag)
+        }
+        Tweets.close();
+    }
+    QFile MentionF("Mention_file.txt");
+    if(!MentionF.open(QIODevice::ReadWrite|QIODevice::Text))
+    {
+        QMessageBox::information(this,"Warning","! File can not open.");
+        return 0;
+    }
+    else
+    {
+        QTextStream file(&MentionF);
+        QStringList list;
+        while(!file.atEnd())
+        {
+            list = file.readLine().split("%$%");
+            QStringList htlist =list.at(8).split(",");
+            for (int i = 0; i < htlist.size(); i++)
             {
-                QMessageBox::information(this,"Warning","! Hashtag does not exist.");
-                return 0;
+                if(htlist.at(i) == Text)
+                {
+                    flag = true;
+                    QString myline =Get_Uname_byId(list.at(6).toInt())+"  "+list.at(7)+"  "+"   like "+list.at(3)+"   "+list.at(2)+"       "+list.at(5);
+                    QListWidgetItem* myitem = new QListWidgetItem(myline);
+                    QVariant mydata =list.at(0)+"%$%"+list.at(1)+"%$%"+list.at(6)+"%$%"+list.at(7)+"%$%";
+                    myitem->setData(Qt::UserRole,mydata);
+                    ui->listWidget->addItem(myitem);
+
+                }
+
             }
-            return 1;
+        }
+
+        MentionF.close();
+    }
+    if(!flag)
+    {
+        QMessageBox::information(this,"Warning","! Hashtag does not exist.");
+        return 0;
+    }
+    return 1;
 }
 
 
@@ -278,6 +207,7 @@ void Hash_TagForm::on_btn_like_clicked()
     if(ui->listWidget->selectedItems().isEmpty())
     {
         QMessageBox::information(this,"Warning","! You must select one tweet.");
+        return;
     }
     else
     {
@@ -300,7 +230,7 @@ void Hash_TagForm::on_btn_like_clicked()
                 while(!file.atEnd())
                 {
                         list = file.readLine().split("%$%");
-                        for(int i = 0;i < list.at(4).split(",").size();i++)
+                        for(int i = 0;i < list.at(4).split(",").size();i++)//check for like history
                         {
                             if((list.at(4).split(",")).at(i).toInt() == C_Userid &&
                                 list.at(7).toInt() == datalist.at(3).toInt()&&
@@ -335,7 +265,7 @@ void Hash_TagForm::on_btn_like_clicked()
                                 {
                                     QTextStream file(&MentionFF );
                                     QString str="";
-                                    while(!file.atEnd())
+                                    while(!file.atEnd())//for writing tweet with changes in file
                                     {
                                         QString line = file.readLine();
                                         QStringList list = line.split("%$%");
@@ -358,7 +288,6 @@ void Hash_TagForm::on_btn_like_clicked()
                                     MentionFF.close();
                                     Refresh();
                                     return;
-
                                 }
                             }
                         }
@@ -375,6 +304,7 @@ void Hash_TagForm::on_btn_like_clicked()
             {
                     QMessageBox::information(this,"Warning","! File can not open.");
                     return;
+
             }
             else
             {
@@ -385,7 +315,7 @@ void Hash_TagForm::on_btn_like_clicked()
                     {
                         Tweet *t =new Tweet();;
                         list = file.readLine().split("%$%");
-                        for(int i = 0;i < list.at(4).split(",").size();i++)
+                        for(int i = 0;i < list.at(4).split(",").size();i++)//check like history
                         {
 
                             if((list.at(4).split(",")).at(i).toInt() == C_Userid &&
@@ -394,7 +324,7 @@ void Hash_TagForm::on_btn_like_clicked()
                             {
                                 flag = true;
                                 QMessageBox::information(this,"Warning","! You have already liked this tweet.");
-                                return;
+                                return;//for avoid from continuing method
                             }
                         }
 
@@ -423,7 +353,7 @@ void Hash_TagForm::on_btn_like_clicked()
                     {
                         QTextStream file(&Tfile );
                         QString str="";
-                        while(!file.atEnd())
+                        while(!file.atEnd())//write tweet with changes in file
                         {
                             QString line = file.readLine();
                             QStringList list = line.split("%$%");
@@ -472,6 +402,7 @@ void Hash_TagForm::on_btn_mention_clicked()
     if(ui->listWidget->selectedItems().isEmpty())
     {
         QMessageBox::information(this,"Warning","! You must select one tweet.");
+        return;
     }
     else
     {
@@ -480,10 +411,11 @@ void Hash_TagForm::on_btn_mention_clicked()
         if(datalist.size() > 3)
         {
             QMessageBox::information(this,"Warning","! You can not add mention to one mention.");
+            return;
         }
         else
         {
-            Mention *mentionwindow=new Mention();
+            Mention *mentionwindow=new Mention();//shows mention window
             mentionwindow->Get_Mention_userid(C_Userid);
             mentionwindow->Get_Userid(datalist.at(0).toInt());
             mentionwindow->Get_Tweetid(datalist.at(1).toInt());
@@ -497,7 +429,7 @@ void Hash_TagForm::on_btn_mention_clicked()
 
 void Hash_TagForm::on_btn_retweet_clicked()
 {
-    if(ui->listWidget->currentItem() == nullptr)
+    if(ui->listWidget->selectedItems().isEmpty())
     {
         QMessageBox::information(this,"Warning","! You must select one tweet.");
         return;
@@ -512,17 +444,15 @@ void Hash_TagForm::on_btn_retweet_clicked()
         QStringList datalist = mytext.split("%$%");
         if(datalist.size() > 3)
         {
-            re_q_tweet->Get_Tweet_Userid(datalist.at(0).toInt());
-            re_q_tweet->Get_Tweet_ID(datalist.at(1).toInt());
-            re_q_tweet->Get_Mention_Userid(datalist.at(2).toInt());
-            re_q_tweet->Get_Mention_ID(datalist.at(3).toInt());
+            QMessageBox::information(this,"Warning","! You can not retweet or quote tweet a mention.");
+            return;
         }
         else
         {
             re_q_tweet->Get_Tweet_Userid(datalist.at(0).toInt());
             re_q_tweet->Get_Tweet_ID(datalist.at(1).toInt());
+            re_q_tweet->show();
         }
-        re_q_tweet->show();
     }
 }
 

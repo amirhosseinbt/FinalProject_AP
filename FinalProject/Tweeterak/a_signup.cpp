@@ -7,11 +7,19 @@ A_Signup::A_Signup(QWidget *parent) :
     ui(new Ui::A_Signup)
 {
     ui->setupUi(this);
+    //use css for design windows
     this->setStyleSheet("QLineEdit{border-radius:10px;border:1px solid #2D25A4;background-color:#E1DBED;}");
     ui->btnsignup->setStyleSheet("QPushButton{border:2px solid #2D25A4;border-radius:20px;padding:10px;}");
+
+
     this->setAutoFillBackground(true);
     this->setPalette(QColor::fromString("#FFFFFF"));
+
+
     Registrant_User = new Anonymous_User();
+
+
+    //connection for result of each user's method to show suitable message
     connect(Registrant_User,SIGNAL(Validate(QString&,QValidator::State&)),this,SLOT(Validator(QString&,QValidator::State&)));
     ui->lblpassword->hide();
     ui->lblusername->hide();
@@ -21,14 +29,15 @@ A_Signup::~A_Signup()
 {
     delete ui;
     delete Registrant_User;
+    delete mw;
 }
 
-void A_Signup::Get_MainWindow(MainWindow *m)
+void A_Signup::Get_MainWindow(MainWindow *m)//for sharing mainwindow all over the program
 {
     mw = m;
 }
 
-void A_Signup::Validator(QString &message, QValidator::State &st)
+void A_Signup::Validator(QString &message, QValidator::State &st)//shows message and get its message from user's method
 {
     if(st == QValidator::Invalid)
     {
@@ -67,7 +76,7 @@ void A_Signup::on_btnsignup_clicked()
                     QTextStream file(&Users);
                     QStringList user_list;
                     bool flag = false;
-                    while (!file.atEnd())
+                    while (!file.atEnd())//check for existing username
                     {
                         user_list = file.readLine().split("%$%");
                         if(Registrant_User->Get_Username() == user_list.at(1))
@@ -81,7 +90,7 @@ void A_Signup::on_btnsignup_clicked()
                     {
 
                         QFile Last_user_id("Last_user_id.txt");
-                        if(!Last_user_id.open(QIODevice::ReadWrite|QIODevice::Text))
+                        if(!Last_user_id.open(QIODevice::ReadWrite|QIODevice::Text))//for set an unique id to each account
                         {
                             QMessageBox::information(this,"Warning","! File can not open.");
                             return;
@@ -113,7 +122,7 @@ void A_Signup::on_btnsignup_clicked()
                             }
                             Last_user_id.close();
                         }
-                       Registrant_User->Set_Password_History(Registrant_User->Get_Password());
+                       Registrant_User->Set_Password_History(Registrant_User->Get_Password());//set in password history file
                        file << Registrant_User;
 
                     }

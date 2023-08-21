@@ -10,10 +10,16 @@ O_Signup::O_Signup(QWidget *parent) :
     this->setStyleSheet("QLineEdit{border-radius:10px;border:1px solid #2D25A4;background-color:#E1DBED;}}"
                         "QTextEdit,QDateEdit{border-radius:10px;background: palette(base); border:1px solid #2D25A4;background-color:#E1DBED;}");
     ui->btn_signup->setStyleSheet("QPushButton{border:2px solid #2D25A4;border-radius:20px;padding:10px;}");
+
     this->setAutoFillBackground(true);
     this->setPalette(QColor::fromString("#FFFFFF"));
+
     Registrant_User  = new Organization_User();
+
+    //connection for receiving result of user's methods
     connect(Registrant_User,SIGNAL(Validate(QString&,QValidator::State&)),this,SLOT(Validator(QString&,QValidator::State&)));
+
+
     ui->lbl_adminusername->hide();
     ui->lbl_biography->hide();
     ui->lbl_country->hide();
@@ -27,13 +33,15 @@ O_Signup::O_Signup(QWidget *parent) :
 O_Signup::~O_Signup()
 {
     delete ui;
+    delete Registrant_User;
+    delete mw;
 }
 
 void O_Signup::Get_MainWindow(MainWindow *m)
 {
     mw = m;
 }
-void O_Signup::Validator(QString &message, QValidator::State &st)
+void O_Signup::Validator(QString &message, QValidator::State &st)//show a suitable message
 {
     if(st == QValidator::Invalid)
     {
@@ -106,7 +114,7 @@ void O_Signup::on_btn_signup_clicked()
                     QStringList user_list;
                     bool flag_check_admin_uname = false;
                     bool flag_check_username = false;
-                    while(!file.atEnd())
+                    while(!file.atEnd())//check username and admin username existence
                     {
                         user_list = file.readLine().split("%$%");
                         if(Registrant_User->Get_Username() == user_list.at(1))
@@ -129,7 +137,7 @@ void O_Signup::on_btn_signup_clicked()
                             QMessageBox::information(this,"Warning","! File can not open.");
                             return;
                         }
-                        else
+                        else//set an id to account
                         {
                             QTextStream file(&Last_user_id);
                             if(Last_user_id.size() == 0)
@@ -176,10 +184,6 @@ void O_Signup::on_btn_signup_clicked()
                 mw->Get_User(Registrant_User);
                 mw->show();
                 this->close();
-            }
-            else
-            {
-                return;
             }
         }
     }

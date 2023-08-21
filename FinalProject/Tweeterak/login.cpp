@@ -6,26 +6,36 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
-    this->setStyleSheet("QLineEdit{border-radius:10px; border:1px solid #2D25A4; background-color:#E1DBED;}");
+    this->setStyleSheet("QLineEdit{border-radius:10px; border:1px solid #2D25A4; background-color:#E1DBED;}");//css
     ui->btn_login->setStyleSheet("QPushButton{border:none;}");
     ui->btn_signup->setStyleSheet("QPushButton{border:none;}");
+
+
     this->setAutoFillBackground(true);
     this->setPalette(QColor::fromString("#FFFFFF"));
+
+
     QPixmap Login(":/icons/img/login.png");
     QIcon Login_icnon(Login);
     ui->btn_login->setIcon(Login_icnon);
     ui->btn_login->setIconSize(QSize(80,80));
     ui->btn_login->setFixedSize(QSize(80,80));
+
+
     QPixmap Signup(":/icons/img/signup.png");
     QIcon Signup_icnon(Signup);
     ui->btn_signup->setIcon(Signup_icnon);
     ui->btn_signup->setIconSize(QSize(80,80));
     ui->btn_signup->setFixedSize(QSize(80,80));
+
+
     QPixmap Logo(":/icons/img/twitter.png");
     ui->lbl_logo->setFixedSize(144,144);
     ui->lbl_logo->setPixmap(Logo.scaled(ui->lbl_logo->width(),ui->lbl_logo->height(),Qt::KeepAspectRatio));
-    m = new MainWindow();
-    connect(m,SIGNAL(Logout()),this,SLOT(show()));
+
+
+    m = new MainWindow();//sharing mainwindow
+    connect(m,SIGNAL(Logout()),this,SLOT(show()));//when user click logout button in mainwindow we need to show login window
     ui->lbl_password->hide();
     ui->lbl_username->hide();
 
@@ -79,7 +89,7 @@ void Login::on_btn_login_clicked()
             while(!file.atEnd())
             {
                 user_list = file.readLine().split("%$%");
-                SHA256 secret;
+                SHA256 secret;//for making a secret password
                 if(ui->txt_username->text() == user_list.at(1) &&QString::fromStdString( secret(ui->txt_password->text().toStdString()))  == user_list.at(2))
                 {
                     if(user_list.at(0) == "O")

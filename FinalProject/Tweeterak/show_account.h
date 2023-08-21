@@ -9,6 +9,7 @@
 #include <QIcon>
 #include <QPixmap>
 #include <QColor>
+#include <vector>
 #include "user.h"
 #include "Tweet.hpp"
 #include "mention.h"
@@ -25,6 +26,8 @@ class Show_Account : public QDialog
 public:
     void Get_username(QString username);
     void Get_Current_User(User* user);
+    QString Get_Uname_byID(int id);
+
     explicit Show_Account(QWidget *parent = nullptr);
     ~Show_Account();
     void Refresh();

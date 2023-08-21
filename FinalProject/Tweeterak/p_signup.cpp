@@ -10,10 +10,16 @@ P_SignUp::P_SignUp(QWidget *parent) :
     this->setStyleSheet("QLineEdit{border-radius:10px;border:1px solid #2D25A4;background-color:#E1DBED;}"
                         "QTextEdit,QDateEdit{border-radius:10px;background: palette(base);border:1px solid #2D25A4;background-color:#E1DBED;}");
     ui->btn_signup->setStyleSheet("QPushButton{border:2px solid #2D25A4;border-radius:20px;padding:10px;}");
+
     this->setAutoFillBackground(true);
     this->setPalette(QColor::fromString("#FFFFFF"));
+
     Registrant_User = new Personal_User();
+
+    //connection for showing result of user's method
     connect(Registrant_User,SIGNAL(Validate(QString&,QValidator::State&)),this,SLOT(Validator(QString&,QValidator::State&)));
+
+
     ui->lbl_biography->hide();
     ui->lbl_country->hide();
     ui->lbl_link->hide();
@@ -27,6 +33,8 @@ P_SignUp::P_SignUp(QWidget *parent) :
 P_SignUp::~P_SignUp()
 {
     delete ui;
+    delete Registrant_User;
+    delete mw;
 }
 
 void P_SignUp::Get_MainWindow(MainWindow *m)
@@ -72,7 +80,7 @@ void P_SignUp::on_btn_signup_clicked()
         }
         else
         {
-            QString filter="";
+            QString filter=""; //for deleting \n form text
             for(int i = 0; i <ui->txt_biography->toPlainText().size();i++ )
             {
                 if(ui->txt_biography->toPlainText()[i] != '\n')
@@ -111,7 +119,7 @@ void P_SignUp::on_btn_signup_clicked()
                             QMessageBox::information(this,"Warning","! Username exists");
                             break;
                         }
-                        if(ui->txt_organusername->text() == user_list.at(1) && user_list.at(0)=="O")
+                        if(ui->txt_organusername->text() == user_list.at(1) && user_list.at(0)=="O")//check organ username existence
                         {
                             flag_check_organ_uname = true;
                             Registrant_User->Set_Organ_id(user_list.at(15).toInt());
@@ -172,10 +180,6 @@ void P_SignUp::on_btn_signup_clicked()
                 mw->Get_User(Registrant_User);
                 mw->show();
                 this->close();
-            }
-            else
-            {
-                return;
             }
         }
     }

@@ -29,7 +29,6 @@ private slots:
 
 private:
     Ui::O_Signup *ui;
-    //User * user = new Organization_User();
     Organization_User* Registrant_User;
     MainWindow* mw;
 };

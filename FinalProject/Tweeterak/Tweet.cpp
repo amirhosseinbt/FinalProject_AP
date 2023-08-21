@@ -94,19 +94,6 @@ void Tweet::Erase_Who_Like(int id)
         }
     }
 }
-
-//void Tweet::Earase_Who_Like(QString username)
-//{
-//    for (int i = 0; i < Who_Like.size(); i++)
-//    {
-//        if (Who_Like[i] == username)
-//        {
-//            Who_Like.erase(Who_Like.begin()+i);
-//        }
-
-//    }
-//}
-
 void Tweet::My_overload(QTextStream &out)
 {
     out << Userid <<"%$%"<< ID<<"%$%"<<Tweet_Text<<"%$%"<<N_Like<<"%$%";
@@ -159,6 +146,7 @@ void Tweet::My_Read_Overload(QStringList &list)
     this->Set_ID(list.at(1).toInt());
     this->Add_Tweet(list.at(2));
     this->Set_N_Like(list.at(3).toInt());
+
     QStringList who_like;
     who_like =list.at(4).split(",");
     for(int i = 0; i < who_like.size() ;i++)
@@ -168,24 +156,28 @@ void Tweet::My_Read_Overload(QStringList &list)
 
     this->Set_Tweet_Date(QDateTime::fromString(list.at(5),"dd/MM/yyyy hh:mm:ss"));
     this->Set_last_mentionid(list.at(6).toInt());
+
     QStringList HashT;
     HashT = list.at(7).split(",");
     for(int i = 0; i < HashT.size() ; i++)
     {
         this->Set_Hashtag(HashT.at(i));
     }
+
     QStringList Who_retweet_list;
     Who_retweet_list = list.at(8).split(",");
     for(int i = 0; i < Who_retweet_list.size() ; i++)
     {
         this->Set_Who_Retweet(Who_retweet_list.at(i).toInt());
     }
+
     QStringList Who_Quotetweet_list;
     Who_Quotetweet_list = list.at(9).split(",");
     for(int i = 0; i < Who_Quotetweet_list.size() ; i++)
     {
         this->Set_who_Quote_tweet(Who_Quotetweet_list.at(i).toInt());
     }
+
     this->Set_RetweetUser_id(list.at(10).toInt());
 }
 
@@ -312,9 +304,13 @@ void Mentions::My_overload(QTextStream &out)
 void Mentions::My_Read_Overload(QStringList &list)
 {
     this->Set_User_id(list.at(0).toInt());
+
     this->Set_ID(list.at(1).toInt());
+
     this->Add_Tweet(list.at(2));
+
     this->Set_N_Like(list.at(3).toInt());
+
     QStringList who_like;
     who_like =list.at(4).split(",");
     for(int i = 0; i < who_like.size() ;i++)
@@ -323,20 +319,25 @@ void Mentions::My_Read_Overload(QStringList &list)
     }
 
     this->Set_Tweet_Date(QDateTime::fromString(list.at(5),"dd/MM/yyyy hh:mm:ss"));
+
     this->Set_mention_user_id(list.at(6).toInt());
+
     this->Set_mention_id(list.at(7).toInt());
+
     QStringList HashT;
     HashT = list.at(8).split(",");
     for(int i = 0; i < HashT.size() ; i++)
     {
         this->Set_Hashtag(HashT.at(i));
     }
+
     QStringList Who_retweet_list;
     Who_retweet_list = list.at(9).split(",");
     for(int i = 0; i < Who_retweet_list.size() ; i++)
     {
         this->Set_Who_Retweet(Who_retweet_list.at(i).toInt());
     }
+
     QStringList Who_Quotetweet_list;
     Who_Quotetweet_list = list.at(10).split(",");
     for(int i = 0; i < Who_Quotetweet_list.size() ; i++)

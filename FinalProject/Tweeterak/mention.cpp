@@ -7,10 +7,9 @@ Mention::Mention(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowModality(Qt::ApplicationModal);
-    QPixmap Like(":/icons/img/redlike.png");
-    QPixmap Ok(":/icons/img/ok.png");
     this->setStyleSheet("QLineEdit{border-radius:10px;border:1px solid #2D25A4;background-color:#E1DBED;}"
                         "QTextEdit{border-radius:10px;background: palette(base);border:1px solid #2D25A4;background-color:#E1DBED;}");
+
     ui->btn_like->setStyleSheet("QPushButton{border:none;}");
     ui->btn_ok->setStyleSheet("QPushButton{border:none;}");
     ui->btn_retweet->setStyleSheet("QPushButton{border:none;}");
@@ -19,8 +18,6 @@ Mention::Mention(QWidget *parent) :
 
     this->setAutoFillBackground(true);
     this->setPalette(QColor::fromString("#FFFFFF"));
-    QIcon Like_icnon(Like);
-    QIcon Ok_icnon(Ok);
 
 
     QPixmap Retweet(":/icons/img/retweet.png");
@@ -29,14 +26,20 @@ Mention::Mention(QWidget *parent) :
     ui->btn_retweet->setIconSize(QSize(80,80));
     ui->btn_retweet->setFixedSize(QSize(80,80));
 
+    QPixmap Like(":/icons/img/redlike.png");
+    QIcon Like_icnon(Like);
     ui->btn_like->setIcon(Like_icnon);
     ui->btn_like->setIconSize(QSize(80,80));
     ui->btn_like->setFixedSize(QSize(80,80));
 
+    QPixmap Ok(":/icons/img/ok.png");
+    QIcon Ok_icnon(Ok);
     ui->btn_ok->setIcon(Ok_icnon);
     ui->btn_ok->setIconSize(QSize(80,80));
     ui->btn_ok->setFixedSize(QSize(80,80));
     ui->btn_tweet->setFixedSize(QSize(60,50));
+
+    ui->btn_retweet->hide();
 }
 
 void Mention::Get_Userid(int id)
@@ -102,7 +105,7 @@ void Mention::Mention::showEvent(QShowEvent *event)
 void Mention::on_btn_tweet_clicked()
 {
     Mentions* m = new Mentions();
-    Tweet *tweet = new Tweet();
+    std::vector<Tweet*>tweet_vector;
     if(ui->txt_mention->toPlainText().isEmpty())
     {
         QMessageBox::information(this,"Warning","! You must fill the box.");
@@ -122,13 +125,14 @@ void Mention::on_btn_tweet_clicked()
             QStringList list;
             while(!file.atEnd())
             {
+                Tweet *tweet = new Tweet();
                 list = file.readLine().split("%$%");
-                if(list.at(0).toInt()==userid && list.at(1).toInt()==tweetid)
+                if(list.at(0).toInt()==userid && list.at(1).toInt()==tweetid)//get last mention id from tweet that user selected
                 {
                     list >> tweet;
                     m->Set_mention_id(list.at(6).toInt());
                     tweet->Add_last_mentionid();
-                    break;
+                    tweet_vector.push_back(tweet);
                 }
             }
             Tweets.close();
@@ -143,21 +147,25 @@ void Mention::on_btn_tweet_clicked()
         {
             QString str="";
             QTextStream file(&Tweets);
-            while(!file.atEnd())
+            while(!file.atEnd())//write tweets with changes in file
             {
                 QString line = file.readLine();
                 QStringList list = line.split("%$%");
-                if(!(list.at(0).toInt()==userid && list.at(1).toInt()==tweetid&&list.at(10).toInt()==0))
+                if(!(list.at(0).toInt()==userid && list.at(1).toInt()==tweetid))
                 {
                     str.append(line+'\n');
                 }
             }
             Tweets.resize(0);
             file << str;
-            file << tweet;
+            for(auto & tw:tweet_vector)
+            {
+
+                file << tw;
+            }
             Tweets.close();
         }
-        QFile MentionF("Mention_file.txt");
+        QFile MentionF("Mention_file.txt");//write mention to mentions file
         if(!MentionF.open(QIODevice::ReadWrite|QIODevice::Text|QIODevice::Append))
         {
             QMessageBox::information(this,"Warning","! File can not open.");
@@ -209,6 +217,7 @@ void Mention::on_btn_tweet_clicked()
                 MentionF.close();
                 QMessageBox::information(this,"Successful","* Mention done.");
                 Refresh();
+                return;
         }
     }
 }
@@ -217,10 +226,10 @@ void Mention::on_btn_tweet_clicked()
 void Mention::on_btn_like_clicked()
 {
     Mentions *m =new Mentions();
-    if(ui->mentionlist->currentItem() == nullptr)
+    if(ui->mentionlist->selectedItems().isEmpty())
     {
-            QMessageBox::information(this,"Warning","! You must select one tweet.");
-            return;
+        QMessageBox::information(this,"Warning","! You must select one tweet.");
+        return;
     }
     else
     {
@@ -254,8 +263,9 @@ void Mention::on_btn_like_clicked()
 
                     if(!flag)
                     {
-                        if(list_item.at(0).toInt() == list.at(7).toInt()&& userid == list.at(0).toInt()&&list.at(1).toInt()==tweetid/*&&
-                            list.at(6).toInt()==mention_userid*/)
+                        if(list_item.at(0).toInt() == list.at(7).toInt()&&
+                            userid == list.at(0).toInt()&&
+                            list.at(1).toInt()==tweetid)
                         {
                             list >> m;
                             m->Set_Who_Like(mention_userid);
@@ -275,8 +285,9 @@ void Mention::on_btn_like_clicked()
                                 {
                                     QString line = file.readLine();
                                     QStringList list = line.split("%$%");
-                                    if(list_item.at(0).toInt() == list.at(7).toInt()&& userid == list.at(0).toInt()&&list.at(1).toInt()==tweetid/*&&
-                                        list.at(6).toInt()==mention_userid*/)
+                                    if(list_item.at(0).toInt() == list.at(7).toInt()&&
+                                        userid == list.at(0).toInt()&&
+                                        list.at(1).toInt()==tweetid)
                                     {
                                     }
                                     else
@@ -313,23 +324,23 @@ void Mention::on_btn_ok_clicked()
 
 void Mention::on_btn_retweet_clicked()
 {
-    if(ui->mentionlist->selectedItems().isEmpty())
-    {
-            QMessageBox::information(this,"Warning","! You must select one tweet.");
-            return;
-    }
-    else
-    {
-            QStringList list_item = ui->mentionlist->currentItem()->text().split("  ");
-            re_q_tweet = new Re_Quote_Tweet();
-            re_q_tweet->Get_User(Current_User);
-            re_q_tweet->Get_Tweet_Userid(userid);
-            re_q_tweet->Get_Tweet_ID(tweetid);
-            re_q_tweet->Get_Mention_ID(list_item.at(0).toInt());
-            re_q_tweet->Get_Mention_Userid(mention_userid);
-            re_q_tweet->Get_Tweet_Text(list_item.at(3));
-            re_q_tweet->show();
+//    if(ui->mentionlist->selectedItems().isEmpty())
+//    {
+//            QMessageBox::information(this,"Warning","! You must select one tweet.");
+//            return;
+//    }
+//    else
+//    {
+//            QStringList list_item = ui->mentionlist->currentItem()->text().split("  ");
+//            re_q_tweet = new Re_Quote_Tweet();
+//            re_q_tweet->Get_User(Current_User);
+//            re_q_tweet->Get_Tweet_Userid(userid);
+//            re_q_tweet->Get_Tweet_ID(tweetid);
+//            re_q_tweet->Get_Mention_ID(list_item.at(0).toInt());
+//            re_q_tweet->Get_Mention_Userid(mention_userid);
+//            re_q_tweet->Get_Tweet_Text(list_item.at(3));
+//            re_q_tweet->show();
 
-    }
+//    }
 }
 

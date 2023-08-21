@@ -13,13 +13,17 @@ SettingW::SettingW(QWidget *parent) :
     ui->btn_changepic->setStyleSheet("QPushButton{border:none;}");
     ui->btn_delaccount->setStyleSheet("QPushButton{border:2px solid #2D25A4;border-radius:20px;padding:10px;}");
     ui->btn_headerchange->setStyleSheet("QPushButton{border:none;}");
+
     this->setAutoFillBackground(true);
     this->setPalette(QColor::fromString("#FFFFFF"));
+
     QPixmap Color(":/icons/img/color.png");
     QIcon Color_icnon(Color);
     ui->btn_headerchange->setIcon(Color_icnon);
     ui->btn_headerchange->setIconSize(QSize(80,80));
     ui->btn_headerchange->setFixedSize(QSize(80,80));
+
+
     QPixmap Upload(":/icons/img/upload.png");
     QIcon Upload_icnon(Upload);
     ui->btn_changepic->setIcon(Upload_icnon);
@@ -28,23 +32,34 @@ SettingW::SettingW(QWidget *parent) :
 
 }
 
-void SettingW::Get_User(User *user)
+void SettingW::Get_User(User *user)// fill the account information for changing
 {
     Current_User = user;
+    connect(Current_User,SIGNAL(Validate(QString&,QValidator::State&)),this,SLOT(Validator(QString&,QValidator::State&)));
     picture_path = Current_User->Get_Picture_Path();
     Selected_Color = QColor::fromString(Current_User->Get_Header());
     QPixmap profile_picture(Current_User->Get_Picture_Path());
+
     ui->widget->setAutoFillBackground(true);
     ui->widget->setPalette(QColor::fromString(Current_User->Get_Header()));
+
     ui->lbl_profpic->setFixedSize(100,100);
     ui->lbl_profpic->setPixmap(profile_picture.scaled(ui->lbl_profpic->width(),ui->lbl_profpic->height(),Qt::KeepAspectRatio));
+
     ui->txt_username->setText(Current_User->Get_Username());
-    ui->txt_password->setText(Current_User->Get_Password());
+
     ui->txt_name->setText(Current_User->Get_Name());
+
     ui->txt_country->setText(Current_User->Get_Country());
+
     ui->txt_phonenumber->setText(Current_User->Get_Phonenumber());
+
     ui->txt_link->setText(Current_User->Get_Link());
+
     ui->txt_biography->setText(Current_User->Get_Biography());
+
+    // customizing window for each account
+
     if(Current_User->Get_Type()=="O")
     {
         ui->txt_orgusername->setReadOnly(true);
@@ -53,6 +68,7 @@ void SettingW::Get_User(User *user)
         ui->lbl_brthdate->setHidden(true);
         ui->txt_adminusername->setText(dynamic_cast<Organization_User*>(Current_User)->Get_Admin_Username());
     }
+
     else if(Current_User->Get_Type()=="P")
     {
         ui->txt_adminusername->setReadOnly(true);
@@ -83,11 +99,20 @@ void SettingW::Picture_Path(QString path)
 SettingW::~SettingW()
 {
     delete ui;
+    delete Current_User;
 }
 
-void SettingW::on_btn_change_clicked()
+void SettingW::Validator(QString &message, QValidator::State &st)
 {
+    if(st == QValidator::Invalid)
+    {
+        QMessageBox::information(this,"Warning",message);
+        return;
+    }
+}
 
+void SettingW::on_btn_change_clicked() // returns are for avoiding show many message at the same time
+{
     if(ui->txt_username->text() != Current_User->Get_Username() && !ui->txt_username->text().isEmpty())
     {
         QFile Users ("User_file.txt");
@@ -115,14 +140,8 @@ void SettingW::on_btn_change_clicked()
             {
                 if(!Current_User->Set_Username(ui->txt_username->text()))
                 {
-                    Users.close();
                     return;
                 }
-            }
-            else
-            {
-                Users.close();
-                return;
             }
             Users.close();
         }
@@ -131,11 +150,13 @@ void SettingW::on_btn_change_clicked()
     {
         QMessageBox::information(this,"Warning","! You must enter Username.");
         return;
+
     }
     if(ui->txt_password->text().isEmpty())
     {
         QMessageBox::information(this,"Warning","! You must enter Password.");
         return;
+
     }
     else
     {
@@ -143,7 +164,7 @@ void SettingW::on_btn_change_clicked()
         if(QString::fromStdString( secret(ui->txt_password->text().toStdString()))  != Current_User->Get_Password())
         {
 
-            if(!Current_User->Check_Password_History(ui->txt_password->text()))
+            if(!Current_User->Check_Password_History(ui->txt_password->text())) // check password history
             {
                 QMessageBox::information(this,"Warning","! You can not choose your last passwords.");
                 return;
@@ -153,7 +174,8 @@ void SettingW::on_btn_change_clicked()
 
                 if(!Current_User->Set_Password(ui->txt_password->text()))
                 {
-                    return;
+
+                    return; // for ending method
                 }
                 else
                 {
@@ -163,11 +185,16 @@ void SettingW::on_btn_change_clicked()
         }
     }
     Current_User->Set_Country(ui->txt_country->text());
+
     Current_User->Set_Link(ui->txt_link->text());
+
     Current_User->Set_Birthday(ui->brthdate->date());
+
     Current_User->Set_Header(Selected_Color.name());
+
     Current_User->Set_Picture_Path(picture_path);
-    QString filter="";
+
+    QString filter=""; // for deleting \n from text
     for(int i = 0; i <ui->txt_biography->toPlainText().size();i++ )
     {
         if(ui->txt_biography->toPlainText()[i] != '\n')
@@ -227,11 +254,7 @@ void SettingW::on_btn_change_clicked()
                         dynamic_cast<Organization_User*>(Current_User)->Set_Admin_id(user_list.at(15).toInt());
                     }
                 }
-                if(flag)
-                {
-
-                }
-                else
+                if(!flag)
                 {
                     QMessageBox::information(this,"Warning","! Adminusername does not exist.");
                     return;
@@ -243,7 +266,7 @@ void SettingW::on_btn_change_clicked()
         {
             return;
         }
-        QFile Users ("User_file.txt");
+        QFile Users ("User_file.txt"); // write changes in file
         if(!Users.open(QIODevice::ReadWrite|QIODevice::Text))
         {
             QMessageBox::information(0,"Warning","! File can not open.");
@@ -268,9 +291,8 @@ void SettingW::on_btn_change_clicked()
             Users.close();
         }
         QMessageBox::information(this,"Successful","* Changes saved.");
-        emit Send_Current_User(Current_User);
+        emit Send_Current_User(Current_User); // send changed user to mainwindow
         this->close();
-//        return;
     }
     else if(Current_User->Get_Type()=="P")
     {
@@ -400,18 +422,14 @@ void SettingW::on_btn_change_clicked()
         QMessageBox::information(this,"Successful","* Changes saved.");
         emit Send_Current_User(Current_User);
         this->close();
-
     }
-
-
-
 }
 
 
 void SettingW::on_btn_headerchange_clicked()
 {
-    QColor color = QColorDialog::getColor();
-    if(color.isValid() && color != QColor::fromString("#49bcf5"))
+    QColor color = QColorDialog::getColor(); // shows a dialog color for selecting header color
+    if(color.isValid() && color != QColor::fromString("#ffffff"))
     {
         Selected_color(color);
         ui->widget->setAutoFillBackground(true);
@@ -422,13 +440,14 @@ void SettingW::on_btn_headerchange_clicked()
 
 void SettingW::on_btn_changepic_clicked()
 {
-    QString file = QFileDialog::getOpenFileName(this,"choose picture",QDir::homePath());
+    QString file = QFileDialog::getOpenFileName(this,"choose picture",QDir::homePath()); // shows a file dialog for choosing
+    // picture
+    //if an anonymous user changes picture profile nothing happens
     QByteArray format = QImageReader::imageFormat(file);
     if(format.isEmpty())
     {
-        if(!file.isEmpty())
+        if(!file.isEmpty())//check the format of choosed file
         {
-
                 QMessageBox::information(this,"Warning","! You must choose a picture.");
                 return;
         }
@@ -443,9 +462,9 @@ void SettingW::on_btn_changepic_clicked()
 }
 
 
-void SettingW::on_btn_delaccount_clicked()
+void SettingW::on_btn_delaccount_clicked()// Delete all things about account such as like , follow , tweet , password , ... history
 {
-    QMessageBox MyBox;
+    QMessageBox MyBox; // make a question box for deleting account
     MyBox.setWindowTitle("Warning");
     MyBox.setText("? Are you sure about deleting account.");
     MyBox.setStandardButtons(QMessageBox::Yes);
@@ -527,9 +546,8 @@ void SettingW::on_btn_delaccount_clicked()
             History.close();
 
         }
-//        QFile Tweets ("Tweet_file.txt");
         bool Checkflag=true;
-        while(Checkflag)
+        while(Checkflag) // erasing like history
         {
             bool flag = false;
             if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text))
@@ -673,7 +691,7 @@ void SettingW::on_btn_delaccount_clicked()
         }
         bool Checkflag3=true;
         QFile Users ("User_file.txt");
-        while(Checkflag3)
+        while(Checkflag3) // erasing follower history
         {
             bool flag = false;
             if(!Users.open(QIODevice::ReadWrite|QIODevice::Text))
@@ -703,6 +721,7 @@ void SettingW::on_btn_delaccount_clicked()
                                 if(!Users2.open(QIODevice::ReadWrite|QIODevice::Text))
                                 {
                                     QMessageBox::information(0,"Warning","! File can not open.");
+                                    return;
                                 }
                                 else
                                 {
@@ -741,6 +760,7 @@ void SettingW::on_btn_delaccount_clicked()
                                 if(!Users2.open(QIODevice::ReadWrite|QIODevice::Text))
                                 {
                                     QMessageBox::information(0,"Warning","! File can not open.");
+                                    return;
                                 }
                                 else
                                 {
@@ -779,6 +799,7 @@ void SettingW::on_btn_delaccount_clicked()
                                 if(!Users2.open(QIODevice::ReadWrite|QIODevice::Text))
                                 {
                                     QMessageBox::information(0,"Warning","! File can not open.");
+                                    return;
                                 }
                                 else
                                 {
@@ -811,7 +832,7 @@ void SettingW::on_btn_delaccount_clicked()
             }
         }
         bool Checkflag4=true;
-        while(Checkflag4)
+        while(Checkflag4) //erase following history
         {
             bool flag = false;
             if(!Users.open(QIODevice::ReadWrite|QIODevice::Text))
@@ -841,6 +862,7 @@ void SettingW::on_btn_delaccount_clicked()
                                 if(!Users2.open(QIODevice::ReadWrite|QIODevice::Text))
                                 {
                                     QMessageBox::information(0,"Warning","! File can not open.");
+                                    return;
                                 }
                                 else
                                 {
@@ -879,6 +901,7 @@ void SettingW::on_btn_delaccount_clicked()
                                 if(!Users2.open(QIODevice::ReadWrite|QIODevice::Text))
                                 {
                                     QMessageBox::information(0,"Warning","! File can not open.");
+                                    return;
                                 }
                                 else
                                 {
@@ -917,6 +940,7 @@ void SettingW::on_btn_delaccount_clicked()
                                 if(!Users2.open(QIODevice::ReadWrite|QIODevice::Text))
                                 {
                                     QMessageBox::information(0,"Warning","! File can not open.");
+                                    return;
                                 }
                                 else
                                 {
@@ -951,6 +975,7 @@ void SettingW::on_btn_delaccount_clicked()
         if(!Users.open(QIODevice::ReadWrite|QIODevice::Text))
         {
             QMessageBox::information(0,"Warning","! File can not open.");
+            return;
         }
         else
         {
@@ -973,11 +998,6 @@ void SettingW::on_btn_delaccount_clicked()
         emit Send_Current_User(Current_User);
         this->close();
     }
-    else
-    {
-
-    }
-
 
 }
 

@@ -31,6 +31,7 @@ public:
 signals:
     void Send_Current_User(User*);
 private slots:
+    void Validator(QString& message,QValidator::State &st);
     void on_btn_change_clicked();
 
     void on_btn_headerchange_clicked();
