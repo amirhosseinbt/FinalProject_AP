@@ -44,6 +44,8 @@ Login::Login(QWidget *parent) :
 Login::~Login()
 {
     delete ui;
+    delete Current_User;
+    delete m;
 }
 
 
@@ -58,6 +60,7 @@ void Login::on_btn_signup_clicked()
     choose = new Choose_A_Type();
     choose->Access_MainWindow(m);
     choose->show();
+    connect(choose,&Choose_A_Type::finished,this,[=](){delete choose;});
 }
 
 
@@ -146,7 +149,7 @@ void Login::on_btn_login_clicked()
             Users.close();
             ui->txt_password->clear();
             ui->txt_username->clear();
-            this->close();
+            this->hide();
 
         }
 

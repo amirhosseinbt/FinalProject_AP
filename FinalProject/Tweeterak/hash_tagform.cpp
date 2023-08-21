@@ -146,7 +146,7 @@ bool Hash_TagForm::Refresh()//in this method we use listwidgetitem data to send 
                                  +"     "+" Retweet from  "+Get_Uname_byId(list.at(0).toInt());
                     }
                     QListWidgetItem* myitem = new QListWidgetItem(myline);
-                    QVariant mydata =list.at(0)+"%$%"+list.at(1)+"%$%";
+                    QVariant mydata =list.at(0)+"%$%"+list.at(1)+"%$%"+list.at(2);
                     myitem->setData(Qt::UserRole,mydata);
                     ui->listWidget->addItem(myitem);
 
@@ -177,7 +177,7 @@ bool Hash_TagForm::Refresh()//in this method we use listwidgetitem data to send 
                     flag = true;
                     QString myline =Get_Uname_byId(list.at(6).toInt())+"  "+list.at(7)+"  "+"   like "+list.at(3)+"   "+list.at(2)+"       "+list.at(5);
                     QListWidgetItem* myitem = new QListWidgetItem(myline);
-                    QVariant mydata =list.at(0)+"%$%"+list.at(1)+"%$%"+list.at(6)+"%$%"+list.at(7)+"%$%";
+                    QVariant mydata =list.at(0)+"%$%"+list.at(1)+"%$%"+list.at(6)+"%$%"+list.at(7)+"%$%"+list.at(2);
                     myitem->setData(Qt::UserRole,mydata);
                     ui->listWidget->addItem(myitem);
 
@@ -213,7 +213,7 @@ void Hash_TagForm::on_btn_like_clicked()
     {
         QString mytext=ui->listWidget->currentItem()->data(Qt::UserRole).toString();
         QStringList datalist = mytext.split("%$%");
-        if(datalist.size() > 3)
+        if(datalist.size() > 4)
         {
             Mentions *m =new Mentions();
             QFile MentionF("Mention_file.txt");
@@ -283,6 +283,7 @@ void Hash_TagForm::on_btn_like_clicked()
                                     MentionFF .resize(0);
                                     file << str;
                                     file << m;
+                                    delete m;
                                     MentionFF.close();
                                     QMessageBox::information(this,"Successful","* Tweet successfuly liked.");
                                     MentionFF.close();
@@ -371,6 +372,7 @@ void Hash_TagForm::on_btn_like_clicked()
                         for(auto &tw:tweet_vector)
                         {
                             file << tw;
+                            delete tw;
                         }
                         Tfile .close();
                         QMessageBox::information(this,"Successful","* Tweet successfuly liked.");
@@ -408,7 +410,7 @@ void Hash_TagForm::on_btn_mention_clicked()
     {
         QString mytext=ui->listWidget->currentItem()->data(Qt::UserRole).toString();
         QStringList datalist = mytext.split("%$%");
-        if(datalist.size() > 3)
+        if(datalist.size() > 4)
         {
             QMessageBox::information(this,"Warning","! You can not add mention to one mention.");
             return;
@@ -421,6 +423,7 @@ void Hash_TagForm::on_btn_mention_clicked()
             mentionwindow->Get_Tweetid(datalist.at(1).toInt());
             mentionwindow->Get_C_User(Current_User);
             mentionwindow->show();
+            connect(mentionwindow,&Mention::finished,this,[=](){delete mentionwindow;});
         }
 
     }
@@ -436,22 +439,23 @@ void Hash_TagForm::on_btn_retweet_clicked()
     }
     else
     {
-        QStringList list_item = ui->listWidget->currentItem()->text().split("  ");
-        re_q_tweet = new Re_Quote_Tweet();
-        re_q_tweet->Get_User(Current_User);
-        re_q_tweet->Get_Tweet_Text(list_item.at(4));
         QString mytext=ui->listWidget->currentItem()->data(Qt::UserRole).toString();
         QStringList datalist = mytext.split("%$%");
-        if(datalist.size() > 3)
+        if(datalist.size() > 4)
         {
             QMessageBox::information(this,"Warning","! You can not retweet or quote tweet a mention.");
             return;
         }
         else
         {
+            QStringList list_item = ui->listWidget->currentItem()->text().split("  ");
+            re_q_tweet = new Re_Quote_Tweet();
+            re_q_tweet->Get_User(Current_User);
+            re_q_tweet->Get_Tweet_Text(datalist.at(2));
             re_q_tweet->Get_Tweet_Userid(datalist.at(0).toInt());
             re_q_tweet->Get_Tweet_ID(datalist.at(1).toInt());
             re_q_tweet->show();
+            connect(re_q_tweet,&Re_Quote_Tweet::finished,this,[=](){delete re_q_tweet;});
         }
     }
 }

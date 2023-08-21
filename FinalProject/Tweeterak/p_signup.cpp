@@ -34,7 +34,6 @@ P_SignUp::~P_SignUp()
 {
     delete ui;
     delete Registrant_User;
-    delete mw;
 }
 
 void P_SignUp::Get_MainWindow(MainWindow *m)
@@ -179,7 +178,7 @@ void P_SignUp::on_btn_signup_clicked()
                 QMessageBox::information(this,"Successful","* Registration was successful.");
                 mw->Get_User(Registrant_User);
                 mw->show();
-                this->close();
+                this->hide();
             }
         }
     }

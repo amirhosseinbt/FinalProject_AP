@@ -143,7 +143,7 @@ void MainWindow::Refresh_List()//set id of user that tweet and tweet id and id o
                 {
                     QString line =Current_User->Get_Username()+"  "+list.at(1)+"  "+"    like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5);
                     QListWidgetItem * myitem = new QListWidgetItem(line);
-                    QVariant mydata =list.at(0)+"%$%"+list.at(10)+"%$%"+list.at(1);
+                    QVariant mydata =list.at(0)+"%$%"+list.at(10)+"%$%"+list.at(1)+"%$%"+list.at(2);
                     myitem->setData(Qt::UserRole,mydata);
                     ui->list_tweets->addItem(myitem);
                 }
@@ -153,7 +153,7 @@ void MainWindow::Refresh_List()//set id of user that tweet and tweet id and id o
                     QString line =Current_User->Get_Username()+"  "+list.at(1)+"  "+"    like "+list.at(3)+"  "+list.at(2)+"  "+"     "+list.at(5)+
                                    "        "+"  Retweet from   "+Get_Uname_byID(list.at(0).toInt());
                     QListWidgetItem * myitem = new QListWidgetItem(line);
-                    QVariant mydata =list.at(0)+"%$%"+list.at(10)+"%$%"+list.at(1);
+                    QVariant mydata =list.at(0)+"%$%"+list.at(10)+"%$%"+list.at(1)+"%$%"+list.at(2);
                     myitem->setData(Qt::UserRole,mydata);
                     ui->list_tweets->addItem(myitem);
                 }
@@ -168,6 +168,7 @@ void MainWindow::Change_user(User *user)
 {
     if(user == nullptr)
     {
+
         Current_User = nullptr;
         this->close();
         emit Logout();
@@ -175,6 +176,7 @@ void MainWindow::Change_user(User *user)
     else
     {
         this->close();
+//        this->hide();
         this->Get_User(user);
         this->show();
     }
@@ -186,6 +188,8 @@ void MainWindow::on_btn_tweet_clicked()
     T_Window->Get_User(Current_User);
     T_Window->show();
     connect(T_Window,&TweetWindow::finished,this,&MainWindow::Refresh_List);
+    connect(T_Window,&TweetWindow::finished,this,[=](){this->delete_ptr(T_Window);});
+
 }
 
 
@@ -204,6 +208,7 @@ void MainWindow::on_btn_setting_clicked()
     set_win->Get_User(Current_User);
     set_win->show();
     connect(set_win,SIGNAL(Send_Current_User(User*)),this,SLOT(Change_user(User*)));
+    connect(set_win,&SettingW::finished,this,[=](){this->delete_ptr(set_win);});
 }
 
 
@@ -291,6 +296,7 @@ void MainWindow::on_btn_like_clicked()
                 for(auto &tw:tweet_vector)
                 {
                     file << tw;
+                    delete tw;
                 }
                 Tfile .close();
                 QMessageBox::information(this,"Successful","* Tweet successfuly liked.");
@@ -361,6 +367,7 @@ void MainWindow::on_btn_search_clicked()
                 ui->txt_search->clear();
                 account->show();
                 connect(account,&Show_Account::finished,this,&MainWindow::Refresh_List);
+                connect(account,&Show_Account::finished,this,[=](){this->delete_ptr(account);});
             }
         }
 
@@ -394,6 +401,8 @@ void MainWindow::on_btn_mention_clicked()
         Mwindow->show();
         //we need refreshing list after mention
         connect(Mwindow,&Mention::finished,this,&MainWindow::Refresh_List);
+        connect(Mwindow,&Mention::finished,this,[=](){this->delete_ptr(Mwindow);});
+
     }
 
 }
@@ -412,11 +421,19 @@ void MainWindow::on_btn_retweet_clicked()
         QStringList list_data = (ui->list_tweets->currentItem()->data(Qt::UserRole).toString()).split("%$%");
         re_q_tweet = new Re_Quote_Tweet();
         re_q_tweet->Get_User(Current_User);
-        re_q_tweet->Get_Tweet_Text(list_item.at(5));
+        re_q_tweet->Get_Tweet_Text(list_data.at(3));
         re_q_tweet->Get_Tweet_Userid(list_data.at(0).toInt());
-        re_q_tweet->Get_Tweet_ID(list_item.at(1).toInt());
+        re_q_tweet->Get_Tweet_ID(list_data.at(2).toInt());
         re_q_tweet->show();
         connect(re_q_tweet,&Re_Quote_Tweet::finished,this,&MainWindow::Refresh_List);//we need refreshing list after retweet
+        connect(re_q_tweet,&Re_Quote_Tweet::finished,this,[=](){this->delete_ptr(re_q_tweet);});
+
     }
 }
 
+
+template<typename T>
+void MainWindow::delete_ptr(T *ptr)
+{
+    delete ptr;
+}

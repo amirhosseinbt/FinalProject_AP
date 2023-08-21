@@ -24,7 +24,7 @@ public:
     friend inline QTextStream & operator<<(QTextStream &out,Tweet* tweet);
     friend inline operator >>(QStringList &list,Tweet* tweet);
     Tweet();
-    ~Tweet();
+    virtual~Tweet();
     void Set_User_id(int userid);
     int Get_User_id();
     void Set_RetweetUser_id(int userid);

@@ -1,6 +1,4 @@
-release/Date.o
 release/Tweet.o
-release/Twitterak.o
 release/a_signup.o
 release/choose_a_type.o
 release/hash_tagform.o

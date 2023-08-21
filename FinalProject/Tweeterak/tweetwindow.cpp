@@ -31,12 +31,12 @@ void TweetWindow::Qoute(QString text)
 TweetWindow::~TweetWindow()
 {
     delete ui;
+//    delete tweet;
 }
 
 void TweetWindow::on_btn_tweet_clicked()
 {
 
-    tweet = new Tweet();
     QFile Tweets("Tweet_file.txt");
     if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text|QIODevice::Append))
     {
@@ -45,6 +45,7 @@ void TweetWindow::on_btn_tweet_clicked()
     }
     else
     {
+        tweet = new Tweet();
         if(ui->txt_tweet->toPlainText().isEmpty())
         {
             QMessageBox::information(this,"Warning","! You must fill the box.");
@@ -101,9 +102,8 @@ void TweetWindow::on_btn_tweet_clicked()
             QMessageBox::information(this,"Successful","* Tweet done.");
             Tweets.close();
 
+            delete tweet;
             emit accept();//send signal for quote tweet window
-
-            this->close();
         }
         Tweets.close();
     }

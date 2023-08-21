@@ -24,12 +24,17 @@ class Hash_TagForm : public QDialog
 
 public:
     explicit Hash_TagForm(QWidget *parent = nullptr);
-//    bool Get_Text(QString uitext);
+
     bool Set_t(QString text);
+
     QString Get_Uname_byId(int id);
+
     void Set_C_User_Id(int id);
+
     void showEvent(QShowEvent * event);
+
     void Get_C_User(User* user);
+
     bool Refresh();
     ~Hash_TagForm();
 

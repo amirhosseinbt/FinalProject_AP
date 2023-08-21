@@ -20,10 +20,21 @@ void Choose_A_Type::Access_MainWindow(MainWindow *m)
 Choose_A_Type::~Choose_A_Type()
 {
     delete ui;
-    delete O_su;
-    delete P_su;
-    delete A_su;
-    delete Mainw;
+    if(O_su)
+    {
+
+        delete O_su;
+    }
+    if(P_su)
+    {
+
+        delete P_su;
+    }
+    if(A_su)
+    {
+        delete A_su;
+
+    }
 }
 
 void Choose_A_Type::on_btn_confirm_clicked()
@@ -43,7 +54,6 @@ void Choose_A_Type::on_btn_confirm_clicked()
         O_su->show();
 //        this->close();
         this->hide();
-
     }
     else if(ui->rbtn_anonymous->isChecked())
     {

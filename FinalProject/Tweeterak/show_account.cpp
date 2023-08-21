@@ -189,6 +189,7 @@ QString Show_Account::Get_Uname_byID(int id)
 Show_Account::~Show_Account()
 {
     delete ui;
+    delete user;
 }
 
 void Show_Account::Refresh() // set if of user that tweets and tweet if and id of user that retweets the tweet as
@@ -222,7 +223,7 @@ void Show_Account::Refresh() // set if of user that tweets and tweet if and id o
                 {
                     QString line =user->Get_Username()+"  "+list.at(1)+"  "+"   like "+list.at(3)+"   "+list.at(2)+"  "+"     "+list.at(5);
                     QListWidgetItem * myitem = new QListWidgetItem(line);
-                    QVariant mydata =list.at(0)+"%$%"+list.at(10)+"%$%"+list.at(1);
+                    QVariant mydata =list.at(0)+"%$%"+list.at(10)+"%$%"+list.at(1)+"%$%"+list.at(2);
                     myitem->setData(Qt::UserRole,mydata);
                     ui->list_tweets->addItem(myitem);
                 }
@@ -232,7 +233,7 @@ void Show_Account::Refresh() // set if of user that tweets and tweet if and id o
                     QString line =user->Get_Username()+"  "+list.at(1)+"  "+"   like "+list.at(3)+"   "+list.at(2)+"  "+"     "+list.at(5)+
                                    "        "+"  Retweet from   "+Get_Uname_byID(list.at(0).toInt());
                     QListWidgetItem * myitem = new QListWidgetItem(line);
-                    QVariant mydata =list.at(0)+"%$%"+list.at(10)+"%$%"+list.at(1);
+                    QVariant mydata =list.at(0)+"%$%"+list.at(10)+"%$%"+list.at(1)+"%$%"+list.at(2);
                     myitem->setData(Qt::UserRole,mydata);
                     ui->list_tweets->addItem(myitem);
                 }
@@ -276,7 +277,7 @@ void Show_Account::on_btn_like_clicked()
                 {
                     if((list.at(4).split(",")).at(i).toInt() == Current_User->Get_Userid() &&
                         list.at(1).toInt() == data_list.at(2).toInt()&&
-                        list.at(0).toInt()==user->Get_Userid())
+                        list.at(0).toInt()==data_list.at(0).toInt())
                     {
                         flag = true;
                         QMessageBox::information(this,"Warning","! You have already liked this tweet.");
@@ -286,7 +287,7 @@ void Show_Account::on_btn_like_clicked()
 
                 if(!flag)
                 {
-                    if(data_list.at(2).toInt() == list.at(1).toInt()&& user->Get_Userid() == list.at(0).toInt())
+                    if(data_list.at(2).toInt() == list.at(1).toInt()&& data_list.at(0).toInt() == list.at(0).toInt())
                     {
                         list >> t;
                         t->Set_Who_Like(Current_User->Get_Userid());
@@ -311,7 +312,7 @@ void Show_Account::on_btn_like_clicked()
                 {
                     QString line = file.readLine();
                     QStringList list = line.split("%$%");
-                    if(list.at(0).toInt() == user->Get_Userid() && list.at(1).toInt() == data_list.at(2).toInt())
+                    if(list.at(0).toInt() ==data_list.at(0).toInt()&& list.at(1).toInt() == data_list.at(2).toInt())
                     {
                     }
                     else
@@ -324,6 +325,7 @@ void Show_Account::on_btn_like_clicked()
                 for(auto &tw:tweet_vector)
                 {
                     file << tw;
+                    delete tw;
                 }
                 Tfile .close();
                 QMessageBox::information(this,"Successful","* Tweet successfuly liked.");
@@ -428,6 +430,8 @@ void Show_Account::on_btn_mention_clicked()
         Mwindow->Get_Tweetid(data_list.at(2).toInt());
         Mwindow->Get_C_User(Current_User);
         Mwindow->show();
+        connect(Mwindow,&Mention::finished,this,[=](){delete Mwindow;});
+
     }
 
 }
@@ -510,12 +514,15 @@ void Show_Account::on_btn_retweet_clicked()
     else
     {
         QStringList list_item = ui->list_tweets->currentItem()->text().split("  ");
+        QStringList data_list = (ui->list_tweets->currentItem()->data(Qt::UserRole).toString()).split("%$%");
         re_q_tweet = new Re_Quote_Tweet();
         re_q_tweet->Get_User(Current_User);
-        re_q_tweet->Get_Tweet_Userid(user->Get_Userid());
-        re_q_tweet->Get_Tweet_ID(list_item.at(1).toInt());
-        re_q_tweet->Get_Tweet_Text(list_item.at(4));
+        re_q_tweet->Get_Tweet_Userid(data_list.at(0).toInt());
+        re_q_tweet->Get_Tweet_ID(data_list.at(2).toInt());
+        re_q_tweet->Get_Tweet_Text(data_list.at(3));
         re_q_tweet->show();
+        connect(re_q_tweet,&Re_Quote_Tweet::finished,this,[=](){delete re_q_tweet;});
+
     }
 }
 

@@ -94,6 +94,7 @@ void Mention::Refresh()
 Mention::~Mention()
 {
     delete ui;
+//    delete re_q_tweet;
 }
 
 void Mention::Mention::showEvent(QShowEvent *event)
@@ -162,6 +163,7 @@ void Mention::on_btn_tweet_clicked()
             {
 
                 file << tw;
+                delete tw;
             }
             Tweets.close();
         }
@@ -214,6 +216,7 @@ void Mention::on_btn_tweet_clicked()
                 m->Set_User_id(userid);
                 m->Set_mention_user_id(mention_userid);
                 file << m;
+                delete m;
                 MentionF.close();
                 QMessageBox::information(this,"Successful","* Mention done.");
                 Refresh();

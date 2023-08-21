@@ -2,8 +2,6 @@
 #define LOGIN_H
 
 #include <QDialog>
-#include "choose_a_type.h"
-#include "user.h"
 #include <mainwindow.h>
 #include <QFile>
 #include <QColor>
@@ -14,6 +12,9 @@
 #include <QPixmap>
 #include <QIcon>
 #include <sha256.h>
+
+#include "user.h"
+#include "choose_a_type.h"
 namespace Ui {
 class Login;
 }

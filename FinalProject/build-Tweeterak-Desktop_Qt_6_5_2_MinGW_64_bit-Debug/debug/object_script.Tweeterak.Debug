@@ -1,6 +1,4 @@
-debug/Date.o
 debug/Tweet.o
-debug/Twitterak.o
 debug/a_signup.o
 debug/choose_a_type.o
 debug/hash_tagform.o

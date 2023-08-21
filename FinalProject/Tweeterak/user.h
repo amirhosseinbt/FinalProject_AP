@@ -2,11 +2,7 @@
 #define USER_H
 #include <iostream>
 #include <string>
-#include <map>
 #include <vector>
-#include <utility>
-#include <ctime>
-#include "Date.hpp"
 #include "Tweet.hpp"
 #include <QString>
 #include <QValidator>
@@ -87,25 +83,7 @@ public:
 
     void Erase_Follower(int id);
     void Erase_Following(int id);
-//    bool set_header(std::string header);
-//    int get_header_id();
-//    std::string get_header();
 
-//    void tweet(std::string content);
-
-//    std::vector<Tweet*> get_tweets();
-
-//    void earase_tweet(int id);
-
-//    void edit_tweet(int id,std::string con);
-
-//    void like(int id,std::string* wh);
-//    std::vector<std::string*> who(int id);
-
-//    void dlike(int id,std::string* wh);
-
-//    void retweet(int id,User *& user);
-//    std::vector<std::string*> who_re(int id);
 signals:
     void Validate(QString &message,QValidator::State &st);
 private:

@@ -123,7 +123,7 @@ void Re_Quote_Tweet::on_btn_retweet_clicked()
         }
         Tfile .resize(0);
         file << str;
-        for(auto & tw : tweet_vector)
+        for(auto & tw:tweet_vector)
         {
             file << tw;
             if(tw->Get_RetweetUser_id()==0)
@@ -190,10 +190,13 @@ void Re_Quote_Tweet::on_btn_retweet_clicked()
             tweet->Set_who_Quote_tweet(whquotetweet);
         }
         file << tweet;
-
+        delete tweet;
+        for(auto & tw:tweet_vector)
+        {
+            delete tw;
+        }
         QMessageBox::information(this,"Successful","* Retweet done.");
         Tweets.close();
-        tweet_vector.clear();
         this->close();
 
     }
@@ -410,7 +413,7 @@ void Re_Quote_Tweet::on_btn_quotetweet_clicked()
     T_Window->Qoute(T_text);
     if(M_id != 0)
     {
-        Mentions *m =new Mentions();
+//        Mentions *m =new Mentions();
         QFile MentionF("Mention_file.txt");
         bool mention_flag = false;
         if(!MentionF.open(QIODevice::ReadWrite|QIODevice::Text))
@@ -449,12 +452,14 @@ void Re_Quote_Tweet::on_btn_quotetweet_clicked()
                 connect(T_Window,SIGNAL(accepted()),this,SLOT(quote_a_mention()));
                 connect(T_Window,SIGNAL(accepted()),this,SLOT(close()));
                 connect(T_Window,SIGNAL(accepted()),this,SLOT(quote_message()));
+                connect(T_Window,&TweetWindow::finished,this,[=](){delete T_Window;});
+
             }
         }
     }
     else
     {
-        Tweet *t =new Tweet();
+//        Tweet *t =new Tweet();
         QFile Tweets ("Tweet_file.txt");
         bool flag = false;
         if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text))
@@ -492,6 +497,8 @@ void Re_Quote_Tweet::on_btn_quotetweet_clicked()
             connect(T_Window,SIGNAL(accepted()),this,SLOT(quote_a_tweet()));
             connect(T_Window,SIGNAL(accepted()),this,SLOT(close()));
             connect(T_Window,SIGNAL(accepted()),this,SLOT(quote_message()));
+            connect(T_Window,&TweetWindow::finished,this,[=](){delete T_Window;});
+
         }
 
     }
@@ -552,6 +559,7 @@ void Re_Quote_Tweet::quote_a_mention()
                     MentionFF.resize(0);
                     file << str;
                     file << m;
+                    delete m;
                     MentionFF.close();
 
                 }
@@ -610,6 +618,7 @@ void Re_Quote_Tweet::quote_a_tweet()
                         Tfile .resize(0);
                         file << str;
                         file << t;
+                        delete t;
                         Tfile.close();
                     }
                 }

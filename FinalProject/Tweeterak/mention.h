@@ -46,7 +46,6 @@ private:
     Ui::Mention *ui;
     int userid=0,tweetid=0,mention_userid=0;
     User* Current_User;
-    Re_Quote_Tweet * re_q_tweet;
 
 };
 

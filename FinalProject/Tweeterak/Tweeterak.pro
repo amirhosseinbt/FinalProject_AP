@@ -9,9 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Date.cpp \
     Tweet.cpp \
-    Twitterak.cpp \
     a_signup.cpp \
     choose_a_type.cpp \
     hash_tagform.cpp \
@@ -29,9 +27,7 @@ SOURCES += \
     user.cpp
 
 HEADERS += \
-    Date.hpp \
     Tweet.hpp \
-    Twitterak.hpp \
     a_signup.h \
     choose_a_type.h \
     hash_tagform.h \

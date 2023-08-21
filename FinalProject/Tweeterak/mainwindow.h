@@ -31,6 +31,8 @@ public:
     ~MainWindow();
     void Get_User(User * user);
     QString Get_Uname_byID(int id);
+    template <typename T>
+    void delete_ptr(T* ptr);
 signals:
     void Logout();
 private slots:
@@ -52,6 +54,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
     User * Current_User=nullptr;
     TweetWindow* T_Window;
     SettingW* set_win;

@@ -99,7 +99,6 @@ void SettingW::Picture_Path(QString path)
 SettingW::~SettingW()
 {
     delete ui;
-    delete Current_User;
 }
 
 void SettingW::Validator(QString &message, QValidator::State &st)
@@ -487,9 +486,13 @@ void SettingW::on_btn_delaccount_clicked()// Delete all things about account suc
             {
                 QString line = file.readLine();
                 QStringList list = line.split("%$%");
-                if(list.at(0).toInt() != Current_User->Get_Userid())
+                if(list.at(0).toInt() == Current_User->Get_Userid() || list.at(10).toInt() == Current_User->Get_Userid())
+                {
+                }
+                else
                 {
                     str.append(line+'\n');
+
                 }
             }
             Tweets.resize(0);
@@ -601,6 +604,7 @@ void SettingW::on_btn_delaccount_clicked()// Delete all things about account suc
                             Tfile .resize(0);
                             file << str;
                             file << t;
+                            delete t;
                             Tfile .close();
                             Tweets.close();
                             break;
@@ -675,6 +679,7 @@ void SettingW::on_btn_delaccount_clicked()// Delete all things about account suc
                             MentionFF .resize(0);
                             file << str;
                             file << m;
+                            delete m;
                             MentionFF.close();
                             break;
                         }
@@ -739,6 +744,7 @@ void SettingW::on_btn_delaccount_clicked()// Delete all things about account suc
                                     Users2.resize(0);
                                     file << str;
                                     file << U;
+                                    delete U;
                                     Users2.close();
                                 }
                                 break;
@@ -778,6 +784,7 @@ void SettingW::on_btn_delaccount_clicked()// Delete all things about account suc
                                     Users2.resize(0);
                                     file << str;
                                     file << U;
+                                    delete U;
                                     Users2.close();
                                 }
                                 break;
@@ -817,6 +824,7 @@ void SettingW::on_btn_delaccount_clicked()// Delete all things about account suc
                                     Users2.resize(0);
                                     file << str;
                                     file << U;
+                                    delete U;
                                     Users2.close();
                                 }
                                 break;
@@ -880,6 +888,7 @@ void SettingW::on_btn_delaccount_clicked()// Delete all things about account suc
                                     Users2.resize(0);
                                     file << str;
                                     file << U;
+                                    delete U;
                                     Users2.close();
                                 }
                                 break;
@@ -919,6 +928,7 @@ void SettingW::on_btn_delaccount_clicked()// Delete all things about account suc
                                     Users2.resize(0);
                                     file << str;
                                     file << U;
+                                    delete U;
                                     Users2.close();
                                 }
                                 break;
@@ -958,6 +968,7 @@ void SettingW::on_btn_delaccount_clicked()// Delete all things about account suc
                                     Users2.resize(0);
                                     file << str;
                                     file << U;
+                                    delete U;
                                     Users2.close();
                                 }
                                 break;

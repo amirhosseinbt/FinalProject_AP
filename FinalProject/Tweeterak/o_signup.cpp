@@ -34,7 +34,6 @@ O_Signup::~O_Signup()
 {
     delete ui;
     delete Registrant_User;
-    delete mw;
 }
 
 void O_Signup::Get_MainWindow(MainWindow *m)
@@ -183,7 +182,7 @@ void O_Signup::on_btn_signup_clicked()
                 QMessageBox::information(this,"Successful","* Registration was successful.");
                 mw->Get_User(Registrant_User);
                 mw->show();
-                this->close();
+                this->hide();
             }
         }
     }

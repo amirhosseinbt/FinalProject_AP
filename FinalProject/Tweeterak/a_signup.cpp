@@ -29,7 +29,6 @@ A_Signup::~A_Signup()
 {
     delete ui;
     delete Registrant_User;
-    delete mw;
 }
 
 void A_Signup::Get_MainWindow(MainWindow *m)//for sharing mainwindow all over the program
@@ -137,7 +136,7 @@ void A_Signup::on_btnsignup_clicked()
                 QMessageBox::information(this,"Successful","* Registration was successful.");
                 mw->Get_User(Registrant_User);
                 mw->show();
-                this->close();
+                this->hide();
             }
         }
 }
