@@ -162,6 +162,8 @@ void MainWindow::Refresh_List()//set id of user that tweet and tweet id and id o
 
     }
     Tweets.close();
+    ui->lbl_nfollowers->setText(QString::number(Current_User->Get_N_Followers()));
+    ui->lbl_nfollowings->setText(QString::number(Current_User->Get_N_Followings()));
 }
 
 void MainWindow::Change_user(User *user)

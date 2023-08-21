@@ -438,7 +438,7 @@ void Re_Quote_Tweet::on_btn_quotetweet_clicked()
                     {
                         mention_flag = true;
                         QMessageBox::information(this,"Warning","! You have already quote tweet this tweet.");
-                        break;
+                        return;
                     }
                 }
             }
@@ -459,7 +459,6 @@ void Re_Quote_Tweet::on_btn_quotetweet_clicked()
     }
     else
     {
-//        Tweet *t =new Tweet();
         QFile Tweets ("Tweet_file.txt");
         bool flag = false;
         if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text))
@@ -483,22 +482,22 @@ void Re_Quote_Tweet::on_btn_quotetweet_clicked()
                     {
                         flag = true;
                         QMessageBox::information(this,"Warning","! You have already quote tweet this tweet.");
-                        break;
+                        return;
                     }
                 }   
             }
             Tweets.close();
-        }
-        if(!flag)
-        {
-            T_Window->show();
+            if(!flag)
+            {
+                T_Window->show();
 
 
-            connect(T_Window,SIGNAL(accepted()),this,SLOT(quote_a_tweet()));
-            connect(T_Window,SIGNAL(accepted()),this,SLOT(close()));
-            connect(T_Window,SIGNAL(accepted()),this,SLOT(quote_message()));
-            connect(T_Window,&TweetWindow::finished,this,[=](){delete T_Window;});
+                connect(T_Window,SIGNAL(accepted()),this,SLOT(quote_a_tweet()));
+                connect(T_Window,SIGNAL(accepted()),this,SLOT(close()));
+                connect(T_Window,SIGNAL(accepted()),this,SLOT(quote_message()));
+                connect(T_Window,&TweetWindow::finished,this,[=](){delete T_Window;});
 
+            }
         }
 
     }
@@ -508,6 +507,7 @@ void Re_Quote_Tweet::on_btn_quotetweet_clicked()
 // because the index of this property is different in tweet and mention
 void Re_Quote_Tweet::quote_a_mention()
 {
+    std::vector<Mentions*>mention_vector;
     Mentions *m =new Mentions();
     QFile MentionF("Mention_file.txt");
     if(!MentionF.open(QIODevice::ReadWrite|QIODevice::Text))
@@ -529,48 +529,58 @@ void Re_Quote_Tweet::quote_a_mention()
             {
                 list >> m;
                 m->Set_who_Quote_tweet(Current_User->Get_Userid());
+                mention_vector.push_back(m);
                 MentionF.close();
-                QFile MentionFF ("Mention_file.txt");
-                if(!MentionFF.open(QIODevice::ReadWrite|QIODevice::Text))
-                {
-                    QMessageBox::information(this,"Warning","! File can not open.");
-                    return;
-                }
-                else
-                {
-                    QTextStream file(&MentionFF);
-                    QString str="";
-                    while(!file.atEnd())
-                    {
-                        QString line = file.readLine();
-                        QStringList list = line.split("%$%");
-                        if(M_id == list.at(7).toInt()&&
-                            T_Userid== list.at(0).toInt()&&
-                            list.at(1).toInt()== T_id&&
-                            list.at(6).toInt()==M_Userid
-                            )
-                        {
-                        }
-                        else
-                        {
-                            str.append(line+'\n');
-                        }
-                    }
-                    MentionFF.resize(0);
-                    file << str;
-                    file << m;
-                    delete m;
-                    MentionFF.close();
 
-                }
             }
 
         }
-    }   MentionF.close();
+    }
+    MentionF.close();
+    QFile MentionFF ("Mention_file.txt");
+    if(!MentionFF.open(QIODevice::ReadWrite|QIODevice::Text))
+    {
+        QMessageBox::information(this,"Warning","! File can not open.");
+        return;
+    }
+    else
+    {
+        QTextStream file(&MentionFF);
+        QString str="";
+        while(!file.atEnd())
+        {
+            QString line = file.readLine();
+            QStringList list = line.split("%$%");
+            if(M_id == list.at(7).toInt()&&
+                T_Userid== list.at(0).toInt()&&
+                list.at(1).toInt()== T_id&&
+                list.at(6).toInt()==M_Userid
+                )
+            {
+            }
+            else
+            {
+                str.append(line+'\n');
+            }
+        }
+        MentionFF.resize(0);
+        file << str;
+        for(auto & mention:mention_vector)
+        {
+            file << mention;
+        }
+        MentionFF.close();
+
+    }
+    for(auto & mention:mention_vector)
+    {
+        delete mention;
+    }
 }
 
 void Re_Quote_Tweet::quote_a_tweet()
 {
+    std::vector<Tweet*>tweet_vector;
     Tweet *t =new Tweet();
     QFile Tweets ("Tweet_file.txt");
     if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text))
@@ -591,40 +601,49 @@ void Re_Quote_Tweet::quote_a_tweet()
                 {
                     list >> t;
                     t->Set_who_Quote_tweet(Current_User->Get_Userid());
+                    tweet_vector.push_back(t);
                     Tweets.close();
-                    QFile Tfile ("Tweet_file.txt");
-                    if(!Tfile .open(QIODevice::ReadWrite|QIODevice::Text))
-                    {
-                        QMessageBox::information(this,"Warning","! File can not open.");
-                        return;
-                    }
-                    else
-                    {
-                        QTextStream file(&Tfile );
-                        QString str="";
-                        while(!file.atEnd())
-                        {
-                            QString line = file.readLine();
-                            QStringList list = line.split("%$%");
-                            if(list.at(0).toInt() ==T_Userid &&
-                                list.at(1).toInt() == T_id)
-                            {
-                            }
-                            else
-                            {
-                                str.append(line+'\n');
-                            }
-                        }
-                        Tfile .resize(0);
-                        file << str;
-                        file << t;
-                        delete t;
-                        Tfile.close();
-                    }
+
                 }
 
         }
         Tweets.close();
+    }
+    QFile Tfile ("Tweet_file.txt");
+    if(!Tfile .open(QIODevice::ReadWrite|QIODevice::Text))
+    {
+        QMessageBox::information(this,"Warning","! File can not open.");
+        return;
+    }
+    else
+    {
+        QTextStream file(&Tfile );
+        QString str="";
+        while(!file.atEnd())
+        {
+                QString line = file.readLine();
+                QStringList list = line.split("%$%");
+                if(list.at(0).toInt() ==T_Userid &&
+                    list.at(1).toInt() == T_id)
+                {
+                }
+                else
+                {
+                    str.append(line+'\n');
+                }
+        }
+        Tfile .resize(0);
+        file << str;
+
+        for(auto & tw:tweet_vector)
+        {
+            file << tw;
+        }
+        Tfile.close();
+    }
+    for(auto & tw:tweet_vector)
+    {
+        delete tw;
     }
 }
 
