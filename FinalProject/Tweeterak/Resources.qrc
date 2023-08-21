@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>img/like.png</file>
+        <file>img/Anonymous.png</file>
+        <file>img/setting.png</file>
+        <file>img/add.png</file>
+        <file>img/mention.png</file>
+        <file>img/login.png</file>
+        <file>img/logout.png</file>
+        <file>img/signup.png</file>
+        <file>img/upload.png</file>
+        <file>img/color.png</file>
+        <file>img/search.png</file>
+        <file>img/ok.png</file>
+        <file>img/twitter.png</file>
+        <file>img/twitter2.png</file>
+    </qresource>
+</RCC>

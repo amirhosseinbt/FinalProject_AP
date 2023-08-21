@@ -1,0 +1,46 @@
+#ifndef MENTION_H
+#define MENTION_H
+
+#include <QDialog>
+#include <QFile>
+#include <QTextStream>
+#include <QStringList>
+#include <QDateTime>
+#include <QMessageBox>
+#include <QDebug>
+#include <QColor>
+#include <QPalette>
+#include <QPixmap>
+#include <QIcon>
+#include "Tweet.hpp"
+namespace Ui {
+class Mention;
+}
+
+class Mention : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit Mention(QWidget *parent = nullptr);
+    void Get_Userid(int id);
+    void Get_Tweetid(int id);
+    void Get_Mention_userid(int id);
+    void Refresh();
+    ~Mention();
+    void showEvent(QShowEvent * event);
+private slots:
+    void on_btn_tweet_clicked();
+
+    void on_btn_like_clicked();
+
+    void on_btn_ok_clicked();
+
+private:
+    Ui::Mention *ui;
+    int userid=0,tweetid=0,mention_userid=0;
+
+
+};
+
+#endif // MENTION_H
