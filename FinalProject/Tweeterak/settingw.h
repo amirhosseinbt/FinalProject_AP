@@ -40,6 +40,7 @@ private slots:
 
     void on_btn_delaccount_clicked();
 
+
 private:
     Ui::SettingW *ui;
     User * Current_User;

@@ -28,6 +28,7 @@ O_Signup::O_Signup(QWidget *parent) :
     ui->lbl_password->hide();
     ui->lbl_phonenumber->hide();
     ui->lbl_username->hide();
+    ui->txt_phonenumber->setText("98");
 }
 
 O_Signup::~O_Signup()

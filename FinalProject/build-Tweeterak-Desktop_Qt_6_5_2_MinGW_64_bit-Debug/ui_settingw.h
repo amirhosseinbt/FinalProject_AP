@@ -347,8 +347,8 @@ public:
         brthdate->setFrame(true);
         brthdate->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         brthdate->setButtonSymbols(QAbstractSpinBox::NoButtons);
-        brthdate->setMaximumDateTime(QDateTime(QDate(2023, 12, 31), QTime(6, 29, 59)));
-        brthdate->setMinimumDateTime(QDateTime(QDate(1900, 9, 13), QTime(5, 0, 0)));
+        brthdate->setMaximumDateTime(QDateTime(QDate(2023, 12, 31), QTime(2, 59, 59)));
+        brthdate->setMinimumDateTime(QDateTime(QDate(1900, 9, 13), QTime(0, 30, 0)));
 
         horizontalLayout_10->addWidget(brthdate);
 

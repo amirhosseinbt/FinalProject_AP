@@ -52,6 +52,8 @@ private slots:
 
     void on_btn_retweet_clicked();
 
+    void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
+
 private:
     Ui::MainWindow *ui;
 

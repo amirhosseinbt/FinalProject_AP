@@ -1012,3 +1012,5 @@ void SettingW::on_btn_delaccount_clicked()// Delete all things about account suc
 
 }
 
+
+

@@ -48,6 +48,7 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *lbl_tweets;
     QListWidget *list_tweets;
+    QListWidget *listWidget;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *btn_mention;
@@ -197,6 +198,15 @@ public:
         list_tweets->setAlternatingRowColors(false);
 
         verticalLayout->addWidget(list_tweets);
+
+        listWidget = new QListWidget(centralwidget);
+        listWidget->setObjectName("listWidget");
+        QFont font4;
+        font4.setPointSize(11);
+        font4.setBold(true);
+        listWidget->setFont(font4);
+
+        verticalLayout->addWidget(listWidget);
 
 
         verticalLayout_4->addLayout(verticalLayout);

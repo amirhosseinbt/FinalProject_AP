@@ -565,8 +565,8 @@
        </property>
        <property name="maximumDateTime">
         <datetime>
-         <hour>6</hour>
-         <minute>29</minute>
+         <hour>2</hour>
+         <minute>59</minute>
          <second>59</second>
          <year>2023</year>
          <month>12</month>
@@ -575,8 +575,8 @@
        </property>
        <property name="minimumDateTime">
         <datetime>
-         <hour>5</hour>
-         <minute>0</minute>
+         <hour>0</hour>
+         <minute>30</minute>
          <second>0</second>
          <year>1900</year>
          <month>9</month>

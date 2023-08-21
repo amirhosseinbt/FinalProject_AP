@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->setWindowState(Qt::WindowMaximized);
     this->setStyleSheet("QLineEdit{border-radius:10px;border:1px solid #2D25A4;background-color:#E1DBED;}");
+    ui->listWidget->setStyleSheet("QListWidget{border-radius:10px;background: palette(base);border:1px solid #2D25A4;background-color:#E1DBED;}");
     ui->list_tweets->setStyleSheet("QListWidget{border-radius:10px;background: palette(base);border:1px solid #2D25A4;background-color:#E1DBED;}");
     ui->btn_like->setStyleSheet("QPushButton{border:none;}");
     ui->btn_logout->setStyleSheet("QPushButton{border:none;}");
@@ -123,6 +124,7 @@ void MainWindow::Refresh_List()//set id of user that tweet and tweet id and id o
                                //a listwidgetitem data
 {
     ui->list_tweets->clear();
+    ui->listWidget->clear();
     QFile Tweets ("Tweet_file.txt");
     if(!Tweets.open(QIODevice::ReadWrite|QIODevice::Text))
     {
@@ -160,6 +162,54 @@ void MainWindow::Refresh_List()//set id of user that tweet and tweet id and id o
             }
         }
 
+    }
+    QFile Users ("User_file.txt");
+    if(!Users.open(QIODevice::ReadWrite|QIODevice::Text))
+    {
+        QMessageBox::information(this,"Warning","! File can not open.");
+        return;
+    }
+    else
+    {
+        QTextStream file(&Users);
+        QStringList list;
+        while(!file.atEnd())
+        {
+            list = file.readLine().split("%$%");
+            if(Current_User->Get_Type()=="A")
+            {
+                if(list.at(14).toInt() == Current_User->Get_Userid())
+                {
+
+                    for(int i = 0;i < list.at(16).split(",").size()-1;i++)
+                    {
+                        QString line =Get_Uname_byID((list.at(16).split(",")).at(i).toInt());
+                        QListWidgetItem * myitem = new QListWidgetItem(line);
+                        QVariant mydata =(list.at(16).split(",")).at(i)+"%$%"+Get_Uname_byID((list.at(16).split(",")).at(i).toInt());
+                        myitem->setData(Qt::UserRole,mydata);
+                        ui->listWidget->addItem(myitem);
+                    }
+                }
+            }
+            else
+            {
+
+                if(list.at(15).toInt() == Current_User->Get_Userid())
+                {
+                    for(int i = 0;i < list.at(17).split(",").size()-1;i++)
+                    {
+                        QString line =Get_Uname_byID((list.at(17).split(",")).at(i).toInt());
+                        QListWidgetItem * myitem = new QListWidgetItem(line);
+                        QVariant mydata =(list.at(17).split(",")).at(i)+"%$%"+Get_Uname_byID((list.at(17).split(",")).at(i).toInt());
+                        myitem->setData(Qt::UserRole,mydata);
+                        ui->listWidget->addItem(myitem);
+                    }
+
+                }
+
+            }
+        }
+        Users.close();
     }
     Tweets.close();
     ui->lbl_nfollowers->setText(QString::number(Current_User->Get_N_Followers()));
@@ -439,3 +489,45 @@ void MainWindow::delete_ptr(T *ptr)
 {
     delete ptr;
 }
+
+void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
+{
+    QFile Users ("User_file.txt");
+    if(!Users.open(QIODevice::ReadWrite|QIODevice::Text))
+    {
+        QMessageBox::information(this,"Warning","! File can not open.");
+        return;
+    }
+    else
+    {
+        QTextStream file(&Users);
+        QStringList user_list;
+        QStringList data_list = (item->data(Qt::UserRole).toString()).split("%$%");
+        bool flag = false;
+        while(!file.atEnd())
+        {
+            user_list = file.readLine().split("%$%");
+            if(data_list.at(1) == user_list.at(1))
+            {
+                flag = true;
+            }
+        }
+        if(!flag)//if username does not exist
+        {
+            QMessageBox::information(this,"Warning","! Username does not exist.");
+            Users.close();
+            return;
+        }
+        else
+        {
+            Users.close();
+            account = new Show_Account();
+            account->Get_username(data_list.at(1));
+            account->Get_Current_User(Current_User);
+            account->show();
+            connect(account,&Show_Account::finished,this,&MainWindow::Refresh_List);
+            connect(account,&Show_Account::finished,this,[=](){this->delete_ptr(account);});
+        }
+    }
+}
+

@@ -28,6 +28,7 @@ P_SignUp::P_SignUp(QWidget *parent) :
     ui->lbl_phonenumber->hide();
     ui->lbl_username->hide();
     ui->lbl_organusername->hide();
+    ui->txt_phonenumber->setText("98");
 }
 
 P_SignUp::~P_SignUp()
