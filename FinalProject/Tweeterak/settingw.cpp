@@ -213,7 +213,7 @@ void SettingW::on_btn_change_clicked() // returns are for avoiding show many mes
             Current_User->Set_Name(ui->txt_name->text());
 
         }
-        if(ui->txt_phonenumber->text().isEmpty())
+        if(ui->txt_phonenumber->text().isEmpty()||ui->txt_phonenumber->text().size() < 12)
         {
             QMessageBox::information(this,"Warning","! You must enter Phonenumber.");
             return;

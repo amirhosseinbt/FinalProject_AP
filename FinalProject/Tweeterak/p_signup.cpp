@@ -66,7 +66,7 @@ void P_SignUp::on_btn_signup_clicked()
         QMessageBox::information(this,"Warning","! You must enter Name.");
         return;
     }
-    else if(ui->txt_phonenumber->text().isEmpty())
+    else if(ui->txt_phonenumber->text().isEmpty()||ui->txt_phonenumber->text().size() < 12)
     {
         QMessageBox::information(this,"Warning","! You must enter Phonenumber.");
         return;
